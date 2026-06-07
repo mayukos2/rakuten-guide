@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6/10 楽天初心者さん診断</title>
+  <style>
+    :root {
+      --ink: #362a35;
+      --muted: #746674;
+      --paper: #fff9f3;
+      --card: #ffffff;
+      --pink: #ff6f9c;
+      --pink-soft: #ffe1eb;
+      --purple: #8a5cf6;
+      --purple-soft: #eee8ff;
+      --yellow: #fff1b8;
+      --green: #2f9e6d;
+      --line: #eadde6;
+      --shadow: 0 14px 36px rgba(126, 83, 105, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.7;
+      background:
+        linear-gradient(90deg, rgba(255, 111, 156, .18) 0 16px, transparent 16px 32px),
+        linear-gradient(0deg, rgba(255, 111, 156, .12) 0 16px, transparent 16px 32px),
+        var(--paper);
+      background-size: 32px 32px;
+    }
+
+    a {
+      color: #6b3ee9;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 18px 14px 56px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(255, 255, 255, .72);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 30px 20px 24px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      background: var(--pink-soft);
+      opacity: .72;
+      z-index: 0;
+    }
+
+    .hero::before {
+      top: -34px;
+      left: -32px;
+    }
+
+    .hero::after {
+      right: -38px;
+      bottom: -42px;
+      background: var(--purple-soft);
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #7c2d52;
+      background: var(--pink-soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(31px, 9vw, 52px);
+      line-height: 1.14;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .strong {
+      font-weight: 900;
+      color: #df3f72;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+
+    .card {
+      padding: 20px 16px;
+      margin-top: 14px;
+    }
+
+    .card.hot {
+      background: linear-gradient(135deg, #fff, #fff2f7 62%, #f2edff);
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .benefit-list,
+    .plain-list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .benefit-list li,
+    .plain-list li {
+      padding: 12px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .78);
+      font-weight: 700;
+    }
+
+    .benefit-list li::before {
+      content: "✓";
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--pink);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .diagnosis {
+      background: #fff;
+      border: 2px solid var(--purple-soft);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 18px 14px;
+      margin-top: 18px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .check:last-child {
+      border-bottom: 0;
+    }
+
+    .check input {
+      width: 24px;
+      height: 24px;
+      margin-top: 3px;
+      accent-color: var(--purple);
+      flex: 0 0 auto;
+    }
+
+    .check span {
+      display: block;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .check small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      padding: 12px;
+      border-radius: 16px;
+      background: #faf7ff;
+      border: 1px solid #eadfff;
+    }
+
+    .field label {
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #d9cfe0;
+      border-radius: 13px;
+      padding: 10px 12px;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 750;
+      background: #fff;
+    }
+
+    .result {
+      display: none;
+      margin-top: 16px;
+      padding: 18px 14px;
+      border-radius: 22px;
+      background: #2c2330;
+      color: #fff;
+    }
+
+    .result.is-visible {
+      display: block;
+    }
+
+    .result h2,
+    .result h3 {
+      color: #fff;
+    }
+
+    .result p {
+      color: rgba(255, 255, 255, .82);
+    }
+
+    .result-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 12px 0 0;
+      list-style: none;
+    }
+
+    .result-list li {
+      padding: 12px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+    }
+
+    .result-list strong {
+      display: block;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .result-list span {
+      display: block;
+      color: rgba(255, 255, 255, .78);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: #785600;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .button {
+      appearance: none;
+      border: 0;
+      display: inline-flex;
+      width: 100%;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      font-size: 17px;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(138, 92, 246, .25);
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--purple);
+      border: 2px solid #d9ccff;
+      box-shadow: none;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .note {
+      padding: 12px;
+      border-left: 5px solid var(--pink);
+      border-radius: 13px;
+      background: #fff7db;
+      color: #655124;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      counter-reset: step;
+      margin-top: 12px;
+    }
+
+    .step {
+      position: relative;
+      padding: 14px 12px 14px 52px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      font-weight: 750;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 13px;
+      top: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: var(--purple);
+      font-weight: 900;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px 4px 0;
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        padding: 28px 20px 72px;
+      }
+
+      .hero {
+        padding: 44px 42px 36px;
+      }
+
+      .card,
+      .diagnosis {
+        padding: 28px;
+      }
+
+      .fields {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="label">2026/6/10 買う前チェック</div>
+      <h1>楽天初心者さん<br>今回は本当に見て！</h1>
+      <p class="lead">初めて楽天で買う人ほど、お得に始められる可能性がある日。まずは自分がどれに当てはまるか確認してね。</p>
+      <div class="pill-row" aria-label="このガイドで確認できること">
+        <span class="pill">スパセ</span>
+        <span class="pill">初購入</span>
+        <span class="pill">25歳以下</span>
+        <span class="pill">5と0のつく日</span>
+      </div>
+    </section>
+
+    <section class="card hot section">
+      <h2>まず、スパセって何がすごい？</h2>
+      <p>楽天スーパーSALEは、年4回だけの大型セール。いつもの買い物でも、タイミングを合わせるとかなりお得に買いやすい期間だよ。</p>
+      <ul class="benefit-list">
+        <li>半額商品や目玉商品が出やすい</li>
+        <li>クーポンが多い</li>
+        <li>ショップ買いまわりでポイントUPを狙える</li>
+        <li>日用品・美容・現場準備もお得に買いやすい</li>
+      </ul>
+      <p class="note section">つまり、どうせ近いうち買うものを、いつもよりお得に買えるチャンス。</p>
+    </section>
+
+    <section class="card section">
+      <h2>推し活民にスパセが合う理由</h2>
+      <p>推し活って、現場・遠征・美容・日用品・グッズで、気づいたらお金かかるよね。</p>
+      <p>だから私は、<span class="strong">3ヶ月以内に使うものならスパセで少し前倒しして買うのもかなりあり</span>だと思ってる。浮いた分を、次の推し活に回しやすくなるから。</p>
+    </section>
+
+    <section class="card hot section">
+      <h2>6/10が激アツな理由</h2>
+      <p>今回見てほしいのは、6/10に初心者さん向けのお得が重なる可能性があるから。</p>
+      <ul class="benefit-list">
+        <li>楽天スーパーSALE期間中</li>
+        <li>5と0のつく日</li>
+        <li>初めて買う人向け特典あり</li>
+        <li>25歳以下クーポンあり</li>
+        <li>追加クーポンやゲリラの可能性も</li>
+      </ul>
+      <p class="note section">ここまで楽天初心者さんに強いタイミング、私はあんまり見たことない…！</p>
+    </section>
+
+    <section class="diagnosis section" id="diagnosis">
+      <h2>1個でも当てはまったらチェック</h2>
+      <p class="lead">全部当てはまらなくてOK。1個でも当てはまるなら、6/10前に確認する価値あり。</p>
+
+      <label class="check">
+        <input type="checkbox" data-key="newUser">
+        <span>楽天市場でまだ買ったことがない<small>初購入特典の対象になる可能性あり</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="app">
+        <span>楽天市場アプリで買える<small>初購入系の特典でアプリ購入が条件になることあり</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="under25">
+        <span>15〜25歳<small>25歳以下向けクーポンを確認</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="card">
+        <span>楽天カードを持っている / 作る予定<small>5と0のつく日やSPUを確認</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="stock">
+        <span>3ヶ月以内に使う日用品・美容品がある<small>前倒し購入する価値があるか確認</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="pay">
+        <span>楽天ポイントを推し活に使いたい<small>楽天ペイで使えるお店も確認</small></span>
+      </label>
+      <label class="check">
+        <input type="checkbox" data-key="travel">
+        <span>遠征・旅行・公式通販もお得にしたい<small>楽天トラベルやリーベイツも確認</small></span>
+      </label>
+
+      <div class="fields">
+        <div class="field">
+          <label for="amount">買う予定金額</label>
+          <input id="amount" type="number" inputmode="numeric" min="0" step="100" placeholder="例：5000">
+        </div>
+        <div class="field">
+          <label for="shops">買う予定ショップ数</label>
+          <input id="shops" type="number" inputmode="numeric" min="0" step="1" placeholder="例：3">
+        </div>
+      </div>
+
+      <button class="button section" type="button" id="run">診断する</button>
+
+      <div class="result" id="result" aria-live="polite">
+        <h2>あなたが確認したいお得候補</h2>
+        <p id="summaryText">チェックした内容に合わせて、見るべきキャンペーンを表示するよ。</p>
+        <ul class="result-list" id="resultList"></ul>
+        <a class="button secondary" href="#before-buy">買う前チェックへ進む</a>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>初めて楽天で買う人</h2>
+      <p><span class="strong">スパセ限定で、5,000円以上購入すると2,500ポイントを狙える可能性あり。</span></p>
+      <ul class="plain-list">
+        <li>楽天市場で初めて買う人</li>
+        <li>楽天市場アプリから購入</li>
+        <li>事前エントリー必須</li>
+        <li>1注文5,000円以上</li>
+        <li>期間：2026/6/4 20:00〜6/11 1:59</li>
+      </ul>
+      <p class="note section">他の初心者向け特典より、このキャンペーンが優先される場合あり。購入前に公式条件を確認してね。</p>
+    </section>
+
+    <section class="card section">
+      <h2>25歳以下の人</h2>
+      <p><span class="strong">対象なら、最初の買い物で総額5,000円OFFクーポンが使える可能性あり。</span></p>
+      <ul class="plain-list">
+        <li>対象：15〜25歳</li>
+        <li>条件：楽天市場で初めて買う人</li>
+        <li>必要：楽天市場アプリ購入・年齢認証</li>
+        <li>内容：1,000円OFF＋2,000円OFF＋1,000円OFF＋1,000円OFF</li>
+        <li>注意：先着上限あり / 併用できないクーポンあり</li>
+      </ul>
+    </section>
+
+    <section class="card section">
+      <h2>6/10は5と0のつく日</h2>
+      <p>楽天カードを使う人は、当日エントリーも忘れずに。6/10は「5と0のつく日」対象日。</p>
+      <ul class="plain-list">
+        <li>当日エントリーが必要</li>
+        <li>楽天カード支払いが条件</li>
+        <li>特典は実質+1倍</li>
+        <li>月間上限1,000ポイント</li>
+      </ul>
+      <p class="note section">表示ポイントにすぐ反映されないこともあるから、キャンペーンページの条件を見て判断してね。</p>
+    </section>
+
+    <section class="card section">
+      <h2>買いまわりは無理しすぎなくてOK</h2>
+      <p>スーパーSALEでは、1ショップ1,000円以上の買い物でショップ数に応じてポイントUPを狙えるよ。</p>
+      <ul class="plain-list">
+        <li>エントリー必要</li>
+        <li>1ショップ合計1,000円以上</li>
+        <li>クーポン後999円以下は対象外</li>
+        <li>同じショップで複数回買っても1ショップ扱い</li>
+        <li>買う順番は関係なし</li>
+      </ul>
+      <p class="note section">10店舗を無理に狙うより、3ヶ月以内に使うものから考えるのがおすすめ。</p>
+    </section>
+
+    <section class="card section">
+      <h2>楽天ポイントは推し活にも使いやすい</h2>
+      <p>貯めた楽天ポイントは、楽天ペイで街のお買い物に使えることもあるよ。</p>
+      <ul class="benefit-list">
+        <li>コンビニ</li>
+        <li>ドラッグストア</li>
+        <li>飲食店</li>
+        <li>家電量販店</li>
+        <li>一部グッズ購入</li>
+      </ul>
+      <p class="note section">日用品で貯めたポイントを、現場前の買い物やグッズ代に回せるのが嬉しい。使えるお店は会計前に確認してね。</p>
+    </section>
+
+    <section class="card section">
+      <h2>旅行・公式通販も見るなら</h2>
+      <h3>楽天トラベル</h3>
+      <p>遠征や旅行予約も楽天経由でお得にできる可能性あり。宿泊・海外・レンタカーなどで条件が違うから、予約前に確認してね。</p>
+      <h3>楽天リーベイツ</h3>
+      <p>楽天市場じゃない公式通販でも、リーベイツ経由なら楽天ポイント対象になることがあるよ。経由忘れには注意。</p>
+      <h3>楽天カード</h3>
+      <p>楽天で買うなら最初のカード候補として見ておきたい。5と0のつく日やSPUと相性がいい。</p>
+    </section>
+
+    <section class="card section" id="before-buy">
+      <h2>買う前チェック</h2>
+      <div class="timeline">
+        <div class="step">キャンペーンにエントリーした？</div>
+        <div class="step">クーポンを獲得した？</div>
+        <div class="step">アプリ購入が条件のものはアプリで買ってる？</div>
+        <div class="step">注文画面でクーポンが反映されてる？</div>
+        <div class="step">クーポン後の金額条件を満たしてる？</div>
+        <div class="step">先着・枚数限定の条件を確認した？</div>
+      </div>
+    </section>
+
+    <section class="card hot section">
+      <h2>まとめ</h2>
+      <p>楽天初心者さん、今回は本当に見てほしい。</p>
+      <p>スパセでただでさえお得なのに、6/10は5と0のつく日。さらに、初めて買う人向け特典や25歳以下クーポンも重なる可能性あり。</p>
+      <p><span class="strong">3ヶ月以内に使う日用品・美容・現場準備品は、今回少し前倒しで買うのもかなりあり。</span></p>
+      <p>買う前に条件だけ確認して、使えるものは取りこぼさず使ってね。</p>
+    </section>
+
+    <section class="card section">
+      <h2>公式ページも確認してね</h2>
+      <ul class="plain-list">
+        <li><a href="https://event.rakuten.co.jp/campaign/newpurchaser/newuser-supersale/" target="_blank" rel="noreferrer">初めてのお買い物キャンペーン</a></li>
+        <li><a href="https://event.rakuten.co.jp/campaign/newpurchaser/u25/" target="_blank" rel="noreferrer">25歳以下向けクーポン</a></li>
+        <li><a href="https://event.rakuten.co.jp/card/pointday/" target="_blank" rel="noreferrer">5と0のつく日</a></li>
+        <li><a href="https://event.rakuten.co.jp/campaign/supersale/guide/" target="_blank" rel="noreferrer">楽天スーパーSALEガイド</a></li>
+      </ul>
+    </section>
+
+    <p class="footer">このページは2026/6/7時点の情報をもとに作成しています。キャンペーン・クーポン・ポイント条件は変わることがあります。購入前に必ず楽天公式ページと注文画面で最新条件を確認してください。</p>
+  </main>
+
+  <script>
+    const checks = Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
+    const amount = document.getElementById('amount');
+    const shops = document.getElementById('shops');
+    const run = document.getElementById('run');
+    const result = document.getElementById('result');
+    const resultList = document.getElementById('resultList');
+    const summaryText = document.getElementById('summaryText');
+
+    const campaigns = {
+      newUser: {
+        title: '初購入2,500ポイント候補',
+        text: '楽天市場で初めて買う人は、5,000円以上・アプリ購入・事前エントリーを確認。'
+      },
+      app: {
+        title: 'アプリ購入条件',
+        text: '初心者向け特典はアプリ購入が条件になることがあるので、ブラウザではなくアプリ購入か確認。'
+      },
+      under25: {
+        title: '25歳以下クーポン候補',
+        text: '15〜25歳なら、年齢認証と総額5,000円OFFクーポンを確認。先着上限に注意。'
+      },
+      card: {
+        title: '5と0のつく日候補',
+        text: '楽天カードがある人は、6/10当日エントリーと楽天カード支払いを確認。'
+      },
+      stock: {
+        title: '前倒し購入候補',
+        text: '3ヶ月以内に使う日用品・美容・現場準備品は、今回まとめて買う価値があるか確認。'
+      },
+      pay: {
+        title: '楽天ペイ活用候補',
+        text: '貯めた楽天ポイントをコンビニ・ドラッグストア・飲食店・一部グッズ購入で使えるか確認。'
+      },
+      travel: {
+        title: '楽天トラベル・リーベイツ候補',
+        text: '遠征・旅行・公式通販は、楽天トラベルやリーベイツ経由でポイント対象になるか確認。'
+      }
+    };
+
+    function selectedKeys() {
+      return checks.filter((check) => check.checked).map((check) => check.dataset.key);
+    }
+
+    function addItem(title, text) {
+      const item = document.createElement('li');
+      item.innerHTML = `<strong>${title}</strong><span>${text}</span>`;
+      resultList.appendChild(item);
+    }
+
+    function runDiagnosis() {
+      resultList.innerHTML = '';
+      const keys = selectedKeys();
+      const yen = Number(amount.value || 0);
+      const shopCount = Number(shops.value || 0);
+
+      if (keys.length === 0 && yen === 0 && shopCount === 0) {
+        summaryText.textContent = 'まずは1個だけでもチェックしてみてね。';
+        addItem('まず対象チェック', '楽天で初めて買うか、25歳以下か、楽天カードがあるかを確認してね。');
+      } else {
+        summaryText.textContent = `${keys.length}個のチェックから、確認したいお得候補を出したよ。`;
+      }
+
+      keys.forEach((key) => addItem(campaigns[key].title, campaigns[key].text));
+
+      if (yen > 0 && yen < 5000) {
+        addItem('購入金額の注意', '初購入キャンペーンなどは5,000円以上条件があることも。金額条件を確認してね。');
+      }
+
+      if (yen >= 5000) {
+        addItem('5,000円以上の買い物候補', '初購入特典や25歳以下クーポンの金額条件を満たせる可能性あり。クーポン後金額も確認。');
+      }
+
+      if (shopCount >= 2) {
+        addItem('買いまわり候補', `${shopCount}ショップ予定なら、各ショップ1,000円以上か確認。クーポン後999円以下は対象外に注意。`);
+      }
+
+      if (shopCount === 1) {
+        addItem('1ショップ購入予定', '買いまわりは大きく伸びにくいけど、初購入・クーポン・5と0の日は確認する価値あり。');
+      }
+
+      addItem('最後に必ず確認', 'エントリー、クーポン獲得、注文画面での割引反映、先着条件を購入前に確認してね。');
+      result.classList.add('is-visible');
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    run.addEventListener('click', runDiagnosis);
+  </script>
+</body>
+</html>
