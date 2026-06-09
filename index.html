@@ -15,7 +15,8 @@
   ・強調色は :root の --accent（現在ピンク #E0699A）で一括変更できます。
 
 【3】アフィリンクの差し替え（重要）★ここを自分のアフィリンクに変える
-  ・対象は href="#" の5か所。data-aff="..." で見分けられます。
+  ・対象は href="#" の6か所。data-aff="..." で見分けられます。
+    data-aff="entry-supersale" … 楽天スーパーSALEエントリー
     data-aff="entry-newuser" … 初購入キャンペーンのエントリー
     data-aff="entry-u25"     … 25歳以下クーポン
     data-aff="entry-0and5"   … 5と0のつく日エントリー
@@ -243,6 +244,8 @@ p{font-size:.95rem;}
   box-shadow:0 8px 20px rgba(155,123,201,.34);transition:transform .2s ease;}
 .entry-btn:hover{transform:translateY(-2px);}
 .entry-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-deep));}
+.pr-label{margin:6px 0 0;text-align:center;font-size:.68rem;line-height:1.2;
+  color:var(--ink-soft);letter-spacing:.04em;}
 
 /* ===== 買いまわり（熱量UP） ===== */
 .hype{background:linear-gradient(160deg,var(--pink),var(--lavender-mist));
@@ -369,6 +372,10 @@ p{font-size:.95rem;}
         <li><span class="ic">P</span><span>買いまわりでポイントUP（1ショップ1,000円〜）</span></li>
         <li><span class="ic">♡</span><span>日用品・美容・現場準備の前倒しと相性◎</span></li>
       </ul>
+      <p class="caution">スパセはエントリーしてから買うのが基本！先に押しておくと安心だよ。</p>
+      <!-- ▼アフィリンクに差し替え（楽天スーパーSALEエントリー） -->
+      <a class="entry-btn" href="#" data-aff="entry-supersale" target="_blank" rel="noopener">スパセにエントリーする →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
 
@@ -416,6 +423,7 @@ p{font-size:.95rem;}
       <p class="caution">エントリーしないと対象外！まずはここから押してね。</p>
       <!-- ▼アフィリンクに差し替え（初購入キャンペーン） -->
       <a class="entry-btn" href="#" data-aff="entry-newuser" target="_blank" rel="noopener">エントリーはこちら →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
 
@@ -436,6 +444,7 @@ p{font-size:.95rem;}
       <p class="caution">先着上限あり / 併用できないクーポンあり。早めにクーポン獲得を。</p>
       <!-- ▼アフィリンクに差し替え（25歳以下クーポン） -->
       <a class="entry-btn" href="#" data-aff="entry-u25" target="_blank" rel="noopener">クーポンを取りに行く →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
 
@@ -453,6 +462,7 @@ p{font-size:.95rem;}
       <p class="caution">表示にすぐ反映されないこともあるから、キャンペーンページで確認してね。</p>
       <!-- ▼アフィリンクに差し替え（5と0のつく日） -->
       <a class="entry-btn gold" href="#" data-aff="entry-0and5" target="_blank" rel="noopener">当日エントリーはこちら →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
 
@@ -505,6 +515,7 @@ p{font-size:.95rem;}
       <p style="font-size:.83rem;color:var(--ink-soft);">宿泊・海外・レンタカーで条件が違うから、予約前に確認してね。</p>
       <!-- ▼アフィリンクに差し替え（楽天トラベル） -->
       <a class="entry-btn" href="#" data-aff="travel" target="_blank" rel="noopener">楽天トラベルを見る →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
 
     <div class="svc">
@@ -519,6 +530,7 @@ p{font-size:.95rem;}
       <p style="font-size:.85rem;margin-top:8px;">ただオンラインで買うんじゃなくて、<b style="color:var(--lavender-deep);">ここを経由してひと手間でポイントを稼ごう</b>。経由忘れには注意！</p>
       <!-- ▼アフィリンクに差し替え（楽天リーベイツ） -->
       <a class="entry-btn" href="#" data-aff="rebates" target="_blank" rel="noopener">楽天リーベイツを見る →</a>
+      <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
 
