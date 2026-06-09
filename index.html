@@ -15,14 +15,16 @@
   ・強調色は :root の --accent（現在ピンク #E0699A）で一括変更できます。
 
 【3】アフィリンクの差し替え（重要）★ここを自分のアフィリンクに変える
-  ・対象は href="#" の6か所。data-aff="..." で見分けられます。
+  ・対象は data-aff="..." が付いた8か所。data-affの名前で見分けられます。
     data-aff="entry-supersale" … 楽天スーパーSALEエントリー
+    data-aff="entry-39shop"     … 39ショップエントリー
+    data-aff="entry-10000"      … 1万円以上購入キャンペーン
     data-aff="entry-newuser" … 初購入キャンペーンのエントリー
     data-aff="entry-u25"     … 25歳以下クーポン
     data-aff="entry-0and5"   … 5と0のつく日エントリー
     data-aff="travel"        … 楽天トラベル
     data-aff="rebates"       … 楽天リーベイツ
-  ・やり方：該当行の href="#" を href="https://（自分のアフィリンク）" に変える。
+  ・やり方：該当行の href="..." を href="https://（自分のアフィリンク）" に変える。
     例： <a class="entry-btn" href="https://hb.afl.rakuten.co.jp/..." data-aff="entry-newuser" ...>
 
 【4】画像の入れ方
@@ -374,7 +376,12 @@ p{font-size:.95rem;}
       </ul>
       <p class="caution">スパセはエントリーしてから買うのが基本！先に押しておくと安心だよ。</p>
       <!-- ▼アフィリンクに差し替え（楽天スーパーSALEエントリー） -->
-      <a class="entry-btn" href="#" data-aff="entry-supersale" target="_blank" rel="noopener">スパセにエントリーする →</a>
+      <a class="entry-btn" href="https://a.r10.to/hkSNVn" data-aff="entry-supersale" target="_blank" rel="noopener">スパセにエントリーする →</a>
+      <p class="pr-label">Rakuten pr</p>
+      <p class="caution">あわせてここも忘れずに！対象なら拾えるポイントが増えるよ。</p>
+      <a class="entry-btn" href="https://a.r10.to/hP3ZRT" data-aff="entry-39shop" target="_blank" rel="noopener">39ショップも確認する →</a>
+      <p class="pr-label">Rakuten pr</p>
+      <a class="entry-btn" href="https://a.r10.to/hkd390" data-aff="entry-10000" target="_blank" rel="noopener">1万円以上買うならここも確認 →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
@@ -422,7 +429,7 @@ p{font-size:.95rem;}
       </ul>
       <p class="caution">エントリーしないと対象外！まずはここから押してね。</p>
       <!-- ▼アフィリンクに差し替え（初購入キャンペーン） -->
-      <a class="entry-btn" href="#" data-aff="entry-newuser" target="_blank" rel="noopener">エントリーはこちら →</a>
+      <a class="entry-btn" href="https://a.r10.to/hkWKRx" data-aff="entry-newuser" target="_blank" rel="noopener">エントリーはこちら →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
@@ -443,7 +450,7 @@ p{font-size:.95rem;}
       </ul>
       <p class="caution">先着上限あり / 併用できないクーポンあり。早めにクーポン獲得を。</p>
       <!-- ▼アフィリンクに差し替え（25歳以下クーポン） -->
-      <a class="entry-btn" href="#" data-aff="entry-u25" target="_blank" rel="noopener">クーポンを取りに行く →</a>
+      <a class="entry-btn" href="https://a.r10.to/hRSKwv" data-aff="entry-u25" target="_blank" rel="noopener">クーポンを取りに行く →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
@@ -461,7 +468,7 @@ p{font-size:.95rem;}
       </ul>
       <p class="caution">表示にすぐ反映されないこともあるから、キャンペーンページで確認してね。</p>
       <!-- ▼アフィリンクに差し替え（5と0のつく日） -->
-      <a class="entry-btn gold" href="#" data-aff="entry-0and5" target="_blank" rel="noopener">当日エントリーはこちら →</a>
+      <a class="entry-btn gold" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="noopener">当日エントリーはこちら →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
@@ -514,7 +521,7 @@ p{font-size:.95rem;}
       <div class="hl"><b>5と0のつく日は特にチェック！</b><br>クーポンやお得プランが出やすい日。<b>すでに予約済みでも、それより安いプランが出てる可能性</b>があるから、毎回必ず見てほしい◎</div>
       <p style="font-size:.83rem;color:var(--ink-soft);">宿泊・海外・レンタカーで条件が違うから、予約前に確認してね。</p>
       <!-- ▼アフィリンクに差し替え（楽天トラベル） -->
-      <a class="entry-btn" href="#" data-aff="travel" target="_blank" rel="noopener">楽天トラベルを見る →</a>
+      <a class="entry-btn" href="https://a.r10.to/hgSshl" data-aff="travel" target="_blank" rel="noopener">楽天トラベルを見る →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
 
@@ -529,7 +536,7 @@ p{font-size:.95rem;}
       </div>
       <p style="font-size:.85rem;margin-top:8px;">ただオンラインで買うんじゃなくて、<b style="color:var(--lavender-deep);">ここを経由してひと手間でポイントを稼ごう</b>。経由忘れには注意！</p>
       <!-- ▼アフィリンクに差し替え（楽天リーベイツ） -->
-      <a class="entry-btn" href="#" data-aff="rebates" target="_blank" rel="noopener">楽天リーベイツを見る →</a>
+      <a class="entry-btn" href="https://www.rebates.jp/referrer?referrerid=ZUUl%2BU6v7Ys%3D" data-aff="rebates" target="_blank" rel="noopener">楽天リーベイツを見る →</a>
       <p class="pr-label">Rakuten pr</p>
     </div>
   </section>
