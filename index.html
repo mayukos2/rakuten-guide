@@ -1,301 +1,654 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<!--
+==================================================================
+  編集ガイド（codex / 手動編集どちらでもOK）
+==================================================================
+
+【1】テキストの直し方
+  ・本文の文字は、このHTML内の <h2>〜</h2> や <p>〜</p> などの
+    タグで囲まれた部分を書き換えればそのまま反映されます。
+  ・例：「初めて楽天で買う人へ」を直したい → その文字を探して上書き。
+
+【2】見出しの中の「ピンク強調」の付け方
+  ・見出しで色を変えたいキーワードは <span class="deco">〇〇</span> で囲む。
+    例： <h2><span class="deco">スパセ</span>って、何がすごい？</h2>
+  ・強調色は :root の --accent（現在ピンク #E0699A）で一括変更できます。
+
+【3】アフィリンクの差し替え（重要）★ここを自分のアフィリンクに変える
+  ・対象は href="#" の5か所。data-aff="..." で見分けられます。
+    data-aff="entry-newuser" … 初購入キャンペーンのエントリー
+    data-aff="entry-u25"     … 25歳以下クーポン
+    data-aff="entry-0and5"   … 5と0のつく日エントリー
+    data-aff="travel"        … 楽天トラベル
+    data-aff="rebates"       … 楽天リーベイツ
+  ・やり方：該当行の href="#" を href="https://（自分のアフィリンク）" に変える。
+    例： <a class="entry-btn" href="https://hb.afl.rakuten.co.jp/..." data-aff="entry-newuser" ...>
+
+【4】画像の入れ方
+  ・images/ フォルダに下記ファイル名で入れると自動表示されます（無い間は仮枠表示）。
+    images/01-hero.png   … トップ背景
+    images/02-badge.png  … 60万ptバッジ（コイン）
+    images/03-search.png … 診断アイコン
+    images/04-coins.png  … 初購入特典
+    images/05-stack.png  … 25歳以下特典
+    images/06-flow.png   … ポイント循環
+
+【5】数字（2,500pt等）はテキストです
+  ・画像ではなくHTML内の文字なので、条件が変わったら数字を直接書き換えればOK。
+==================================================================
+-->
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px 'Helvetica Neue'; color: #574672; -webkit-text-stroke: #574672; min-height: 15.0px}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.6px 'Helvetica Neue'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.8px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p5 {margin: 0.0px 204.0px 0.0px 204.0px; text-align: center; text-indent: -204.0px; font: 12.0px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.2px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 8.6px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.2px 'Hiragino Sans'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #574672; -webkit-text-stroke: #574672; min-height: 15.0px}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.1px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd; background-color: #f0e8fa}
-    p.p12 {margin: 0.0px 0.0px 20.0px 0.0px; text-align: center; font: 10.1px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.9px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.1px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.9px 'Helvetica Neue'; color: #574672; -webkit-text-stroke: #574672}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px 'Hiragino Sans'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.1px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p19 {margin: 0.0px 0.0px 14.0px 0.0px; font: 11.4px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.4px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.4px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd; background-color: #ffffff}
-    p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.6px '.Apple Color Emoji UI'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p24 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.8px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.8px 'Helvetica Neue'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p27 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 11.4px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p28 {margin: 0.0px 0.0px 0.0px 0.0px; font: 19.2px 'Helvetica Neue'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p29 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p30 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.3px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p32 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.4px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4; background-color: #f0e8fa}
-    p.p33 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Hiragino Sans'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #ffffff}
-    p.p34 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p36 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p37 {margin: 0.0px 0.0px 14.0px 0.0px; font: 15.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p38 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd; background-color: #ffffff}
-    p.p39 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Helvetica Neue'; color: #a988d2; -webkit-text-stroke: #a988d2}
-    p.p40 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.1px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd; background-color: #f0e8fa}
-    p.p41 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.3px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672; background-color: #ffffff}
-    p.p43 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.4px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p44 {margin: 0.0px 0.0px 8.0px 0.0px; font: 10.6px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p45 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd}
-    p.p46 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.2px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672; background-color: #f0e8fa}
-    p.p47 {margin: 0.0px 0.0px 8.0px 0.0px; font: 10.0px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4}
-    p.p48 {margin: 0.0px 0.0px 4.0px 0.0px; font: 10.1px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p49 {margin: 0.0px 0.0px 8.0px 0.0px; font: 10.2px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p50 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 11.0px 'Hiragino Sans'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p51 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 11.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #1bc044}
-    p.p52 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    p.p53 {margin: 0.0px 0.0px 0.0px 0.0px; font: 8.6px 'Hiragino Sans'; color: #8877a4; -webkit-text-stroke: #8877a4; background-color: #ffffff; background-color: rgba(255, 255, 255, 0.5)}
-    li.li20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.2px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    li.li30 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.3px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    li.li31 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.3px 'Helvetica Neue'; color: #574672; -webkit-text-stroke: #574672}
-    li.li36 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Hiragino Sans'; color: #574672; -webkit-text-stroke: #574672}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 9.6px '.Apple Color Emoji UI'; font-kerning: none; background-color: rgba(255, 255, 255, 0.72)}
-    span.s3 {font-kerning: none; background-color: rgba(255, 255, 255, 0.72)}
-    span.s4 {font: 9.6px 'Hiragino Sans'; font-kerning: none; background-color: rgba(255, 255, 255, 0.72)}
-    span.s5 {font-kerning: none; text-shadow: 0.0px 3.0px 18.0px rgba(255, 255, 255, 0.0039)}
-    span.s6 {font: 28.2px 'Helvetica Neue'; font-kerning: none; text-shadow: 0.0px 3.0px 18.0px rgba(255, 255, 255, 0.0039)}
-    span.s7 {font-kerning: none; text-shadow: 0.0px 1.0px 10.0px rgba(255, 255, 255, 0.0039)}
-    span.s8 {font: 12.0px 'Helvetica Neue'; font-kerning: none; text-shadow: 0.0px 1.0px 10.0px rgba(255, 255, 255, 0.0039)}
-    span.s9 {font: 12.0px '.Apple Color Emoji UI'; font-kerning: none; text-shadow: 0.0px 1.0px 10.0px rgba(255, 255, 255, 0.0039)}
-    span.s10 {font-kerning: none; background-color: rgba(255, 255, 255, 0.82)}
-    span.s11 {font: 12.6px 'Hiragino Sans'; font-kerning: none; color: #8863bd; background-color: rgba(255, 255, 255, 0.82); -webkit-text-stroke: 0px #8863bd}
-    span.s12 {font: 12.6px 'Helvetica Neue'; font-kerning: none; color: #8863bd; background-color: rgba(255, 255, 255, 0.82); -webkit-text-stroke: 0px #8863bd}
-    span.s13 {font: 12.2px 'Helvetica Neue'; font-kerning: none}
-    span.s14 {font: 10.1px 'Helvetica Neue'; font-kerning: none}
-    span.s15 {font-kerning: none; background-color: #ffffff}
-    span.s16 {font: 10.9px 'Hiragino Sans'; font-kerning: none; background-color: #ffffff}
-    span.s17 {font: 9.1px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s18 {font: 10.9px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s19 {font: 12.6px 'Helvetica Neue'; font-kerning: none}
-    span.s20 {font-kerning: none; background-color: #f0e8fa}
-    span.s21 {font-kerning: none; color: #d65088; -webkit-text-stroke: 0px #d65088}
-    span.s22 {font: 11.4px 'Helvetica Neue'; font-kerning: none}
-    span.s23 {font: 11.4px 'Helvetica Neue'; background-color: #ffffff; -webkit-text-stroke: 0px #000000}
-    span.s24 {font: 11.4px 'Hiragino Sans'; font-kerning: none; background-color: #ffffff}
-    span.s25 {font: 11.2px 'Helvetica Neue'; font-kerning: none}
-    span.s26 {font: 11.4px '.Apple Color Emoji UI'; font-kerning: none; background-color: #ffffff}
-    span.s27 {font: 11.4px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s28 {font: 11.2px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s29 {font-kerning: none; color: #574672; -webkit-text-stroke: 0px #574672}
-    span.s30 {font: 18.0px 'Helvetica Neue'; font-kerning: none; color: #d65088; -webkit-text-stroke: 0px #d65088}
-    span.s31 {font: 9.8px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s32 {font: 12.0px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s33 {font: 9.8px 'Hiragino Sans'; font-kerning: none; background-color: #ffffff}
-    span.s34 {font: 9.1px 'Helvetica Neue'; font-kerning: none; background-color: #f0e8fa}
-    span.s35 {font: 10.6px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s36 {font: 10.3px 'Helvetica Neue'; background-color: #ffffff; -webkit-text-stroke: 0px #000000}
-    span.s37 {background-color: #ffffff; -webkit-text-stroke: 0px #000000}
-    span.s38 {font: 10.3px 'Hiragino Sans'; font-kerning: none; background-color: #ffffff}
-    span.s39 {font: 11.5px 'Helvetica Neue'; font-kerning: none}
-    span.s40 {font: 18.0px 'Helvetica Neue'; font-kerning: none}
-    span.s41 {font: 12.0px 'Hiragino Sans'; font-kerning: none; background-color: #ffffff}
-    span.s42 {font: 9.4px 'Helvetica Neue'; font-kerning: none}
-    span.s43 {font-kerning: none; color: #8863bd; -webkit-text-stroke: 0px #8863bd}
-    span.s44 {font: 18.0px 'Hiragino Sans'; font-kerning: none; color: #8863bd; -webkit-text-stroke: 0px #8863bd}
-    span.s45 {font: 18.0px 'Hiragino Sans'; font-kerning: none}
-    span.s46 {font-kerning: none; color: #d65088; background-color: #ffffff; -webkit-text-stroke: 0px #d65088}
-    span.s47 {font: 11.4px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s48 {font: 13.4px '.Apple Color Emoji UI'; font-kerning: none; background-color: #ffffff}
-    span.s49 {font: 13.4px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s50 {font: 10.2px 'Helvetica Neue'; font-kerning: none; background-color: #f0e8fa}
-    span.s51 {font: 10.2px 'Helvetica Neue'; font-kerning: none; color: #8863bd; -webkit-text-stroke: 0px #8863bd}
-    span.s52 {font-kerning: none; color: #8863bd; background-color: #ffffff; -webkit-text-stroke: 0px #8863bd}
-    span.s53 {font: 10.8px 'Helvetica Neue'; -webkit-text-stroke: 0px #000000}
-    span.s54 {font: 12.0px 'Helvetica Neue'; font-kerning: none}
-    span.s55 {font: 10.8px 'Helvetica Neue'; background-color: #ffffff; -webkit-text-stroke: 0px #000000}
-    span.s56 {font: 10.8px 'Helvetica Neue'; font-kerning: none}
-    span.s57 {font: 10.8px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s58 {font: 11.0px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s59 {font: 11.0px 'Helvetica Neue'; font-kerning: none}
-    span.s60 {font: 11.0px 'Hiragino Sans'; font-kerning: none}
-    span.s61 {font: 8.6px 'Helvetica Neue'; font-kerning: none}
-    ol.ol1 {list-style-type: decimal}
-    ul.ul1 {list-style-type: none}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6/10 楽天初心者さんへ｜推し活費、ポイントで浮かせよ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- かわいい丸フォントのみ（明朝・セリフは一切使わない） -->
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lavender:#B89DDB;
+  --lavender-deep:#9B7BC9;
+  --lavender-soft:#E8DEF5;
+  --lavender-mist:#F3EDFB;
+  --paper:#FBF9FF;
+  --gold:#E6C77E;
+  --gold-deep:#CDA85A;
+  --pink:#F5D9E8;
+  --accent:#E0699A;
+  --ink:#6B5A85;
+  --ink-soft:#9A8CB3;
+  --radius:26px;
+  --radius-lg:34px;
+  --shadow:0 14px 40px rgba(155,123,201,.18);
+  --shadow-soft:0 6px 20px rgba(155,123,201,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Zen Maru Gothic',sans-serif;
+  color:var(--ink);
+  line-height:1.9;
+  background:
+    radial-gradient(130% 60% at 15% 0%, #F7D9EC 0%, transparent 45%),
+    radial-gradient(120% 70% at 100% 10%, #DAC6F2 0%, transparent 50%),
+    linear-gradient(180deg, #EBDFF8 0%, #F3ECFB 40%, var(--paper) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+.wrap{max-width:560px;margin:0 auto;padding:0 18px 70px;}
+
+/* ===== 画像差し込み枠 ===== */
+.ph{
+  position:relative;width:100%;border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--lavender-soft),var(--lavender-mist));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-soft);font-size:.7rem;letter-spacing:.04em;
+  border:1px dashed rgba(155,123,201,.35);overflow:hidden;
+}
+.ph::after{content:attr(data-label);position:absolute;opacity:.8;pointer-events:none;}
+.ph.has-img{border:none;background:none;}
+.ph.has-img::after{display:none;}
+.ph img{width:100%;height:100%;object-fit:cover;}
+
+/* ===== HERO（作り直し：ふんわり可愛い） ===== */
+.hero{
+  position:relative;min-height:88vh;overflow:hidden;
+  border-radius:0 0 46px 46px;margin-bottom:30px;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 26px 50px;text-align:center;
+}
+.hero .bg{position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,#E3D2F4 0%,#F0E4FA 50%,var(--paper) 100%);}
+.hero .bg img{width:100%;height:100%;object-fit:cover;}
+.hero .bg.has-img::after{display:none;}
+.hero .bg::after{content:"images/01-hero.png";position:absolute;left:50%;bottom:14px;
+  transform:translateX(-50%);font-size:.64rem;color:var(--ink-soft);opacity:.6;}
+.hero .inner{position:relative;z-index:1;animation:floatUp .8s ease;}
+@keyframes floatUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.eyebrow-hero{
+  display:inline-block;background:rgba(255,255,255,.72);backdrop-filter:blur(8px);
+  color:var(--lavender-deep);font-weight:700;font-size:.8rem;
+  padding:8px 20px;border-radius:999px;letter-spacing:.05em;
+  box-shadow:var(--shadow-soft);margin-bottom:26px;
+}
+.hero h1{
+  font-family:'Mochiy Pop One',sans-serif;font-weight:400;
+  font-size:2.35rem;line-height:1.55;color:var(--lavender-deep);
+  text-shadow:0 3px 18px rgba(255,255,255,.85), 0 1px 0 #fff;
+  margin-bottom:18px;letter-spacing:.01em;
+}
+.hero h1 .small{display:block;font-size:1.15rem;color:var(--ink);margin-bottom:6px;font-family:'Zen Maru Gothic';font-weight:700;}
+.hero .sub{
+  font-size:1rem;color:var(--ink);font-weight:500;line-height:1.85;
+  text-shadow:0 1px 10px rgba(255,255,255,.9);max-width:340px;margin:0 auto;
+}
+.trust{
+  margin-top:28px;display:inline-flex;align-items:center;gap:11px;
+  background:rgba(255,255,255,.82);backdrop-filter:blur(8px);
+  padding:11px 20px 11px 13px;border-radius:999px;box-shadow:var(--shadow-soft);
+}
+.trust .coin{width:42px;height:42px;border-radius:50%;flex:0 0 42px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;}
+.trust .coin.has-img{background:none;}
+.trust .coin img{border-radius:50%;}
+.trust .t{text-align:left;line-height:1.35;}
+.trust .t b{color:var(--lavender-deep);font-size:1.05rem;}
+.trust .t span{font-size:.72rem;color:var(--ink-soft);}
+.cta-scroll{
+  margin-top:32px;display:inline-block;
+  background:linear-gradient(135deg,#C9A9E8,var(--lavender-deep));
+  color:#fff;font-weight:700;font-size:1.02rem;
+  padding:16px 38px;border-radius:999px;text-decoration:none;
+  box-shadow:0 12px 30px rgba(155,123,201,.45);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.cta-scroll:hover,.cta-scroll:focus{transform:translateY(-3px);box-shadow:0 16px 34px rgba(155,123,201,.55);}
+
+/* ===== セクション共通 ===== */
+section{margin-bottom:38px;}
+.eyebrow{display:inline-block;color:var(--lavender-deep);font-weight:700;
+  font-size:.76rem;letter-spacing:.1em;margin-bottom:8px;
+  background:var(--lavender-mist);padding:4px 14px;border-radius:999px;}
+h2{font-family:'Mochiy Pop One',sans-serif;font-weight:400;
+  font-size:1.5rem;color:var(--lavender-deep);line-height:1.55;margin-bottom:16px;}
+h2 .deco{color:var(--accent);}
+p{font-size:.95rem;}
+.lead{margin-bottom:14px;}
+.card{background:#fff;border-radius:var(--radius);padding:24px 22px;
+  box-shadow:var(--shadow);border:1px solid rgba(184,157,219,.14);}
+.card + .card{margin-top:14px;}
+
+.feat{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.feat li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;}
+.feat .ic{flex:0 0 32px;width:32px;height:32px;border-radius:11px;
+  background:linear-gradient(135deg,var(--lavender-soft),var(--pink));
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+
+/* 区切り飾り */
+.divider{height:30px;display:flex;align-items:center;justify-content:center;margin:4px 0;}
+.divider .line{width:210px;height:1px;background:linear-gradient(90deg,transparent,var(--lavender),transparent);position:relative;}
+.divider .line::before{content:"♡";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--paper);padding:0 10px;color:var(--lavender);font-size:.85rem;}
+
+/* ===== 診断 ===== */
+.quiz{background:linear-gradient(160deg,#fff,var(--lavender-mist));
+  border-radius:var(--radius-lg);padding:28px 22px;box-shadow:var(--shadow);
+  border:1px solid rgba(184,157,219,.2);}
+.quiz .qimg{width:80px;height:80px;margin:0 auto 10px;}
+.quiz .qimg .ph{height:80px;border-radius:50%;}
+.quiz h2{text-align:center;}
+.quiz .note{text-align:center;font-size:.84rem;color:var(--ink-soft);margin-bottom:20px;}
+.q-item{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:18px;
+  padding:15px;margin-bottom:10px;border:1px solid rgba(184,157,219,.16);cursor:pointer;
+  transition:border-color .15s ease;}
+.q-item:hover{border-color:var(--lavender);}
+.q-item input{display:none;}
+.q-item .box{flex:0 0 24px;width:24px;height:24px;border-radius:8px;
+  border:2px solid var(--lavender-soft);margin-top:2px;display:flex;align-items:center;
+  justify-content:center;transition:all .15s ease;font-size:.85rem;color:#fff;}
+.q-item input:checked + .box{background:var(--lavender);border-color:var(--lavender);}
+.q-item input:checked + .box::after{content:"✓";}
+.q-item .qt{font-size:.91rem;font-weight:500;}
+.q-item .qt small{display:block;font-size:.76rem;color:var(--ink-soft);font-weight:400;margin-top:2px;}
+.q-btn{width:100%;margin-top:8px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#C9A9E8,var(--lavender-deep));color:#fff;
+  font-family:'Mochiy Pop One',sans-serif;font-size:1.05rem;padding:17px;border-radius:999px;
+  box-shadow:0 10px 24px rgba(155,123,201,.36);transition:transform .2s ease;}
+.q-btn:hover{transform:translateY(-2px);}
+.q-result{margin-top:18px;background:#fff;border-radius:20px;padding:20px;
+  border:1.5px solid var(--lavender);display:none;}
+.q-result.show{display:block;animation:floatUp .4s ease;}
+.q-result h3{font-family:'Mochiy Pop One',sans-serif;font-weight:400;color:var(--lavender-deep);font-size:1.1rem;margin-bottom:12px;}
+.q-result ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.q-result li{font-size:.88rem;display:flex;gap:8px;}
+.q-result li.res-jump{align-items:center;cursor:pointer;background:var(--lavender-mist);
+  border-radius:14px;padding:12px 14px;transition:transform .15s ease, background .15s ease;}
+.q-result li.res-jump:hover{transform:translateX(2px);background:var(--lavender-soft);}
+.q-result li.res-jump .ji{color:var(--lavender);flex:0 0 auto;}
+.q-result li.res-jump .jarr{margin-left:auto;color:var(--lavender-deep);font-weight:700;flex:0 0 auto;}
+.q-result li a{color:var(--lavender-deep);font-weight:700;}
+.q-result .none{font-size:.85rem;color:var(--ink-soft);}
+
+/* ===== 6/10激アツ：縦カード ===== */
+.reasons{display:flex;flex-direction:column;gap:12px;}
+.reason{display:flex;gap:14px;align-items:center;background:#fff;border-radius:20px;
+  padding:16px 18px;box-shadow:var(--shadow-soft);border:1px solid rgba(184,157,219,.14);}
+.reason .num{flex:0 0 44px;width:44px;height:44px;border-radius:14px;
+  background:linear-gradient(135deg,var(--lavender),var(--lavender-deep));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.reason .rt b{display:block;font-size:1rem;color:var(--lavender-deep);}
+.reason .rt span{font-size:.82rem;color:var(--ink-soft);}
+
+/* ===== 特典カード ===== */
+.deal{position:relative;overflow:hidden;}
+.deal .deal-img{margin:-24px -22px 18px;width:calc(100% + 44px);}
+.deal .deal-img .ph{height:150px;border-radius:0;}
+.deal .point{display:inline-flex;align-items:baseline;gap:4px;
+  background:linear-gradient(135deg,var(--lavender-mist),var(--pink));
+  color:var(--lavender-deep);font-weight:700;padding:8px 16px;border-radius:14px;margin-bottom:12px;}
+.deal .point b{font-size:1.6rem;font-family:'Mochiy Pop One',sans-serif;font-weight:400;}
+.deal ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:6px;}
+.deal ul li{font-size:.86rem;padding-left:18px;position:relative;}
+.deal ul li::before{content:"♡";position:absolute;left:0;color:var(--lavender);font-size:.78rem;}
+.caution{font-size:.78rem;color:var(--ink-soft);margin-top:12px;background:var(--lavender-mist);padding:10px 12px;border-radius:12px;}
+
+/* エントリーボタン（各特典・リンク用） */
+.entry-btn{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;
+  background:linear-gradient(135deg,#C9A9E8,var(--lavender-deep));color:#fff;font-weight:700;
+  font-size:.96rem;padding:15px;border-radius:999px;text-decoration:none;
+  box-shadow:0 8px 20px rgba(155,123,201,.34);transition:transform .2s ease;}
+.entry-btn:hover{transform:translateY(-2px);}
+.entry-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-deep));}
+
+/* ===== 買いまわり（熱量UP） ===== */
+.hype{background:linear-gradient(160deg,var(--pink),var(--lavender-mist));
+  border-radius:var(--radius-lg);padding:26px 22px;box-shadow:var(--shadow);}
+.hype h2{color:var(--lavender-deep);}
+.hype .big{font-family:'Mochiy Pop One',sans-serif;font-weight:400;font-size:1.25rem;
+  color:var(--lavender-deep);line-height:1.6;margin:10px 0 14px;}
+.hype .big em{font-style:normal;color:var(--accent);background:#fff;padding:2px 8px;border-radius:8px;}
+.cycle{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+  margin-top:16px;font-size:.85rem;font-weight:700;color:var(--lavender-deep);}
+.cycle span{background:#fff;padding:8px 14px;border-radius:999px;box-shadow:var(--shadow-soft);}
+.cycle .arr{background:none;box-shadow:none;color:var(--lavender);padding:0;}
+
+/* ===== トラベル/リーベイツ（詳細+リンク） ===== */
+.svc{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  border:1px solid rgba(184,157,219,.14);margin-bottom:14px;}
+.svc h3{font-family:'Mochiy Pop One',sans-serif;font-weight:400;color:var(--lavender-deep);
+  font-size:1.12rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.svc p{font-size:.88rem;margin-bottom:8px;}
+.svc .hl{background:var(--lavender-mist);border-radius:12px;padding:12px 14px;font-size:.85rem;margin:10px 0;}
+.svc .hl b{color:var(--lavender-deep);}
+.svc .examples{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0;}
+.svc .examples span{background:var(--lavender-mist);color:var(--lavender-deep);
+  font-size:.76rem;font-weight:700;padding:5px 12px;border-radius:999px;}
+
+/* ===== ポイント循環（推し活に使える） ===== */
+.flow .ph{height:160px;margin-bottom:14px;}
+.stores{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.chip{background:var(--lavender-mist);color:var(--lavender-deep);font-weight:700;
+  font-size:.76rem;padding:6px 14px;border-radius:999px;}
+
+/* ===== 買う前チェック ===== */
+.precheck{list-style:none;}
+.precheck li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;margin-bottom:11px;cursor:pointer;}
+.precheck li .box{flex:0 0 24px;width:24px;height:24px;border-radius:8px;border:2px solid var(--lavender-soft);
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#fff;margin-top:1px;}
+.precheck li.done .box{background:var(--gold);border-color:var(--gold);}
+.precheck li.done .box::after{content:"✓";}
+.precheck li.done .pt{color:var(--ink-soft);text-decoration:line-through;}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.steps li{counter-increment:s;display:flex;gap:12px;font-size:.9rem;align-items:flex-start;}
+.steps li::before{content:counter(s);flex:0 0 28px;width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lavender),var(--lavender-deep));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;}
+
+/* ===== まとめ + シェア ===== */
+.summary{background:linear-gradient(160deg,var(--lavender-soft),var(--pink));border-radius:var(--radius-lg);padding:28px 22px;box-shadow:var(--shadow);}
+.share{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;}
+.share a, .share button{flex:1;text-align:center;min-width:130px;padding:14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;transition:transform .2s ease;}
+.share a:hover, .share button:hover{transform:translateY(-2px);}
+.share .copy{background:linear-gradient(135deg,#C9A9E8,var(--lavender-deep));color:#fff;border:none;cursor:pointer;font-family:inherit;}
+.share .copy.copied{background:var(--lavender-deep);}
+.share .x{background:#1a1a2e;color:#fff;}
+.share .line{background:#06C755;color:#fff;}
+.share .label{display:block;text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:14px;}
+
+.disclaimer{font-size:.72rem;color:var(--ink-soft);line-height:1.7;margin-top:24px;padding:16px;background:rgba(255,255,255,.5);border-radius:16px;}
+
+@media (max-width:380px){.hero h1{font-size:2rem;}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto;}}
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s2">🫧</span><span class="s3"> 2026 / 6 / 10 </span><span class="s4">はチャンスの日</span></p>
-<p class="p3"><span class="s5">楽天初心者さんへ</span></p>
-<h1 style="margin: 0.0px 0.0px 18.0px 0.0px; text-align: center; font: 28.2px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s5">推し活楽しむ</span><span class="s6"><br>
-</span><span class="s5">ポイント</span><span class="s6"><br>
-</span><span class="s5">今日getしよ♡</span></h1>
-<p class="p5"><span class="s7">むずかしいこと抜きで、</span><span class="s8"><br>
-</span><span class="s7">今日いちばんおトクに始められる日かも</span><span class="s9">🫶</span></p>
-<p class="p6"><span class="s10">¥</span></p>
-<p class="p7"><span class="s11">累計</span><span class="s12">60</span><span class="s11">万</span><span class="s12">pt</span><span class="s11">超</span><span class="s10">もらってきた私が本気で布教！</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p8"><span class="s1">まず、私が対象か見てみる</span><span class="s13"> →</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p10"><span class="s1">あてはまるものをタップ</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; text-align: center; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">あなたは当てはまるものある？</span></h2>
-<p class="p12"><span class="s14">1</span><span class="s1">個でもあれば、</span><span class="s14">6/10</span><span class="s1">前に見る価値あり◎</span></p>
-<p class="p13"><span class="s15">楽天市場でまだ買ったことがない</span></p>
-<p class="p14"><span class="s15">初購入特典の対象になる！</span></p>
-<p class="p13"><span class="s15">楽天市場アプリを使ったことがない</span></p>
-<p class="p14"><span class="s15">アプリで初購入で特典あり！</span></p>
-<p class="p15"><span class="s15">15</span><span class="s16">〜</span><span class="s15">25</span><span class="s16">歳</span></p>
-<p class="p14"><span class="s17">25</span><span class="s15">歳以下向けクーポンがあるよ！</span></p>
-<p class="p13"><span class="s15">楽天カードを持っている</span><span class="s18"> / </span><span class="s15">作る予定</span></p>
-<p class="p14"><span class="s17">5</span><span class="s15">と</span><span class="s17">0</span><span class="s15">のつく日は楽天カード持ってるとさらにポイントUP！</span></p>
-<p class="p13"><span class="s18">3</span><span class="s15">ヶ月以内に使う日用品・美容品がある</span></p>
-<p class="p14"><span class="s15">前倒しでまとめて購入するとポイントがっつりgetできる！</span></p>
-<p class="p13"><span class="s15">推し活費用を少しでも浮かせたい</span></p>
-<p class="p14"><span class="s15">楽天でお買い物→ポイントget→楽天ペイで実質タダに？！</span></p>
-<p class="p13"><span class="s15">遠征・旅行・公式通販もお得にしたい</span></p>
-<p class="p14"><span class="s15">楽天トラベルやリーベイツも要チェック！</span></p>
-<p class="p16"><span class="s1">お得を表示する</span><span class="s19"> ♡</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p17"><span class="s20">まずここだけ</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s21">スパセ</span><span class="s1">って、何がすごい？</span></h2>
-<p class="p19"><span class="s1">楽天スーパー</span><span class="s22">SALE</span><span class="s1">は、年</span><span class="s22">4</span><span class="s1">回だけの大型セール。</span></p>
-<p class="p19"><span class="s1">今のタイミングで買うだけで、いつもの買い物がかなりお得になりやすい期間だよ。</span></p>
-<ul class="ul1">
-  <li class="li20"><span class="s23"></span><span class="s24">％</span><span class="s15">半額・目玉商品が出やすい</span><span class="s25"><br>
-</span><span class="s26">🎫</span><span class="s15">クーポンが多い</span><span class="s25"><br>
-</span><span class="s27">P</span><span class="s15">買いまわりでポイント</span><span class="s28">UP</span><span class="s15">（</span><span class="s28">1</span><span class="s15">ショップ</span><span class="s28">1,000</span><span class="s15">円〜）</span><span class="s25"><br>
-</span><span class="s27">♡</span><span class="s15">日用品・美容・現場準備の前倒しと相性◎</span></li>
-</ul>
-<p class="p17"><span class="s20">私の本音</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">推し活民に</span><span class="s21">スパセが合う</span><span class="s1">理由</span></h2>
-<p class="p21"><span class="s15">現場・遠征・美容・日用品・グッズ</span><span class="s27">…</span><span class="s15">気づいたらお金かかるよね。</span></p>
-<p class="p22"><span class="s29">だから、</span><span class="s1">どうせ使うものをお得な日に買って、浮いた分を次の推し活に回す</span><span class="s29">。</span></p>
-<p class="p21"><span class="s15">これがいちばん賢い推し活の楽しみ方だと思ってる</span><span class="s26">🫶</span></p>
-<p class="p17"><span class="s20">今日がチャンス</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s30">6/10</span><span class="s1">が激アツな理由</span></h2>
-<p class="p23"><span class="s15">🛍️</span></p>
-<p class="p24"><span class="s15">スパセ期間中</span></p>
-<p class="p25"><span class="s15">年</span><span class="s31">4</span><span class="s15">回の大型セール真っ最中</span></p>
-<p class="p23"><span class="s15">🗓️</span></p>
-<p class="p24"><span class="s32">5</span><span class="s15">と</span><span class="s32">0</span><span class="s15">のつく日</span></p>
-<p class="p25"><span class="s15">楽天カードでポイント</span><span class="s31">UP</span><span class="s15">対象日</span></p>
-<p class="p23"><span class="s15">🎁</span></p>
-<p class="p24"><span class="s15">初購入特典</span></p>
-<p class="p25"><span class="s15">初めての人向けの特典あり</span></p>
-<p class="p23"><span class="s15">🎫</span></p>
-<p class="p24"><span class="s32">25</span><span class="s15">歳以下クーポン</span></p>
-<p class="p26"><span class="s33">対象なら総額</span><span class="s15">5,000</span><span class="s33">円</span><span class="s15">OFF</span><span class="s33">も</span></p>
-<p class="p23"><span class="s15">✨</span></p>
-<p class="p24"><span class="s15">ゲリラの可能性</span></p>
-<p class="p25"><span class="s15">追加クーポンが出ることも</span></p>
-<p class="p27"><span class="s1">ここまで初心者さんに強い日、あんまり見たことない</span><span class="s22">…</span><span class="s1">！</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p17"><span class="s20">お得候補</span><span class="s34"> 01</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">初めて楽天で買う人へ</span></h2>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p28"><span class="s15">2,500</span></p>
-<p class="p24"><span class="s15">ポイント狙える</span></p>
-<p class="p29"><span class="s15">スパセ限定で、</span><span class="s35">5,000</span><span class="s15">円以上の購入で狙える可能性あり。</span></p>
-<ul class="ul1">
-  <li class="li30"><span class="s36"></span><span class="s15">楽天市場で初めて買う人</span></li>
-  <li class="li30"><span class="s36"></span><span class="s15">楽天市場アプリから購入</span></li>
-  <li class="li30"><span class="s36"></span><span class="s15">事前エントリー必須</span></li>
-  <li class="li31"><span class="s37"></span><span class="s15">1</span><span class="s38">注文</span><span class="s15">5,000</span><span class="s38">円以上</span></li>
-  <li class="li31"><span class="s37"></span><span class="s38">期間：</span><span class="s15">2026/6/4 20:00</span><span class="s38">〜</span><span class="s15">6/11 1:59</span></li>
-</ul>
-<p class="p32"><span class="s1">エントリーしないと対象外！まずはここから押してね。</span></p>
-<p class="p33"><span class="s1">エントリーはこちら</span><span class="s39"> →</span></p>
-<p class="p17"><span class="s20">お得候補</span><span class="s34"> 02</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s40">25</span><span class="s1">歳以下の人へ</span></h2>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p24"><span class="s15">総額</span></p>
-<p class="p28"><span class="s15">5,000</span></p>
-<p class="p34"><span class="s41">円</span><span class="s15">OFF</span></p>
-<p class="p29"><span class="s15">対象なら、最初の買い物でクーポンが使える可能性あり。</span></p>
-<ul class="ul1">
-  <li class="li31"><span class="s37"></span><span class="s38">対象：</span><span class="s15">15</span><span class="s38">〜</span><span class="s15">25</span><span class="s38">歳</span></li>
-  <li class="li30"><span class="s36"></span><span class="s15">条件：楽天市場で初めて買う人</span></li>
-  <li class="li30"><span class="s36"></span><span class="s15">必要：アプリ購入・年齢認証</span></li>
-  <li class="li31"><span class="s37"></span><span class="s38">内容：</span><span class="s15">1,000</span><span class="s38">＋</span><span class="s15">2,000</span><span class="s38">＋</span><span class="s15">1,000</span><span class="s38">＋</span><span class="s15">1,000</span><span class="s38">円</span><span class="s15">OFF</span></li>
-</ul>
-<p class="p32"><span class="s1">先着上限あり</span><span class="s42"> / </span><span class="s1">併用できないクーポンあり。早めにクーポン獲得を。</span></p>
-<p class="p33"><span class="s1">クーポンを取りに行く</span><span class="s39"> →</span></p>
-<p class="p17"><span class="s20">お得候補</span><span class="s34"> 03</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #d65088; -webkit-text-stroke: #d65088"><span class="s43">6/10</span><span class="s44">は</span><span class="s1">5</span><span class="s45">と</span><span class="s1">0</span><span class="s45">のつく日</span></h2>
-<p class="p36"><span class="s15">楽天カードを使う人は、当日エントリーも忘れずに。</span></p>
-<ul class="ul1">
-  <li class="li20"><span class="s23"></span><span class="s26">📌</span><span class="s15">当日エントリーが必要</span><span class="s25"><br>
-</span><span class="s26">💳</span><span class="s15">楽天カード支払いが条件</span><span class="s25"><br>
-</span><span class="s27">P</span><span class="s15">特典は実質</span><span class="s28">+1</span><span class="s15">倍（月間上限</span><span class="s28">1,000pt</span><span class="s15">）</span></li>
-</ul>
-<p class="p32"><span class="s1">表示にすぐ反映されないこともあるから、キャンペーンページで確認してね。</span></p>
-<p class="p33"><span class="s1">当日エントリーはこちら</span><span class="s39"> →</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p17"><span class="s20">ここ大事</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s40">3</span><span class="s1">ヶ月以内に使うもの、</span><span class="s40"><br>
-</span><span class="s1">決まってるなら</span><span class="s21">今！</span></h2>
-<p class="p21"><span class="s1">無理に何か買わせたいわけじゃないの。</span></p>
-<p class="p21"><span class="s1">でもね、</span></p>
-<p class="p37"><span class="s1">どうせ使うものが決まってるなら、</span><span class="s46">今買うのが正解</span><span class="s1">。</span></p>
-<p class="p21"><span class="s1">日用品・コスメ・遠征準備</span><span class="s22">…3</span><span class="s1">ヶ月以内に絶対使うものを、いちばんお得な</span><span class="s22">6/10</span><span class="s1">に前倒しで買う。</span></p>
-<p class="p21"><span class="s1">そこで貯めたポイントを、また次の推し活に回していく。</span></p>
-<p class="p38"><span class="s1">お得に買う</span></p>
-<p class="p39"><span class="s1">→</span></p>
-<p class="p38"><span class="s1">ポイント貯まる</span></p>
-<p class="p39"><span class="s1">→</span></p>
-<p class="p38"><span class="s1">推し活に使う</span></p>
-<p class="p27"><span class="s1">この流れを作れたら、推し活の出費が軽くなってくる</span><span class="s47">🫶</span></p>
-<p class="p17"><span class="s20">ここが嬉しい</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">ポイントは</span><span class="s21">推し活</span><span class="s1">に使える</span></h2>
-<p class="p36"><span class="s15">貯めた楽天ポイントは、楽天ペイで街のお買い物にも使えるよ。</span></p>
-<p class="p40"><span class="s1">コンビニ</span></p>
-<p class="p40"><span class="s1">ドラッグストア</span></p>
-<p class="p40"><span class="s1">飲食店</span></p>
-<p class="p40"><span class="s1">家電量販店</span></p>
-<p class="p40"><span class="s1">一部グッズ</span></p>
-<p class="p41"><span class="s1">日用品で貯めたポイントを、現場前の買い物やグッズ代に回せるのが嬉しい。使えるかどうかは、会計前に確認してね。</span></p>
-<p class="p30"><span class="s15">実際に私はグッズを実質タダにしたり、漫画をポイントで買ったりしてる！</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p17"><span class="s20">経由するだけでお得</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #d65088; -webkit-text-stroke: #d65088"><span class="s1">旅行・公式通販</span><span class="s43">も忘れずに</span></h2>
-<p class="p43"><span class="s48">✈️</span><span class="s49"> </span><span class="s15">楽天トラベル</span></p>
-<p class="p44"><span class="s15">遠征や旅行予約も、楽天経由ならポイントが貯まる。</span></p>
-<p class="p45"><span class="s50">5</span><span class="s20">と</span><span class="s50">0</span><span class="s20">のつく日は特にチェック！</span></p>
-<p class="p46"><span class="s1">クーポンやお得プランが出やすい日。</span><span class="s43">すでに予約済みでも、それより安いプランが出てる可能性</span><span class="s1">があるから、毎回必ず見てほしい◎</span></p>
-<p class="p47"><span class="s15">宿泊・海外・レンタカーで条件が違うから、予約前に確認してね。</span></p>
-<p class="p33"><span class="s1">楽天トラベルを見る</span><span class="s39"> →</span></p>
-<p class="p43"><span class="s48">🛒</span><span class="s49"> </span><span class="s15">楽天リーベイツ</span></p>
-<p class="p44"><span class="s15">楽天市場じゃない公式通販でも、リーベイツを経由するだけで楽天ポイントの対象になるよ。</span></p>
-<p class="p46"><span class="s51">900</span><span class="s43">店舗以上</span><span class="s1">が対象。普段使ってるあのお店も、経由するだけでポイントが貯まるかも。</span></p>
-<p class="p48"><span class="s15">たとえばこんなお店の公式通販：</span></p>
-<p class="p40"><span class="s1">コスメ系ブランド</span></p>
-<p class="p40"><span class="s1">アパレル公式</span></p>
-<p class="p40"><span class="s1">家電メーカー</span></p>
-<p class="p40"><span class="s1">旅行予約</span></p>
-<p class="p40"><span class="s1">百貨店オンライン</span></p>
-<p class="p49"><span class="s15">ただオンラインで買うんじゃなくて、</span><span class="s52">ここを経由してひと手間でポイントを稼ごう</span><span class="s15">。経由忘れには注意！</span></p>
-<p class="p33"><span class="s1">楽天リーベイツを見る</span><span class="s39"> →</span></p>
-<p class="p9"><span class="s1"></span><br></p>
-<p class="p17"><span class="s20">取りこぼし防止</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">買う前チェック</span></h2>
-<ol class="ol1">
-  <li class="li36"><span class="s53"></span><span class="s1">対象キャンペーンは買う前にエントリー</span><span class="s54"> </span><span class="s1">クーポンを取る（先着・枚数・金額条件を確認）</span><span class="s54"> </span><span class="s1">注文画面で割引とポイント条件が反映されているか確認</span></li>
-</ol>
-<ul class="ul1">
-  <li class="li36"><span class="s55"></span><span class="s15">キャンペーンにエントリーした？</span><span class="s56"><br>
-</span><span class="s15">クーポンを獲得した？</span><span class="s56"><br>
-</span><span class="s15">アプリ購入が条件のものはアプリで買ってる？</span><span class="s56"><br>
-</span><span class="s15">注文画面でクーポンが反映されてる？</span><span class="s56"><br>
-</span><span class="s15">クーポン後の金額条件を満たしてる？</span><span class="s56"><br>
-</span><span class="s15">先着・枚数限定の条件を確認した？</span></li>
-</ul>
-<p class="p17"><span class="s20">最後に</span></p>
-<h2 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 18.0px 'Hiragino Sans'; color: #8863bd; -webkit-text-stroke: #8863bd"><span class="s1">今回は本当に、</span><span class="s21">見てほしい。</span></h2>
-<p class="p36"><span class="s1">スパセでただでさえお得なのに、</span><span class="s56">6/10</span><span class="s1">は</span><span class="s56">5</span><span class="s1">と</span><span class="s56">0</span><span class="s1">のつく日。</span></p>
-<p class="p36"><span class="s1">さらに初購入特典や</span><span class="s56">25</span><span class="s1">歳以下クーポンも重なる可能性あり。</span></p>
-<p class="p36"><span class="s56">3</span><span class="s1">ヶ月以内に使う日用品・美容・現場準備品は、今回少し前倒しもかなりアリ。使えるものは取りこぼさず使ってね</span><span class="s57">🫶</span></p>
-<p class="p50"><span class="s58">🔗</span><span class="s59"> </span><span class="s1">ページのリンクをコピー</span></p>
-<p class="p51"><span class="s1">LINE</span><span class="s60">で送る</span></p>
-<p class="p52"><span class="s1">この情報、誰かの推し活も軽くするかも。よかったらシェアしてね</span><span class="s54">♡</span></p>
-<p class="p53"><span class="s1">このページは</span><span class="s61">2026/6/7</span><span class="s1">時点の情報をもとに作成しています。キャンペーン・クーポン・ポイント条件は変わることがあります。購入前に必ず楽天公式ページと注文画面で最新条件を確認してください。</span></p>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="bg" id="hero-bg"></div>
+  <div class="inner">
+    <span class="eyebrow-hero">🫧 2026 / 6 / 10 はチャンスの日</span>
+    <h1><span class="small">楽天初心者さんへ</span>推し活費、<br>ポイントで<br>浮かせよ。</h1>
+    <p class="sub">むずかしいこと抜きで、<br>今日いちばんおトクに始められる日かも🫶</p>
+    <div class="trust">
+      <span class="coin" id="trust-coin" data-img="images/02-badge.png">¥</span>
+      <span class="t"><b>累計60万pt超</b><span>もらってきた私が本気で布教中</span></span>
+    </div>
+    <br>
+    <a class="cta-scroll" href="#quiz">まず、私が対象か見てみる →</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== 診断（改名：スピっぽさ排除） ===== -->
+  <section class="quiz" id="quiz">
+    <div class="qimg"><div class="ph" data-label="images/03-search.png"></div></div>
+    <span class="eyebrow" style="display:block;text-align:center;width:fit-content;margin:0 auto 8px;">あてはまるものをタップ</span>
+    <h2>あなたが拾えるお得は？</h2>
+    <p class="note">1個でもあれば、6/10前に見る価値あり◎</p>
+
+    <label class="q-item"><input type="checkbox" data-key="new"><span class="box"></span>
+      <span class="qt">楽天市場でまだ買ったことがない<small>初購入特典の対象になるかも</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="app"><span class="box"></span>
+      <span class="qt">楽天市場アプリで買える<small>初購入系はアプリ購入が条件のことあり</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="u25"><span class="box"></span>
+      <span class="qt">15〜25歳<small>25歳以下向けクーポンを確認</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="card"><span class="box"></span>
+      <span class="qt">楽天カードを持っている / 作る予定<small>5と0のつく日やSPUを確認</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="stock"><span class="box"></span>
+      <span class="qt">3ヶ月以内に使う日用品・美容品がある<small>前倒し購入のチャンス</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="pay"><span class="box"></span>
+      <span class="qt">楽天ポイントを推し活に使いたい<small>楽天ペイで使えるお店も確認</small></span></label>
+    <label class="q-item"><input type="checkbox" data-key="travel"><span class="box"></span>
+      <span class="qt">遠征・旅行・公式通販もお得にしたい<small>楽天トラベルやリーベイツも確認</small></span></label>
+
+    <button class="q-btn" id="q-run">お得を表示する ♡</button>
+    <div class="q-result" id="q-result">
+      <h3>あなたが見るべきお得 ♡</h3>
+      <p style="font-size:.78rem;color:var(--ink-soft);margin:-6px 0 12px;">タップすると、そのお得の詳しい説明に移動するよ</p>
+      <ul id="q-list"></ul>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div></div>
+
+  <!-- ===== スパセとは ===== -->
+  <section>
+    <span class="eyebrow">まずここだけ</span>
+    <h2><span class="deco">スパセ</span>って、何がすごい？</h2>
+    <p class="lead">楽天スーパーSALEは、年4回だけの大型セール。タイミングを合わせると、いつもの買い物がかなりお得になりやすい期間だよ。</p>
+    <div class="card">
+      <ul class="feat">
+        <li><span class="ic">％</span><span>半額・目玉商品が出やすい</span></li>
+        <li><span class="ic">🎫</span><span>クーポンが多い</span></li>
+        <li><span class="ic">P</span><span>買いまわりでポイントUP（1ショップ1,000円〜）</span></li>
+        <li><span class="ic">♡</span><span>日用品・美容・現場準備の前倒しと相性◎</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 推し活と相性 ===== -->
+  <section>
+    <span class="eyebrow">私の本音</span>
+    <h2>推し活民に<span class="deco">スパセが合う</span>理由</h2>
+    <div class="card">
+      <p>現場・遠征・美容・日用品・グッズ…気づいたらお金かかるよね。</p>
+      <p style="margin-top:10px;">だから、<b style="color:var(--lavender-deep);">どうせ使うものをお得な日に買って、浮いた分を次の推し活に回す</b>。これがいちばん賢い使い方だと思ってる🫶</p>
+    </div>
+  </section>
+
+  <!-- ===== 6/10激アツ：縦カード ===== -->
+  <section>
+    <span class="eyebrow">今日がチャンス</span>
+    <h2><span class="deco">6/10</span>が激アツな理由</h2>
+    <div class="reasons">
+      <div class="reason"><span class="num">🛍️</span><span class="rt"><b>スパセ期間中</b><span>年4回の大型セール真っ最中</span></span></div>
+      <div class="reason"><span class="num">🗓️</span><span class="rt"><b>5と0のつく日</b><span>楽天カードでポイントUP対象日</span></span></div>
+      <div class="reason"><span class="num">🎁</span><span class="rt"><b>初購入特典</b><span>初めての人向けの特典あり</span></span></div>
+      <div class="reason"><span class="num">🎫</span><span class="rt"><b>25歳以下クーポン</b><span>対象なら総額5,000円OFFも</span></span></div>
+      <div class="reason"><span class="num">✨</span><span class="rt"><b>ゲリラの可能性</b><span>追加クーポンが出ることも</span></span></div>
+    </div>
+    <p style="margin-top:14px;font-weight:700;color:var(--lavender-deep);text-align:center;">ここまで初心者さんに強い日、あんまり見たことない…！</p>
+  </section>
+
+  <div class="divider"><div class="line"></div></div>
+
+  <!-- ===== 特典① 初購入（エントリーボタン付き） ===== -->
+  <section id="deal-new">
+    <span class="eyebrow">お得候補 01</span>
+    <h2>初めて楽天で買う人へ</h2>
+    <div class="card deal">
+      <div class="deal-img"><div class="ph" data-label="images/04-coins.png"></div></div>
+      <span class="point"><b>2,500</b>ポイント狙える</span>
+      <p style="font-size:.88rem;">スパセ限定で、5,000円以上の購入で狙える可能性あり。</p>
+      <ul>
+        <li>楽天市場で初めて買う人</li>
+        <li>楽天市場アプリから購入</li>
+        <li>事前エントリー必須</li>
+        <li>1注文5,000円以上</li>
+        <li>期間：2026/6/4 20:00〜6/11 1:59</li>
+      </ul>
+      <p class="caution">エントリーしないと対象外！まずはここから押してね。</p>
+      <!-- ▼アフィリンクに差し替え（初購入キャンペーン） -->
+      <a class="entry-btn" href="#" data-aff="entry-newuser" target="_blank" rel="noopener">エントリーはこちら →</a>
+    </div>
+  </section>
+
+  <!-- ===== 特典② 25歳以下（エントリーボタン付き） ===== -->
+  <section id="deal-u25">
+    <span class="eyebrow">お得候補 02</span>
+    <h2>25歳以下の人へ</h2>
+    <div class="card deal">
+      <div class="deal-img"><div class="ph" data-label="images/05-stack.png"></div></div>
+      <span class="point">総額<b>5,000</b>円OFF</span>
+      <p style="font-size:.88rem;">対象なら、最初の買い物でクーポンが使える可能性あり。</p>
+      <ul>
+        <li>対象：15〜25歳</li>
+        <li>条件：楽天市場で初めて買う人</li>
+        <li>必要：アプリ購入・年齢認証</li>
+        <li>内容：1,000＋2,000＋1,000＋1,000円OFF</li>
+      </ul>
+      <p class="caution">先着上限あり / 併用できないクーポンあり。早めにクーポン獲得を。</p>
+      <!-- ▼アフィリンクに差し替え（25歳以下クーポン） -->
+      <a class="entry-btn" href="#" data-aff="entry-u25" target="_blank" rel="noopener">クーポンを取りに行く →</a>
+    </div>
+  </section>
+
+  <!-- ===== 特典③ 5と0（エントリーボタン付き） ===== -->
+  <section id="deal-card">
+    <span class="eyebrow">お得候補 03</span>
+    <h2>6/10は<span class="deco">5と0のつく日</span></h2>
+    <div class="card">
+      <p style="font-size:.9rem;">楽天カードを使う人は、当日エントリーも忘れずに。</p>
+      <ul class="feat" style="margin-top:12px;">
+        <li><span class="ic">📌</span><span>当日エントリーが必要</span></li>
+        <li><span class="ic">💳</span><span>楽天カード支払いが条件</span></li>
+        <li><span class="ic">P</span><span>特典は実質+1倍（月間上限1,000pt）</span></li>
+      </ul>
+      <p class="caution">表示にすぐ反映されないこともあるから、キャンペーンページで確認してね。</p>
+      <!-- ▼アフィリンクに差し替え（5と0のつく日） -->
+      <a class="entry-btn gold" href="#" data-aff="entry-0and5" target="_blank" rel="noopener">当日エントリーはこちら →</a>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div></div>
+
+  <!-- ===== 買いまわり：熱量高く「今買うべき」 ===== -->
+  <section id="deal-stock">
+    <span class="eyebrow">ここ大事</span>
+    <div class="hype">
+      <h2>3ヶ月以内に使うもの、<br>決まってるなら<span class="deco">今！</span></h2>
+      <p>無理に何か買わせたいわけじゃないの。でもね、</p>
+      <p class="big">どうせ使うものが決まってるなら、<em>今買うのが正解</em>。</p>
+      <p>日用品・コスメ・遠征準備…3ヶ月以内に絶対使うものを、いちばんお得な6/10に前倒しで買う。そこで貯めたポイントを、また次の推し活に回していく。</p>
+      <div class="cycle">
+        <span>お得に買う</span><span class="arr">→</span>
+        <span>ポイント貯まる</span><span class="arr">→</span>
+        <span>推し活に使う</span>
+      </div>
+      <p style="margin-top:16px;text-align:center;font-weight:700;color:var(--lavender-deep);">この流れを作れたら、推し活がほんとに軽くなるよ🫶</p>
+    </div>
+  </section>
+
+  <!-- ===== ポイント循環（推し活に使える） ===== -->
+  <section class="flow" id="deal-pay">
+    <span class="eyebrow">ここが嬉しい</span>
+    <h2>ポイントは<span class="deco">推し活</span>に使える</h2>
+    <div class="ph" data-label="images/06-flow.png"></div>
+    <div class="card">
+      <p style="font-size:.9rem;">貯めた楽天ポイントは、楽天ペイで街のお買い物にも使えるよ。</p>
+      <div class="stores">
+        <span class="chip">コンビニ</span><span class="chip">ドラッグストア</span>
+        <span class="chip">飲食店</span><span class="chip">家電量販店</span><span class="chip">一部グッズ</span>
+      </div>
+      <p style="margin-top:12px;font-size:.86rem;">日用品で貯めたポイントを、現場前の買い物やグッズ代に回せるのが嬉しい。使えるお店は会計前に確認してね。</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div></div>
+
+  <!-- ===== 旅行・公式通販（詳細+リンク） ===== -->
+  <section id="deal-travel">
+    <span class="eyebrow">経由するだけでお得</span>
+    <h2><span class="deco">旅行・公式通販</span>も忘れずに</h2>
+
+    <div class="svc">
+      <h3>✈️ 楽天トラベル</h3>
+      <p>遠征や旅行予約も、楽天経由ならポイントが貯まる。</p>
+      <div class="hl"><b>5と0のつく日は特にチェック！</b><br>クーポンやお得プランが出やすい日。<b>すでに予約済みでも、それより安いプランが出てる可能性</b>があるから、毎回必ず見てほしい◎</div>
+      <p style="font-size:.83rem;color:var(--ink-soft);">宿泊・海外・レンタカーで条件が違うから、予約前に確認してね。</p>
+      <!-- ▼アフィリンクに差し替え（楽天トラベル） -->
+      <a class="entry-btn" href="#" data-aff="travel" target="_blank" rel="noopener">楽天トラベルを見る →</a>
+    </div>
+
+    <div class="svc">
+      <h3>🛒 楽天リーベイツ</h3>
+      <p>楽天市場じゃない公式通販でも、<b>リーベイツを経由するだけ</b>で楽天ポイントの対象になるよ。</p>
+      <div class="hl"><b>900店舗以上</b>が対象。普段使ってるあのお店も、経由するだけでポイントが貯まるかも。</div>
+      <p style="font-size:.84rem;margin-bottom:4px;">たとえばこんなお店の公式通販：</p>
+      <div class="examples">
+        <span>コスメ系ブランド</span><span>アパレル公式</span>
+        <span>家電メーカー</span><span>旅行予約</span><span>百貨店オンライン</span>
+      </div>
+      <p style="font-size:.85rem;margin-top:8px;">ただオンラインで買うんじゃなくて、<b style="color:var(--lavender-deep);">ここを経由してひと手間でポイントを稼ごう</b>。経由忘れには注意！</p>
+      <!-- ▼アフィリンクに差し替え（楽天リーベイツ） -->
+      <a class="entry-btn" href="#" data-aff="rebates" target="_blank" rel="noopener">楽天リーベイツを見る →</a>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div></div>
+
+  <!-- ===== 買う前チェック ===== -->
+  <section>
+    <span class="eyebrow">取りこぼし防止</span>
+    <h2>買う前チェック</h2>
+    <ol class="steps">
+      <li>対象キャンペーンは買う前にエントリー</li>
+      <li>クーポンを取る（先着・枚数・金額条件を確認）</li>
+      <li>注文画面で割引とポイント条件が反映されているか確認</li>
+    </ol>
+    <div class="card">
+      <ul class="precheck" id="precheck">
+        <li><span class="box"></span><span class="pt">キャンペーンにエントリーした？</span></li>
+        <li><span class="box"></span><span class="pt">クーポンを獲得した？</span></li>
+        <li><span class="box"></span><span class="pt">アプリ購入が条件のものはアプリで買ってる？</span></li>
+        <li><span class="box"></span><span class="pt">注文画面でクーポンが反映されてる？</span></li>
+        <li><span class="box"></span><span class="pt">クーポン後の金額条件を満たしてる？</span></li>
+        <li><span class="box"></span><span class="pt">先着・枚数限定の条件を確認した？</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== まとめ + シェア ===== -->
+  <section class="summary">
+    <span class="eyebrow">最後に</span>
+    <h2>今回は本当に、<br><span class="deco">見てほしい。</span></h2>
+    <p style="font-size:.9rem;">スパセでただでさえお得なのに、6/10は5と0のつく日。さらに初購入特典や25歳以下クーポンも重なる可能性あり。</p>
+    <p style="margin-top:10px;font-size:.9rem;">3ヶ月以内に使う日用品・美容・現場準備品は、今回少し前倒しもかなりアリ。使えるものは取りこぼさず使ってね🫶</p>
+    <div class="share">
+      <button class="copy" id="copy-link" type="button">🔗 ページのリンクをコピー</button>
+      <a class="line" id="share-line" href="#" target="_blank" rel="noopener">LINEで送る</a>
+    </div>
+    <span class="label">この情報、誰かの推し活も軽くするかも。よかったらシェアしてね♡</span>
+  </section>
+
+  <p class="disclaimer">このページは2026/6/7時点の情報をもとに作成しています。キャンペーン・クーポン・ポイント条件は変わることがあります。購入前に必ず楽天公式ページと注文画面で最新条件を確認してください。</p>
+
+</div>
+
+<script>
+// ===== 画像差し込み：images/ に置けば自動表示、無ければ仮枠のまま =====
+(function(){
+  const bg = document.getElementById('hero-bg');
+  const i1 = new Image();
+  i1.onload = ()=>{ const t=document.createElement('img'); t.src='images/01-hero.png'; t.alt=''; bg.appendChild(t); bg.classList.add('has-img'); };
+  i1.src = 'images/01-hero.png';
+
+  const c = document.getElementById('trust-coin');
+  const i2 = new Image();
+  i2.onload = ()=>{ c.innerHTML=''; const t=document.createElement('img'); t.src=c.dataset.img; t.alt=''; c.appendChild(t); c.classList.add('has-img'); };
+  i2.src = c.dataset.img;
+
+  document.querySelectorAll('.ph[data-label]').forEach(ph=>{
+    const src = ph.dataset.label;
+    const img = new Image();
+    img.onload = ()=>{ const t=document.createElement('img'); t.src=src; t.alt=''; ph.innerHTML=''; ph.appendChild(t); ph.classList.add('has-img'); };
+    img.src = src;
+  });
+})();
+
+// ===== 診断ロジック =====
+// jump = 押したときにスクロールする先のセクションID（HTML側の section id="..." と対応）
+const RESULTS = {
+  new:   {t:'初めてのお買い物キャンペーン', d:'5,000円以上で2,500pt狙える', jump:'deal-new'},
+  app:   {t:'アプリ購入の確認', d:'初購入系はアプリ購入が条件のことあり', jump:'deal-new'},
+  u25:   {t:'25歳以下向けクーポン', d:'総額5,000円OFFが使えるかも', jump:'deal-u25'},
+  card:  {t:'5と0のつく日', d:'当日エントリー＋カード支払いで実質+1倍', jump:'deal-card'},
+  stock: {t:'スーパーSALEで前倒し購入', d:'3ヶ月以内に使うものを今お得に', jump:'deal-stock'},
+  pay:   {t:'楽天ペイで使う', d:'貯めたポイントを推し活費に', jump:'deal-pay'},
+  travel:{t:'楽天トラベル / リーベイツ', d:'遠征・公式通販もお得に', jump:'deal-travel'},
+};
+document.getElementById('q-run').addEventListener('click', ()=>{
+  const checked = [...document.querySelectorAll('.q-item input:checked')].map(i=>i.dataset.key);
+  const list = document.getElementById('q-list');
+  const box = document.getElementById('q-result');
+  list.innerHTML = '';
+  if(checked.length === 0){
+    list.innerHTML = '<li class="none">まずは気になる項目をタップしてね。全部当てはまらなくてOK！</li>';
+  } else {
+    const seen = new Set();
+    checked.forEach(k=>{
+      const r = RESULTS[k];
+      if(seen.has(r.jump)) return; // 同じ飛び先（初購入＋アプリ）は1つにまとめる
+      seen.add(r.jump);
+      const li = document.createElement('li');
+      li.className = 'res-jump';
+      li.dataset.jump = r.jump;
+      li.innerHTML = '<span class="ji">♡</span><span><b style="color:var(--lavender-deep)">'+r.t+'</b><br><small style="color:var(--ink-soft)">'+r.d+'</small></span><span class="jarr">→</span>';
+      li.addEventListener('click', ()=>{
+        const target = document.getElementById(r.jump);
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+      list.appendChild(li);
+    });
+  }
+  box.classList.add('show');
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+// ===== 買う前チェック（タップでトグル） =====
+document.querySelectorAll('#precheck li').forEach(li=>{
+  li.addEventListener('click', ()=> li.classList.toggle('done'));
+});
+
+// ===== シェア =====
+const shareUrl = encodeURIComponent(location.href);
+// LINEは公開URLで確実に動く
+document.getElementById('share-line').href = 'https://social-plugins.line.me/lineit/share?url='+shareUrl;
+
+// このページのリンクをコピー
+const copyBtn = document.getElementById('copy-link');
+copyBtn.addEventListener('click', async ()=>{
+  const url = location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch(e) {
+    // クリップボードAPIが使えない環境向けのフォールバック
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(_) {}
+    document.body.removeChild(ta);
+  }
+  copyBtn.textContent = '✓ コピーしたよ！';
+  copyBtn.classList.add('copied');
+  setTimeout(()=>{ copyBtn.textContent='🔗 ページのリンクをコピー'; copyBtn.classList.remove('copied'); }, 2000);
+});
+</script>
 </body>
 </html>
