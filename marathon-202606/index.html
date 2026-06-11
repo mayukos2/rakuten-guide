@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!--
+==================================================================
+  楽天お買い物マラソン × 夏現場準備ページ 編集メモ
+==================================================================
+
+【1】このページの公開先
+  GitHub Pagesでは下記URLになる想定です。
+  https://mayukos2.github.io/rakuten-guide/marathon-202606/
+
+【2】アフィリンクの差し替え
+  href="#" のままになっている data-aff 付きリンクを差し替えます。
+  data-aff="entry-marathon"   お買い物マラソン エントリー
+  data-aff="entry-0and5"      5と0のつく日
+  data-aff="entry-3980"       3,980円以上買うなら確認
+  data-aff="entry-bulk"       まとめ買い前に確認したいキャンペーン
+  data-aff="coupon-list"      クーポン一覧
+  data-aff="room-collection"  ROOMコレクション
+  data-aff="travel"           楽天トラベル
+
+【3】画像の差し替え
+  images/ フォルダに下記ファイル名で入れると自動表示されます。
+  画像が無い間は仮枠が表示されます。
+
+  images/01-hero.png             トップ背景
+  images/02-benefits.png         楽天で買うメリット図
+  images/03-marathon-flow.png    お買い物マラソンの仕組み図
+  images/04-check-before-buy.png 買う前チェック図
+  images/05-daymap.png           夏現場の1日マップ
+  images/06-products.png         商品カテゴリ見出し用
+  images/07-divider.png          区切り線
+
+【4】商品カード
+  商品画像・価格・OFF率・リンクはあとで差し替える前提です。
+  料率は読者向けには出さず、OFF率・クーポン・価格目安だけを書く方針。
+==================================================================
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>楽天マラソンで夏現場準備｜推しに会う準備、まとめて整えよ♡</title>
+<meta name="description" content="夏現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lavender:#B79BE0;
+  --lavender-deep:#8F67C5;
+  --lavender-soft:#EEE6FA;
+  --lavender-mist:#F8F3FF;
+  --pink:#F4CFE3;
+  --pink-deep:#E06B9E;
+  --gold:#E7C978;
+  --gold-soft:#FFF4C8;
+  --paper:#FFFCFF;
+  --ink:#5F5178;
+  --ink-soft:#9689AB;
+  --white:rgba(255,255,255,.88);
+  --radius:24px;
+  --shadow:0 18px 44px rgba(143,103,197,.18);
+  --shadow-soft:0 10px 26px rgba(143,103,197,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Zen Maru Gothic',sans-serif;
+  color:var(--ink);
+  line-height:1.85;
+  background:
+    radial-gradient(100% 60% at 0% 0%, rgba(244,207,227,.72), transparent 48%),
+    radial-gradient(90% 55% at 100% 8%, rgba(183,155,224,.68), transparent 52%),
+    linear-gradient(180deg,#F1E8FB 0%,#FBF6FF 48%,#FFF 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+.page{max-width:560px;margin:0 auto;position:relative;z-index:1}
+.fixed-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#F0E6FC,#FFF8FD)}
+.fixed-bg img{width:100%;height:100%;object-fit:cover;opacity:.82}
+.fixed-bg::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.22)}
+
+.ph{
+  width:100%;
+  min-height:150px;
+  border-radius:22px;
+  border:1px dashed rgba(143,103,197,.32);
+  background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(238,230,250,.9));
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:.78rem;
+  position:relative;
+  overflow:hidden;
+}
+.ph::after{content:attr(data-label);padding:16px}
+.ph.has-img{border:none;background:none;min-height:0}
+.ph.has-img::after{display:none}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.contain img{object-fit:contain;background:rgba(255,255,255,.68)}
+
+.hero{
+  min-height:88vh;
+  padding:54px 22px 42px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:20px;right:20px;bottom:20px;height:54px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);
+  filter:blur(20px);
+}
+.hero-inner{width:100%;position:relative;z-index:1}
+.pr-top{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.76);
+  color:var(--ink-soft);
+  font-size:.74rem;
+  font-weight:700;
+  box-shadow:var(--shadow-soft);
+  margin-bottom:18px;
+}
+.hero-kicker{
+  font-family:'Yomogi',cursive;
+  color:var(--pink-deep);
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.hero h1{
+  font-family:'Mochiy Pop One',sans-serif;
+  font-size:2.28rem;
+  line-height:1.5;
+  color:var(--lavender-deep);
+  font-weight:400;
+  letter-spacing:.01em;
+  text-shadow:0 4px 18px rgba(255,255,255,.92);
+  margin-bottom:16px;
+}
+.hero h1 span{display:block;font-size:1.05rem;color:var(--ink);font-family:'Zen Maru Gothic';font-weight:700;margin-top:8px}
+.hero-copy{
+  max-width:390px;
+  margin:0 auto 22px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:24px;
+  padding:18px 17px;
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:blur(8px);
+}
+.hero-copy p{font-size:.96rem}
+.hero-copy b{color:var(--pink-deep)}
+.hero-buttons,.button-row{display:grid;gap:11px;margin-top:18px}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:54px;
+  padding:13px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#C8ACEA,var(--lavender-deep));
+  color:#fff;
+  text-decoration:none;
+  font-family:'Mochiy Pop One',sans-serif;
+  font-size:.96rem;
+  font-weight:400;
+  border:none;
+  box-shadow:0 13px 28px rgba(143,103,197,.32);
+  cursor:pointer;
+}
+.btn.secondary{background:rgba(255,255,255,.86);color:var(--lavender-deep);border:1px solid rgba(143,103,197,.24)}
+.btn.small{min-height:46px;font-family:'Zen Maru Gothic';font-weight:700;font-size:.88rem}
+.pr-mini{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:5px}
+
+.content{padding:0 18px 72px}
+section{margin:0 0 34px}
+.divider{
+  margin:8px auto 20px;
+  width:min(92%,420px);
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.divider .ph{
+  height:58px;
+  min-height:58px;
+  background:transparent;
+  border:none;
+}
+.divider .ph::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:50%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--lavender),transparent);
+  transform:translateY(-50%);
+  opacity:.5;
+}
+.divider .ph::after{
+  content:"♡";
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  padding:0;
+  color:var(--lavender-deep);
+  background:rgba(255,255,255,.86);
+  box-shadow:var(--shadow-soft);
+  opacity:1;
+}
+.divider .ph img{object-fit:contain}
+.eyebrow{
+  display:inline-block;
+  background:rgba(255,255,255,.75);
+  color:var(--pink-deep);
+  padding:5px 14px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.76rem;
+  box-shadow:var(--shadow-soft);
+  margin-bottom:9px;
+}
+h2{
+  font-family:'Mochiy Pop One',sans-serif;
+  font-size:1.42rem;
+  line-height:1.58;
+  font-weight:400;
+  color:var(--lavender-deep);
+  margin-bottom:15px;
+}
+h2 .deco{color:var(--pink-deep)}
+p{font-size:.94rem}
+.lead{margin-bottom:15px}
+.card{
+  background:var(--white);
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:var(--radius);
+  padding:22px 20px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(10px);
+}
+.card + .card{margin-top:14px}
+.note{
+  color:var(--ink-soft);
+  font-size:.78rem;
+  margin-top:12px;
+}
+.em{color:var(--pink-deep);font-weight:700}
+
+.entry-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.entry-btn{
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  gap:10px;
+  align-items:center;
+  min-height:62px;
+  padding:13px 14px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.17);
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(143,103,197,.09);
+}
+.entry-btn .ico{
+  width:34px;height:34px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--lavender-soft),#fff);
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.entry-btn strong{display:block;font-size:.91rem;line-height:1.4}
+.entry-btn small{display:block;color:var(--ink-soft);font-size:.71rem;margin-top:1px}
+.entry-btn .arr{color:var(--lavender-deep);font-weight:700}
+
+.quiz-card{
+  background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(248,243,255,.9));
+}
+.checks{display:grid;gap:10px;margin-top:14px}
+.check{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:12px;
+  align-items:start;
+  padding:14px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.16);
+  cursor:pointer;
+}
+.check input{display:none}
+.box{
+  width:28px;height:28px;border-radius:10px;
+  border:2px solid var(--lavender-soft);
+  display:grid;place-items:center;
+  color:white;
+  font-weight:700;
+}
+.check input:checked + .box{background:var(--lavender);border-color:var(--lavender)}
+.check input:checked + .box::after{content:"♡";font-size:.82rem}
+.check b{font-size:.92rem}
+.check small{display:block;color:var(--ink-soft);font-size:.75rem;margin-top:2px}
+.result{
+  display:none;
+  margin-top:17px;
+  background:#fff;
+  border-radius:20px;
+  border:1.5px solid rgba(143,103,197,.28);
+  padding:17px;
+}
+.result.show{display:block}
+.result h3{
+  font-family:'Mochiy Pop One',sans-serif;
+  font-size:1.02rem;
+  color:var(--lavender-deep);
+  font-weight:400;
+  margin-bottom:10px;
+}
+.result-links{display:grid;gap:8px}
+.result-links a{
+  text-decoration:none;
+  background:var(--lavender-mist);
+  border-radius:15px;
+  padding:11px 13px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:.86rem;
+  font-weight:700;
+}
+
+.point-list{display:grid;gap:11px}
+.point{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:start;
+}
+.point .num,.point .icon{
+  width:38px;height:38px;border-radius:15px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--pink),var(--lavender-soft));
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.point b{display:block;font-size:.94rem}
+.point span{display:block;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.visual{margin-top:16px}
+.visual .ph{min-height:210px}
+
+.timeline{display:grid;gap:12px;margin-top:14px}
+.time-card{
+  background:#fff;
+  border-radius:19px;
+  padding:16px;
+  border:1px solid rgba(143,103,197,.15);
+}
+.time-card b{display:flex;gap:8px;align-items:center;color:var(--lavender-deep);font-size:.96rem}
+.time-card p{font-size:.82rem;color:var(--ink-soft);margin-top:5px}
+
+.category-nav{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;margin-bottom:10px;scrollbar-width:none}
+.category-nav::-webkit-scrollbar{display:none}
+.chip{
+  white-space:nowrap;
+  flex:0 0 auto;
+  text-decoration:none;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.18);
+  padding:9px 13px;
+  color:var(--lavender-deep);
+  font-size:.82rem;
+  font-weight:700;
+}
+.product-section{margin-top:18px}
+.product-section h3{
+  font-family:'Mochiy Pop One',sans-serif;
+  color:var(--lavender-deep);
+  font-size:1.06rem;
+  font-weight:400;
+  margin-bottom:10px;
+}
+.products{display:grid;gap:12px}
+.product{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  gap:13px;
+  background:#fff;
+  border-radius:20px;
+  border:1px solid rgba(143,103,197,.14);
+  padding:12px;
+}
+.p-img{height:106px;border-radius:16px;min-height:106px}
+.p-body h4{font-size:.9rem;line-height:1.5;margin-bottom:4px;color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.tag{
+  border-radius:999px;
+  padding:3px 8px;
+  background:var(--gold-soft);
+  color:#967544;
+  font-size:.67rem;
+  font-weight:700;
+}
+.tag.pink{background:#FBE3EF;color:var(--pink-deep)}
+.p-body p{font-size:.76rem;color:var(--ink-soft);line-height:1.65}
+.p-link{
+  display:inline-flex;
+  margin-top:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:var(--lavender-deep);
+  color:white;
+  text-decoration:none;
+  font-size:.74rem;
+  font-weight:700;
+}
+.p-pr{font-size:.64rem;color:var(--ink-soft);margin-left:6px}
+
+.room-card{
+  text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(244,207,227,.36));
+}
+.notice{
+  background:rgba(255,255,255,.7);
+  border-radius:20px;
+  padding:18px;
+  color:var(--ink-soft);
+  font-size:.78rem;
+}
+.notice ul{padding-left:1.2em}
+.notice li + li{margin-top:5px}
+
+@media (min-width:520px){
+  .hero h1{font-size:2.65rem}
+  .hero-buttons,.button-row{grid-template-columns:1fr 1fr}
+  .entry-grid{grid-template-columns:1fr 1fr}
+  .visual .ph{min-height:260px}
+}
+</style>
+</head>
+<body>
+<div class="fixed-bg"><img src="images/01-hero.png" alt="" onerror="this.remove()"></div>
+<main class="page">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="pr-top">PR｜楽天アフィリエイトを利用しています</div>
+      <div class="hero-kicker">夏現場前のちょこちょこ買い、してない？</div>
+      <h1>ポイ活、<br>なめたらあかん。<span>推しに会う準備、楽天マラソンで整えよ♡</span></h1>
+      <div class="hero-copy">
+        <p>現場前って、コンビニ・ドラスト・駅ナカで急いで買い足しがち。<br><b>でも前もって準備してまとめて買ったら、現場当日のグッズ代が浮くかも？！</b></p>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn" href="#entry">まずエントリー確認</a>
+        <a class="btn secondary" href="#products">夏現場リストへ</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <section id="entry">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <span class="eyebrow">最初にここ</span>
+      <h2>買う前に、<span class="deco">まずここだけ</span>確認してね</h2>
+      <p class="lead">楽天は「買う前に押す」が大事。エントリーやクーポンは、あとからだと対象外になることがあるよ。</p>
+      <div class="card">
+        <div class="entry-grid">
+          <a class="entry-btn" href="#" data-aff="entry-marathon">
+            <span class="ico">1</span><span><strong>お買い物マラソン エントリー</strong><small>まずはここを押してから買う</small></span><span class="arr">→</span>
+          </a>
+          <a class="entry-btn" href="#" data-aff="entry-0and5">
+            <span class="ico">5</span><span><strong>5と0のつく日</strong><small>タイミングが合えば要チェック</small></span><span class="arr">→</span>
+          </a>
+          <a class="entry-btn" href="#" data-aff="entry-3980">
+            <span class="ico">¥</span><span><strong>3,980円以上買うなら確認</strong><small>送料無料ライン周りも忘れずに</small></span><span class="arr">→</span>
+          </a>
+          <a class="entry-btn" href="#" data-aff="entry-bulk">
+            <span class="ico">袋</span><span><strong>まとめ買い前に確認</strong><small>高めの買い物前に見る場所</small></span><span class="arr">→</span>
+          </a>
+          <a class="entry-btn" href="#" data-aff="coupon-list">
+            <span class="ico">券</span><span><strong>クーポン一覧</strong><small>ショップ別クーポンを拾う</small></span><span class="arr">→</span>
+          </a>
+          <a class="entry-btn" href="#room" data-aff="room-collection">
+            <span class="ico">R</span><span><strong>ROOMまとめを見る</strong><small>商品だけ見たい人向け</small></span><span class="arr">→</span>
+          </a>
+        </div>
+        <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <span class="eyebrow">診断</span>
+      <div class="card quiz-card">
+        <h2>今のあなたに<span class="deco">必要なのは</span>どれ？</h2>
+        <p class="lead">当てはまるものを選ぶと、見るべきカテゴリを出すよ。</p>
+        <div class="checks">
+          <label class="check"><input type="checkbox" data-target="live"><span class="box"></span><span><b>夏現場がある</b><small>ライブ・舞台・フェス・イベント前の準備</small></span></label>
+          <label class="check"><input type="checkbox" data-target="beauty"><span class="box"></span><span><b>カラコン・美容品をそろそろ買う</b><small>現場前に盛りたい、髪も肌も整えたい</small></span></label>
+          <label class="check"><input type="checkbox" data-target="sun"><span class="box"></span><span><b>日傘・暑さ対策がほしい</b><small>外待ち・移動・遠征の体力を守りたい</small></span></label>
+          <label class="check"><input type="checkbox" data-target="travel"><span class="box"></span><span><b>遠征予定がある</b><small>移動・宿・荷物周りをまとめて見たい</small></span></label>
+          <label class="check"><input type="checkbox" data-target="daily"><span class="box"></span><span><b>日用品をまとめ買いしたい</b><small>どうせ使うものを先に整えたい</small></span></label>
+        </div>
+        <button class="btn" type="button" id="showResult">おすすめを見る♡</button>
+        <div class="result" id="resultBox">
+          <h3>あなたはここから見るのがおすすめ</h3>
+          <div class="result-links" id="resultLinks"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <span class="eyebrow">楽天で買う理由</span>
+      <h2>推し活準備こそ、<span class="deco">楽天でまとめる</span>とラク</h2>
+      <p class="lead">楽天はポイントだけじゃなくて、クーポンも多い。いろんなお店で必要なものをまとめて買えるのが強いところ。</p>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="icon">♡</span><span><b>現場前のちょこちょこ買いを減らせる</b><span>急いでその辺で買う前に、先に整えておける。</span></span></div>
+          <div class="point"><span class="icon">券</span><span><b>ポイントだけじゃなくクーポンも多い</b><span>ショップ別クーポンや期間限定のOFFを拾いやすい。</span></span></div>
+          <div class="point"><span class="icon">↗</span><span><b>いろんなショップで買うほどポイントUPしやすい</b><span>美容・日用品・暑さ対策を別ショップで買う時に相性がいい。</span></span></div>
+          <div class="point"><span class="icon">旅</span><span><b>遠征なら楽天トラベルも見られる</b><span>買い物だけじゃなく、移動・宿の準備にもつなげやすい。</span></span></div>
+          <div class="point"><span class="icon">P</span><span><b>貯まったポイントを次の推し活費へ</b><span>グッズ代・旅行費・普段の支払いに回せるのがうれしい。</span></span></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/02-benefits.png" data-label="images/02-benefits.png｜楽天で買うメリット図"></div></div>
+      </div>
+    </section>
+
+    <section id="marathon">
+      <span class="eyebrow">基本だけ</span>
+      <h2>お買い物マラソンって<span class="deco">何？</span></h2>
+      <p class="lead">買うなら、マラソンのタイミングを知っておいてほしい。むずかしく考えすぎなくてOK。まずは「買う前にエントリー」と「クーポン確認」だけでも差が出るよ。</p>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="num">1</span><span><b>エントリーが必要</b><span>対象になるには、買う前に公式ページでエントリー確認。</span></span></div>
+          <div class="point"><span class="num">2</span><span><b>1ショップ税込1,000円以上が目安</b><span>買いまわりの対象条件は商品やショップで確認してね。</span></span></div>
+          <div class="point"><span class="num">3</span><span><b>複数ショップで買うほどポイントUPしやすい</b><span>日用品・美容・暑さ対策をまとめる時に使いやすい。</span></span></div>
+          <div class="point"><span class="num">4</span><span><b>クーポンは買う前に確認</b><span>先着・枚数限定・金額条件があることも多いよ。</span></span></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.png" data-label="images/03-marathon-flow.png｜マラソンの仕組み図"></div></div>
+        <div class="button-row">
+          <a class="btn small" href="#" data-aff="entry-marathon">マラソンにエントリー</a>
+          <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを見る</a>
+        </div>
+        <div class="pr-mini">Rakuten pr</div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <span class="eyebrow">6月末に見るところ</span>
+      <h2>買う前チェックは<span class="deco">ここ</span></h2>
+      <p class="lead">日程・キャンペーン内容は公式公開後に更新予定。見る場所だけ先に決めておくと、当日あわてにくいよ。</p>
+      <div class="card">
+        <div class="timeline">
+          <div class="time-card"><b>1. マラソン期間</b><p>開始・終了時刻、対象条件、上限ポイントを確認。</p></div>
+          <div class="time-card"><b>2. 5と0のつく日</b><p>期間中に重なる日があれば、買う候補日に。</p></div>
+          <div class="time-card"><b>3. 開始直後・ショップ別クーポン</b><p>先着・枚数限定・金額条件があるので、買う前に見る。</p></div>
+          <div class="time-card"><b>4. 在庫・OFF率・価格</b><p>人気商品は在庫や価格が動くので、投稿前と購入前に再確認。</p></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.png" data-label="images/04-check-before-buy.png｜買う前チェック図"></div></div>
+        <div class="button-row">
+          <a class="btn small" href="#" data-aff="entry-0and5">5と0のつく日を見る</a>
+          <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを確認</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="daymap">
+      <span class="eyebrow">夏現場の準備</span>
+      <h2>夏現場、<span class="deco">こうやって整えよ</span></h2>
+      <p class="lead">現場の日って、家を出る前から帰ってきた後まで必要なものが多い。だからこそ、前もってまとめておくとラク。</p>
+      <div class="card">
+        <div class="timeline">
+          <div class="time-card"><b>家を出る前</b><p>日焼け止め、汗対策、カラコン、ヘアセット</p></div>
+          <div class="time-card"><b>移動中</b><p>モバイルバッテリー、冷感グッズ、飲み物、収納</p></div>
+          <div class="time-card"><b>会場前</b><p>メイク直し、暑さ対策、うちわ・ペンラ周り</p></div>
+          <div class="time-card"><b>帰宅後</b><p>クレンジング、ヘアケア、疲れケア、日用品補充</p></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/05-daymap.png" data-label="images/05-daymap.png｜夏現場の1日マップ"></div></div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <span class="eyebrow">まゆこ的</span>
+      <h2>夏現場おすすめを<span class="deco">ここにまとめる</span></h2>
+      <p class="lead">商品画像・価格・OFF率・クーポンは、マラソン直前に確認して差し替える想定。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
+      <div class="visual"><div class="ph contain" data-img="images/06-products.png" data-label="images/06-products.png｜商品カテゴリ見出し用"></div></div>
+      <nav class="category-nav" aria-label="商品カテゴリ">
+        <a class="chip" href="#cat-live">現場おすすめ</a>
+        <a class="chip" href="#cat-sun">暑さ&紫外線</a>
+        <a class="chip" href="#cat-beauty">美容</a>
+        <a class="chip" href="#cat-travel">遠征</a>
+        <a class="chip" href="#cat-daily">日用品</a>
+      </nav>
+
+      <div class="card">
+        <div class="product-section" id="cat-live">
+          <h3>現場おすすめグッズ</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>商品名を入れる</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>まゆこ的おすすめ理由と、現場でどう使うかを書く。</p>
+                <a class="p-link" href="#" data-aff="product-live-1">商品を見る</a><span class="p-pr">PR</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-sun">
+          <h3>暑さ&紫外線対策</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>商品名を入れる</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>外待ち・移動・日差し対策で助かるポイントを書く。</p>
+                <a class="p-link" href="#" data-aff="product-sun-1">商品を見る</a><span class="p-pr">PR</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-beauty">
+          <h3>美容</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>商品名を入れる</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>カラコン・ヘアケア・メイク直しなど、現場前に整える理由を書く。</p>
+                <a class="p-link" href="#" data-aff="product-beauty-1">商品を見る</a><span class="p-pr">PR</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-travel">
+          <h3>遠征</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>商品名を入れる</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>荷物・移動・宿まわりでラクになるポイントを書く。</p>
+                <a class="p-link" href="#" data-aff="product-travel-1">商品を見る</a><span class="p-pr">PR</span>
+              </div>
+            </article>
+          </div>
+          <div class="button-row">
+            <a class="btn small secondary" href="#" data-aff="travel">楽天トラベルも見る</a>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-daily">
+          <h3>日用品</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>商品名を入れる</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>3ヶ月以内に使うもの・どうせ買うものをまとめる理由を書く。</p>
+                <a class="p-link" href="#" data-aff="product-daily-1">商品を見る</a><span class="p-pr">PR</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="room">
+      <div class="card room-card">
+        <span class="eyebrow">一覧で見たい人へ</span>
+        <h2>商品だけ見たい人は<span class="deco">ROOM</span>へ</h2>
+        <p class="lead">このページで紹介した商品はROOMコレクションにもまとめる予定だよ。楽天アプリで見たい人はこっちが見やすいかも。</p>
+        <a class="btn" href="#" data-aff="room-collection">ROOMコレクションを見る</a>
+        <div class="pr-mini">Rakuten pr</div>
+      </div>
+    </section>
+
+    <section id="notice">
+      <div class="notice">
+        <ul>
+          <li>掲載リンクにはアフィリエイト広告を含みます。</li>
+          <li>価格・クーポン・在庫・ポイント条件は変更されることがあります。</li>
+          <li>エントリー必須のキャンペーンがあります。購入前に楽天公式ページで条件を確認してください。</li>
+          <li>クーポンは先着・枚数限定・金額条件がある場合があります。</li>
+          <li>ポイント倍率や対象条件は、必ず楽天公式ページで最新情報を確認してください。</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+document.querySelectorAll('.ph[data-img]').forEach(function(box){
+  var src = box.getAttribute('data-img');
+  var img = new Image();
+  img.onload = function(){
+    box.classList.add('has-img');
+    box.innerHTML = '';
+    box.appendChild(img);
+  };
+  img.src = src;
+});
+
+var categoryMap = {
+  live: { label: '現場おすすめグッズを見る', href: '#cat-live' },
+  beauty: { label: '美容・カラコンを見る', href: '#cat-beauty' },
+  sun: { label: '暑さ&紫外線対策を見る', href: '#cat-sun' },
+  travel: { label: '遠征準備を見る', href: '#cat-travel' },
+  daily: { label: '日用品まとめ買いを見る', href: '#cat-daily' }
+};
+document.getElementById('showResult').addEventListener('click', function(){
+  var checked = Array.from(document.querySelectorAll('.check input:checked')).map(function(input){ return input.dataset.target; });
+  var resultBox = document.getElementById('resultBox');
+  var links = document.getElementById('resultLinks');
+  links.innerHTML = '';
+  if(!checked.length){
+    links.innerHTML = '<a href="#products">まずは夏現場リストから見る<span>→</span></a>';
+  }else{
+    checked.forEach(function(key){
+      var item = categoryMap[key];
+      if(!item) return;
+      var a = document.createElement('a');
+      a.href = item.href;
+      a.innerHTML = item.label + '<span>→</span>';
+      links.appendChild(a);
+    });
+  }
+  resultBox.classList.add('show');
+});
+</script>
+</body>
+</html>
