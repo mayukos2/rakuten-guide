@@ -22,13 +22,13 @@
   images/ フォルダに下記ファイル名で入れると自動表示されます。
   画像が無い間は仮枠が表示されます。
 
-  images/01-hero.png             トップ背景
-  images/02-benefits.png         楽天で買うメリット図
-  images/03-marathon-flow.png    お買い物マラソンの仕組み図
-  images/04-check-before-buy.png 買う前チェック図
-  images/05-daymap.png           夏現場の1日マップ
-  images/06-products.png         商品カテゴリ見出し用
-  images/07-divider.png          区切り線
+  images/01-hero.svg             トップ背景
+  images/02-benefits.svg         楽天で買うメリット図
+  images/03-marathon-flow.svg    お買い物マラソンの仕組み図
+  images/04-check-before-buy.svg 買う前チェック図
+  images/05-daymap.svg           夏現場の1日マップ
+  images/06-products.svg         商品カテゴリ見出し用
+  images/07-divider.jpg          区切り線（今回は背景が透過ではないため未使用）
 
 【4】商品カード
   商品画像・価格・OFF率・リンクはあとで差し替える前提です。
@@ -456,7 +456,7 @@ p{font-size:.94rem}
 </style>
 </head>
 <body>
-<div class="fixed-bg"><img src="images/01-hero.png" alt="" onerror="this.remove()"></div>
+<div class="fixed-bg"><img src="images/01-hero.svg" alt="" onerror="this.remove()"></div>
 <main class="page">
   <header class="hero">
     <div class="hero-inner">
@@ -475,7 +475,7 @@ p{font-size:.94rem}
 
   <div class="content">
     <section id="entry">
-      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <div class="divider"><div class="ph contain"></div></div>
       <span class="eyebrow">最初にここ</span>
       <h2>買う前に、<span class="deco">まずここだけ</span>確認してね</h2>
       <p class="lead">楽天は「買う前に押す」が大事。エントリーやクーポンは、あとからだと対象外になることがあるよ。</p>
@@ -525,7 +525,7 @@ p{font-size:.94rem}
     </section>
 
     <section id="benefits">
-      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <div class="divider"><div class="ph contain"></div></div>
       <span class="eyebrow">楽天で買う理由</span>
       <h2>推し活準備こそ、<span class="deco">楽天でまとめる</span>とラク</h2>
       <p class="lead">楽天はポイントだけじゃなくて、クーポンも多い。いろんなお店で必要なものをまとめて買えるのが強いところ。</p>
@@ -537,7 +537,7 @@ p{font-size:.94rem}
           <div class="point"><span class="icon">旅</span><span><b>遠征なら楽天トラベルも見られる</b><span>買い物だけじゃなく、移動・宿の準備にもつなげやすい。</span></span></div>
           <div class="point"><span class="icon">P</span><span><b>貯まったポイントを次の推し活費へ</b><span>グッズ代・旅行費・普段の支払いに回せるのがうれしい。</span></span></div>
         </div>
-        <div class="visual"><div class="ph contain" data-img="images/02-benefits.png" data-label="images/02-benefits.png｜楽天で買うメリット図"></div></div>
+        <div class="visual"><div class="ph contain" data-img="images/02-benefits.svg" data-label="images/02-benefits.svg｜楽天で買うメリット図"></div></div>
       </div>
     </section>
 
@@ -552,7 +552,7 @@ p{font-size:.94rem}
           <div class="point"><span class="num">3</span><span><b>複数ショップで買うほどポイントUPしやすい</b><span>日用品・美容・暑さ対策をまとめる時に使いやすい。</span></span></div>
           <div class="point"><span class="num">4</span><span><b>クーポンは買う前に確認</b><span>先着・枚数限定・金額条件があることも多いよ。</span></span></div>
         </div>
-        <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.png" data-label="images/03-marathon-flow.png｜マラソンの仕組み図"></div></div>
+        <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.svg" data-label="images/03-marathon-flow.svg｜マラソンの仕組み図"></div></div>
         <div class="button-row">
           <a class="btn small" href="#" data-aff="entry-marathon">マラソンにエントリー</a>
           <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを見る</a>
@@ -562,7 +562,7 @@ p{font-size:.94rem}
     </section>
 
     <section id="schedule">
-      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <div class="divider"><div class="ph contain"></div></div>
       <span class="eyebrow">6月末に見るところ</span>
       <h2>買う前チェックは<span class="deco">ここ</span></h2>
       <p class="lead">日程・キャンペーン内容は公式公開後に更新予定。見る場所だけ先に決めておくと、当日あわてにくいよ。</p>
@@ -573,7 +573,7 @@ p{font-size:.94rem}
           <div class="time-card"><b>3. 開始直後・ショップ別クーポン</b><p>先着・枚数限定・金額条件があるので、買う前に見る。</p></div>
           <div class="time-card"><b>4. 在庫・OFF率・価格</b><p>人気商品は在庫や価格が動くので、投稿前と購入前に再確認。</p></div>
         </div>
-        <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.png" data-label="images/04-check-before-buy.png｜買う前チェック図"></div></div>
+        <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
           <a class="btn small" href="#" data-aff="entry-0and5">5と0のつく日を見る</a>
           <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを確認</a>
@@ -592,16 +592,16 @@ p{font-size:.94rem}
           <div class="time-card"><b>会場前</b><p>メイク直し、暑さ対策、うちわ・ペンラ周り</p></div>
           <div class="time-card"><b>帰宅後</b><p>クレンジング、ヘアケア、疲れケア、日用品補充</p></div>
         </div>
-        <div class="visual"><div class="ph contain" data-img="images/05-daymap.png" data-label="images/05-daymap.png｜夏現場の1日マップ"></div></div>
+        <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜夏現場の1日マップ"></div></div>
       </div>
     </section>
 
     <section id="products">
-      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="images/07-divider.png"></div></div>
+      <div class="divider"><div class="ph contain"></div></div>
       <span class="eyebrow">まゆこ的</span>
       <h2>夏現場おすすめを<span class="deco">ここにまとめる</span></h2>
       <p class="lead">商品画像・価格・OFF率・クーポンは、マラソン直前に確認して差し替える想定。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
-      <div class="visual"><div class="ph contain" data-img="images/06-products.png" data-label="images/06-products.png｜商品カテゴリ見出し用"></div></div>
+      <div class="visual"><div class="ph contain" data-img="images/06-products.svg" data-label="images/06-products.svg｜商品カテゴリ見出し用"></div></div>
       <nav class="category-nav" aria-label="商品カテゴリ">
         <a class="chip" href="#cat-live">現場おすすめ</a>
         <a class="chip" href="#cat-sun">暑さ&紫外線</a>
