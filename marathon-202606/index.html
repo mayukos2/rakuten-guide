@@ -13,9 +13,6 @@
   data-aff="entry-marathon"   お買い物マラソン エントリー
   data-aff="entry-0and5"      5と0のつく日
   data-aff="entry-3980"       3,980円以上買うなら確認
-  data-aff="entry-bulk"       まとめ買い前に確認したいキャンペーン
-  data-aff="coupon-list"      クーポン一覧
-  data-aff="room-collection"  ROOMコレクション
   data-aff="travel"           楽天トラベル
 
 【3】画像の差し替え
@@ -181,7 +178,7 @@ img{display:block;max-width:100%}
   line-height:1.38;
   color:var(--ink);
   font-weight:700;
-  letter-spacing:.03em;
+  letter-spacing:0;
   text-shadow:0 4px 18px rgba(255,255,255,.92);
   margin-bottom:13px;
 }
@@ -223,23 +220,14 @@ img{display:block;max-width:100%}
 .pr-mini{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:5px}
 .speech{
   position:relative;
-  background:#fff;
-  border:1px solid rgba(143,103,197,.16);
-  border-radius:22px;
-  padding:16px 17px;
-  box-shadow:var(--shadow-soft);
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
 }
 .speech::after{
-  content:"";
-  position:absolute;
-  left:34px;
-  bottom:-10px;
-  width:20px;
-  height:20px;
-  background:#fff;
-  border-right:1px solid rgba(143,103,197,.16);
-  border-bottom:1px solid rgba(143,103,197,.16);
-  transform:rotate(45deg);
+  display:none;
 }
 
 .content{padding:0 18px 72px}
@@ -285,20 +273,34 @@ section{margin:0 0 34px}
 .divider .ph img{object-fit:contain}
 .eyebrow{
   display:inline-block;
-  background:rgba(255,255,255,.75);
+  position:relative;
+  background:rgba(255,255,255,.9);
   color:var(--pink-deep);
-  padding:5px 14px;
+  padding:8px 16px;
   border-radius:999px;
+  border:1px solid rgba(143,103,197,.16);
   font-weight:700;
   font-size:.76rem;
   box-shadow:var(--shadow-soft);
-  margin-bottom:9px;
+  margin-bottom:15px;
+}
+.eyebrow::after{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:-6px;
+  width:12px;
+  height:12px;
+  background:rgba(255,255,255,.9);
+  border-right:1px solid rgba(143,103,197,.16);
+  border-bottom:1px solid rgba(143,103,197,.16);
+  transform:rotate(45deg);
 }
 h2{
   font-family:'Kaisei Decol','Shippori Mincho',serif;
   font-size:1.42rem;
   line-height:1.58;
-  font-weight:400;
+  font-weight:700;
   color:var(--lavender-deep);
   margin-bottom:15px;
 }
@@ -390,7 +392,7 @@ p{font-size:.94rem}
   font-family:'Kaisei Decol','Shippori Mincho',serif;
   font-size:1.02rem;
   color:var(--lavender-deep);
-  font-weight:400;
+  font-weight:700;
   margin-bottom:10px;
 }
 .result-links{display:grid;gap:8px}
@@ -471,6 +473,7 @@ p{font-size:.94rem}
   color:var(--lavender-deep);
   font-family:'Kaisei Decol','Shippori Mincho',serif;
   font-size:1.05rem;
+  font-weight:700;
   margin-bottom:8px;
 }
 .scene-card p{font-size:.84rem;color:var(--ink-soft)}
@@ -492,7 +495,7 @@ p{font-size:.94rem}
   font-family:'Kaisei Decol','Shippori Mincho',serif;
   color:var(--lavender-deep);
   font-size:1.06rem;
-  font-weight:400;
+  font-weight:700;
   margin-bottom:10px;
 }
 .products{display:grid;gap:12px}
@@ -564,8 +567,7 @@ p{font-size:.94rem}
 @media (min-width:520px){
   .hero h1{font-size:2.65rem}
   .hero-buttons,.button-row{grid-template-columns:1fr 1fr}
-  .entry-grid{grid-template-columns:1fr 1fr}
-  .entry-btn.is-primary{grid-column:1/-1}
+  .entry-grid{grid-template-columns:1fr}
   .visual .ph{min-height:260px}
 }
 </style>
@@ -604,15 +606,6 @@ p{font-size:.94rem}
           <a class="entry-btn" href="#" data-aff="entry-3980">
             <span class="ico">¥</span><span><strong>3,980円以上買うなら確認</strong><small>送料無料ライン周りも忘れずに</small></span><span class="arr">→</span>
           </a>
-          <a class="entry-btn" href="#" data-aff="entry-bulk">
-            <span class="ico">袋</span><span><strong>まとめ買い前に確認</strong><small>高めの買い物前に見る場所</small></span><span class="arr">→</span>
-          </a>
-          <a class="entry-btn" href="#" data-aff="coupon-list">
-            <span class="ico">券</span><span><strong>クーポン一覧</strong><small>ショップ別クーポンを拾う</small></span><span class="arr">→</span>
-          </a>
-          <a class="entry-btn" href="#room" data-aff="room-collection">
-            <span class="ico">R</span><span><strong>ROOMまとめを見る</strong><small>商品だけ見たい人向け</small></span><span class="arr">→</span>
-          </a>
         </div>
         <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
       </div>
@@ -645,11 +638,11 @@ p{font-size:.94rem}
       <p class="lead speech">楽天はポイントだけじゃなくて、クーポンも多い。いろんなお店で必要なものをまとめて買えるのが強いところ。</p>
       <div class="card">
         <div class="point-list">
-          <div class="point"><span class="icon">1</span><span><b>あとで書き換えるテキスト</b><span>推し活準備に楽天を使う理由をここに入れる。</span></span></div>
-          <div class="point"><span class="icon">2</span><span><b>あとで書き換えるテキスト</b><span>ポイント・クーポン・まとめ買いのベネフィットをここに入れる。</span></span></div>
-          <div class="point"><span class="icon">3</span><span><b>あとで書き換えるテキスト</b><span>現場前の駆け込み購入を減らす理由をここに入れる。</span></span></div>
-          <div class="point"><span class="icon">4</span><span><b>あとで書き換えるテキスト</b><span>貯まったポイントを推し活費へ回せる話をここに入れる。</span></span></div>
-          <div class="point"><span class="icon">5</span><span><b>あとで書き換えるテキスト</b><span>遠征・トラベル・リーベイツなどの広がりをここに入れる。</span></span></div>
+          <div class="point"><span class="icon">1</span><span><b>現場前の駆け込み買いを減らせる</b><span>コンビニ・ドラスト・駅ナカで急いで買う前に、必要なものを先にまとめやすい。</span></span></div>
+          <div class="point"><span class="icon">2</span><span><b>ポイントだけじゃなくクーポンも多い</b><span>同じ買うなら、マラソン・クーポン・5と0のつく日を重ねてお得を狙える。</span></span></div>
+          <div class="point"><span class="icon">3</span><span><b>美容も暑さ対策も一気に整う</b><span>カラコン、ヘアケア、日傘、冷感グッズまで、現場準備をまとめて見られる。</span></span></div>
+          <div class="point"><span class="icon">4</span><span><b>貯まったポイントを推し活費へ</b><span>グッズ代、遠征費、日用品の支払いに回せるから、次の楽しみが増える。</span></span></div>
+          <div class="point"><span class="icon">5</span><span><b>遠征や他サイト購入にも広がる</b><span>楽天トラベルやリーベイツも一緒に見ると、旅行や外部ショップ購入も拾える。</span></span></div>
         </div>
         <div class="visual"><div class="ph contain" data-img="images/02-benefits.svg" data-label="images/02-benefits.svg｜楽天で買うメリット図"></div></div>
       </div>
@@ -669,7 +662,7 @@ p{font-size:.94rem}
         <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.svg" data-label="images/03-marathon-flow.svg｜マラソンの仕組み図"></div></div>
         <div class="button-row">
           <a class="btn small" href="#" data-aff="entry-marathon">マラソンにエントリー</a>
-          <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを見る</a>
+          <a class="btn small secondary" href="#" data-aff="entry-3980">3,980円以上買うなら確認</a>
         </div>
         <div class="pr-mini">Rakuten pr</div>
       </div>
@@ -689,7 +682,7 @@ p{font-size:.94rem}
         <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
           <a class="btn small" href="#" data-aff="entry-0and5">5と0のつく日を見る</a>
-          <a class="btn small secondary" href="#" data-aff="coupon-list">クーポンを確認</a>
+          <a class="btn small secondary" href="#" data-aff="entry-3980">3,980円以上買うなら確認</a>
         </div>
       </div>
     </section>
@@ -700,10 +693,10 @@ p{font-size:.94rem}
       <p class="lead speech">現場の日って、家を出る前から帰ってきた後まで必要なものが多い。だからこそ、前もってまとめておくとラク。</p>
       <div class="card">
         <div class="scene-grid">
-          <div class="scene-card"><b>家を出る前</b><p>コメントコメントコメントコメントコメントコメント</p></div>
-          <div class="scene-card"><b>移動中</b><p>コメントコメントコメントコメントコメントコメント</p></div>
-          <div class="scene-card"><b>会場前</b><p>コメントコメントコメントコメントコメントコメント</p></div>
-          <div class="scene-card"><b>帰宅後</b><p>コメントコメントコメントコメントコメントコメント</p></div>
+          <div class="scene-card"><b>家を出る前</b><p>カラコン・日焼け止め・ヘアセット・汗対策。朝バタつかないように前日までに準備。</p></div>
+          <div class="scene-card"><b>移動中</b><p>モバイルバッテリー・冷感グッズ・飲み物・収納。移動で体力を削られないように。</p></div>
+          <div class="scene-card"><b>会場前</b><p>メイク直し・暑さ対策・チケット確認・うちわ周り。可愛い状態で推しに会う準備。</p></div>
+          <div class="scene-card"><b>帰宅後</b><p>クレンジング・ヘアケア・疲れケア・日用品補充。次の現場にもつながる整え時間。</p></div>
         </div>
         <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜夏現場の1日マップ"></div></div>
       </div>
@@ -734,7 +727,7 @@ p{font-size:.94rem}
                 <h4>商品名を入れる</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
                 <p>まゆこ的おすすめ理由と、現場でどう使うかを書く。</p>
-                <a class="p-link" href="#" data-aff="product-live-1">▶【これ】の詳細を見る</a><span class="p-pr">Rakuten pr</span>
+                <a class="p-link" href="#" data-aff="product-live-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
           </div>
@@ -749,7 +742,7 @@ p{font-size:.94rem}
                 <h4>商品名を入れる</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
                 <p>外待ち・移動・日差し対策で助かるポイントを書く。</p>
-                <a class="p-link" href="#" data-aff="product-sun-1">▶【これ】の詳細を見る</a><span class="p-pr">Rakuten pr</span>
+                <a class="p-link" href="#" data-aff="product-sun-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
           </div>
@@ -764,7 +757,7 @@ p{font-size:.94rem}
                 <h4>商品名を入れる</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
                 <p>カラコン・ヘアケア・メイク直しなど、現場前に整える理由を書く。</p>
-                <a class="p-link" href="#" data-aff="product-beauty-1">▶【これ】の詳細を見る</a><span class="p-pr">Rakuten pr</span>
+                <a class="p-link" href="#" data-aff="product-beauty-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
           </div>
@@ -779,7 +772,7 @@ p{font-size:.94rem}
                 <h4>商品名を入れる</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
                 <p>3ヶ月以内に使うもの・どうせ買うものをまとめる理由を書く。</p>
-                <a class="p-link" href="#" data-aff="product-daily-1">▶【これ】の詳細を見る</a><span class="p-pr">Rakuten pr</span>
+                <a class="p-link" href="#" data-aff="product-daily-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
           </div>
@@ -794,7 +787,7 @@ p{font-size:.94rem}
                 <h4>商品名を入れる</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
                 <p>荷物多くて肩ちぎれそう…遠征パッキングを劇的に軽くする神アイテムを入れる。</p>
-                <a class="p-link" href="#" data-aff="product-travel-1">▶【これ】の詳細を見る</a><span class="p-pr">Rakuten pr</span>
+                <a class="p-link" href="#" data-aff="product-travel-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
           </div>
