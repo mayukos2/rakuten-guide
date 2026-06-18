@@ -903,7 +903,17 @@ document.getElementById('showResult').addEventListener('click', function(){
   var checked = Array.from(document.querySelectorAll('.check input:checked'));
   var resultBox = document.getElementById('resultBox');
   var img = document.getElementById('diagnosisImage');
-  var result = diagnosisResults[Math.min(checked.length, diagnosisResults.length - 1)];
+  if(!checked.length){
+    img.removeAttribute('src');
+    img.alt = '';
+    document.querySelector('#resultBox h3').textContent = '1つ以上チェックしてね';
+    document.querySelector('.result-note').textContent = '当てはまるものを選ぶと、あなたの診断結果が出るよ💜';
+    resultBox.classList.add('show');
+    return;
+  }
+  var result = diagnosisResults[Math.min(checked.length - 1, diagnosisResults.length - 1)];
+  document.querySelector('#resultBox h3').textContent = 'あなたの診断結果はこちら';
+  document.querySelector('.result-note').textContent = 'このまま下に進んで、必要なところだけ見てね💜';
   img.src = result.src;
   img.alt = result.alt;
   resultBox.classList.add('show');
