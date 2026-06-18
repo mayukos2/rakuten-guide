@@ -27,6 +27,11 @@
   images/05-daymap.svg           夏現場の1日マップ
   images/06-products.svg         商品カテゴリ見出し用
   images/07-divider.png          区切り線
+  images/08-diagnosis-watch.jpg     まずは様子見タイプ
+  images/09-diagnosis-review.jpg    ちょこ買い見直しタイプ
+  images/10-diagnosis-start.jpg     現場準備はじめどきタイプ
+  images/11-diagnosis-marathon.jpg  今すぐマラソン活用タイプ
+  images/12-diagnosis-hardcore.jpg  推し活準備ガチ活用タイプ
 
 【4】商品カード
   商品画像・価格・OFF率・リンクはあとで差し替える前提です。
@@ -386,17 +391,21 @@ p{font-size:.94rem}
   font-weight:700;
   margin-bottom:10px;
 }
-.result-links{display:grid;gap:8px}
-.result-links a{
-  text-decoration:none;
+.diagnosis-image{
+  overflow:hidden;
+  border-radius:18px;
   background:var(--lavender-mist);
-  border-radius:15px;
-  padding:11px 13px;
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  font-size:.86rem;
-  font-weight:700;
+  box-shadow:0 10px 24px rgba(143,103,197,.16);
+}
+.diagnosis-image img{
+  width:100%;
+  height:auto;
+}
+.result-note{
+  margin-top:12px;
+  color:var(--ink-soft);
+  font-size:.78rem;
+  text-align:center;
 }
 
 .point-list{display:grid;gap:11px}
@@ -630,10 +639,13 @@ p{font-size:.94rem}
           <label class="check"><input type="checkbox" data-target="daily"><span class="box"></span><span><b>日用品を買い足す必要あり🧻</b><small>どうせ使うものは、まとめて買うべし</small></span></label>          
           <label class="check"><input type="checkbox" data-target="travel"><span class="box"></span><span><b>遠征予定あり🚅🚘✈️</b><small>荷物多くて肩ちぎれそう…を減らしたい</small></span></label>
         </div>
-        <button class="btn" type="button" id="showResult">おすすめを見る♡</button>
+        <button class="btn" type="button" id="showResult">診断結果を見る♡</button>
         <div class="result" id="resultBox">
-          <h3>あなたはここから見るのがおすすめ</h3>
-          <div class="result-links" id="resultLinks"></div>
+          <h3>あなたの診断結果はこちら</h3>
+          <div class="diagnosis-image">
+            <img id="diagnosisImage" src="" alt="">
+          </div>
+          <p class="result-note">このまま下に進んで、必要なところだけ見てね💜</p>
         </div>
       </div>
     </section>
@@ -880,30 +892,20 @@ document.querySelectorAll('.ph[data-img]').forEach(function(box){
   img.src = src;
 });
 
-var categoryMap = {
-  live: { label: '現場おすすめグッズを見る', href: '#cat-live' },
-  beauty: { label: '美容・カラコンを見る', href: '#cat-beauty' },
-  sun: { label: '暑さ&紫外線対策を見る', href: '#cat-sun' },
-  travel: { label: '遠征準備を見る', href: '#cat-travel' },
-  daily: { label: '日用品まとめ買いを見る', href: '#cat-daily' }
-};
+var diagnosisResults = [
+  { src: 'images/08-diagnosis-watch.jpg', alt: '診断結果 まずは様子見タイプ' },
+  { src: 'images/09-diagnosis-review.jpg', alt: '診断結果 ちょこ買い見直しタイプ' },
+  { src: 'images/10-diagnosis-start.jpg', alt: '診断結果 現場準備はじめどきタイプ' },
+  { src: 'images/11-diagnosis-marathon.jpg', alt: '診断結果 今すぐマラソン活用タイプ' },
+  { src: 'images/12-diagnosis-hardcore.jpg', alt: '診断結果 推し活準備ガチ活用タイプ' }
+];
 document.getElementById('showResult').addEventListener('click', function(){
-  var checked = Array.from(document.querySelectorAll('.check input:checked')).map(function(input){ return input.dataset.target; });
+  var checked = Array.from(document.querySelectorAll('.check input:checked'));
   var resultBox = document.getElementById('resultBox');
-  var links = document.getElementById('resultLinks');
-  links.innerHTML = '';
-  if(!checked.length){
-    links.innerHTML = '<a href="#products">まずは夏現場リストから見る<span>→</span></a>';
-  }else{
-    checked.forEach(function(key){
-      var item = categoryMap[key];
-      if(!item) return;
-      var a = document.createElement('a');
-      a.href = item.href;
-      a.innerHTML = item.label + '<span>→</span>';
-      links.appendChild(a);
-    });
-  }
+  var img = document.getElementById('diagnosisImage');
+  var result = diagnosisResults[Math.min(checked.length, diagnosisResults.length - 1)];
+  img.src = result.src;
+  img.alt = result.alt;
   resultBox.classList.add('show');
 });
 </script>
