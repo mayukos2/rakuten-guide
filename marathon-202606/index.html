@@ -338,6 +338,44 @@ p{font-size:.94rem}
 .entry-btn strong{display:block;font-size:.91rem;line-height:1.4}
 .entry-btn small{display:block;color:var(--ink-soft);font-size:.71rem;margin-top:1px}
 .entry-btn .arr{color:var(--lavender-deep);font-weight:700}
+.quick-steps{
+  display:grid;
+  gap:9px;
+  margin-bottom:14px;
+  padding:14px;
+  border-radius:20px;
+  background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(238,230,250,.72));
+  border:1px solid rgba(143,103,197,.16);
+}
+.quick-steps b{
+  color:var(--lavender-deep);
+  font-size:.9rem;
+}
+.quick-step{
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:9px;
+  align-items:center;
+  font-size:.82rem;
+  line-height:1.55;
+}
+.quick-step span:first-child{
+  width:30px;
+  height:30px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,var(--pink),var(--lavender-soft));
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.official-note{
+  color:var(--ink-soft);
+  font-size:.68rem;
+  text-align:center;
+  line-height:1.6;
+  margin-top:7px;
+}
 .entry-btn.is-primary{
   background:linear-gradient(135deg,#fff,rgba(238,230,250,.96));
   border-color:rgba(143,103,197,.28);
@@ -495,17 +533,25 @@ p{font-size:.94rem}
 }
 .scene-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.65}
 
+.category-lead{
+  color:var(--lavender-deep);
+  text-align:center;
+  font-size:.84rem;
+  font-weight:700;
+  margin:8px 0 10px;
+}
 .category-nav{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:2px 0 12px;margin-bottom:10px}
 .chip{
   text-align:center;
   text-decoration:none;
   border-radius:999px;
-  background:#fff;
+  background:rgba(255,255,255,.94);
   border:1px solid rgba(143,103,197,.18);
-  padding:9px 13px;
+  padding:10px 13px;
   color:var(--lavender-deep);
   font-size:.82rem;
   font-weight:700;
+  box-shadow:0 7px 16px rgba(143,103,197,.08);
 }
 .product-section{margin-top:18px}
 .product-section h3{
@@ -612,6 +658,12 @@ p{font-size:.94rem}
       <h2>まずは【これ👇】タップして<br><span class="deco">エントリー完了</span>させて！</h2>
       <p class="lead speech">絶対に忘れずに、ここから事前エントリーして！<br>あとからだと対象外になっちゃうよ😢</p>
       <div class="card">
+        <div class="quick-steps">
+          <b>超初心者さんは、やること3つだけ！</b>
+          <div class="quick-step"><span>1</span><p>まずマラソンにエントリー</p></div>
+          <div class="quick-step"><span>2</span><p>5と0のつく日を確認</p></div>
+          <div class="quick-step"><span>3</span><p>必要なものをカテゴリ別に見る</p></div>
+        </div>
         <div class="entry-grid">
           <a class="entry-btn is-primary" href="#" data-aff="entry-marathon">
             <span class="ico">1</span><span><strong>イベントにまずエントリー</strong><small>コレ押さなきゃ始まらない🙂‍↕️</small></span><span class="arr">👆</span>
@@ -624,6 +676,7 @@ p{font-size:.94rem}
           </a>
         </div>
         <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
@@ -684,6 +737,7 @@ p{font-size:.94rem}
           <a class="btn small secondary" href="#" data-aff="entry-3980">▶︎ 3,980円以上買うならこれも✊</a>
         </div>
         <div class="pr-mini">Rakuten pr</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
@@ -702,6 +756,7 @@ p{font-size:.94rem}
           <a class="btn small" href="#" data-aff="entry-0and5">5と0のつく日を見る</a>
         </div>
         <div class="pr-mini">Rakuten pr</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
@@ -720,6 +775,7 @@ p{font-size:.94rem}
           <a class="btn small" href="#" data-aff="entry-0and5">▶︎5と0のつく日にエントリー✊</a>
         <div class="pr-mini">Rakuten pr<br>※5と0のつく日以外は、リンクに飛べません。</div>
         </div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
@@ -755,12 +811,13 @@ p{font-size:.94rem}
       <h2><span class="deco">夏の現場に向けて準備すべし！</span></h2>
       <p class="lead speech">商品画像・価格・OFF率・クーポンは、マラソン直前に確認して差し替える想定。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
       <div class="visual"><div class="ph contain" data-img="images/06-products.svg" data-label="images/06-products.svg｜商品カテゴリ見出し用"></div></div>
+      <p class="category-lead">気になるカテゴリから見てね👇</p>
       <nav class="category-nav" aria-label="商品カテゴリ">
-        <a class="chip" href="#cat-live">現場おすすめ</a>
         <a class="chip" href="#cat-sun">暑さ&紫外線</a>
         <a class="chip" href="#cat-beauty">美容</a>
-        <a class="chip" href="#cat-daily">日用品</a>
         <a class="chip" href="#cat-travel">遠征</a>
+        <a class="chip" href="#cat-daily">日用品</a>
+        <a class="chip" href="#cat-live">現場おすすめ</a>
       </nav>
 
       <div class="card">
@@ -771,9 +828,9 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>商品名を入れる</h4>
+                <h4>ライブ中に充電切れるのだけは無理😭</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
-                <p>まゆこ的おすすめ理由と、現場でどう使うかを書く。</p>
+                <p>モバイルバッテリーやペンラ周りなど、現場で困る前に備えたいものを入れる。</p>
                 <a class="p-link" href="#" data-aff="product-live-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
@@ -786,9 +843,9 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>商品名を入れる</h4>
+                <h4>物販2時間で顔真っ赤は避けたい🥵</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
-                <p>外待ち・移動・日差し対策で助かるポイントを書く。</p>
+                <p>日傘・冷感グッズ・UV対策など、外待ちのしんどさを軽くするものを入れる。</p>
                 <a class="p-link" href="#" data-aff="product-sun-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
@@ -801,9 +858,9 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>商品名を入れる</h4>
+                <h4>推しに会う日は、いつもより整えたい💄</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
-                <p>カラコン・ヘアケア・メイク直しなど、現場前に整える理由を書く。</p>
+                <p>カラコン・ヘアケア・メイク直しなど、現場前の自分磨きに使うものを入れる。</p>
                 <a class="p-link" href="#" data-aff="product-beauty-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
@@ -816,9 +873,9 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>商品名を入れる</h4>
+                <h4>どうせ使う日用品、今まとめたい🧻</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
-                <p>3ヶ月以内に使うもの・どうせ買うものをまとめる理由を書く。</p>
+                <p>3ヶ月以内に使うものや、ストック切れしそうなものを入れる。</p>
                 <a class="p-link" href="#" data-aff="product-daily-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
@@ -831,9 +888,9 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>商品名を入れる</h4>
+                <h4>遠征の荷物で肩ちぎれそう問題😭</h4>
                 <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
-                <p>荷物多くて肩ちぎれそう…遠征パッキングを劇的に軽くする神アイテムを入れる。</p>
+                <p>収納・軽量バッグ・移動中に助かるものなど、遠征をラクにするものを入れる。</p>
                 <a class="p-link" href="#" data-aff="product-travel-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
               </div>
             </article>
