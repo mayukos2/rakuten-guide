@@ -455,28 +455,63 @@ p{font-size:.94rem}
   color:var(--pink-deep);
   line-height:1.45;
 }
+.pointday-box{
+  margin:15px 0 14px;
+  padding:16px;
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,244,200,.46));
+  border:1px solid rgba(231,201,120,.34);
+  box-shadow:var(--shadow-soft);
+}
+.pointday-box b{
+  display:block;
+  color:#967544;
+  font-family:'Kaisei Decol','Shippori Mincho',serif;
+  font-size:1rem;
+  margin-bottom:8px;
+}
+.pointday-box p{font-size:.84rem;color:var(--ink);line-height:1.75}
+.pointday-box ul{display:grid;gap:6px;margin-top:9px;padding-left:1.15em}
+.pointday-box li{font-size:.78rem;color:var(--ink-soft);line-height:1.65}
 .scene-grid{
   display:grid;
-  gap:12px;
-  margin-top:16px;
+  gap:9px;
+  margin-top:12px;
 }
 .scene-card{
-  min-height:148px;
-  border-radius:24px;
-  padding:18px;
-  background:linear-gradient(150deg,#fff,rgba(238,230,250,.72));
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:10px;
+  align-items:start;
+  min-height:0;
+  border-radius:18px;
+  padding:11px 12px;
+  background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(248,243,255,.84));
   border:1px solid rgba(143,103,197,.16);
   box-shadow:var(--shadow-soft);
+  line-height:1.55;
+}
+.scene-no{
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,var(--lavender-soft),var(--pink));
+  color:var(--lavender-deep);
+  font-family:'Kaisei Decol','Shippori Mincho',serif;
+  font-weight:700;
+  font-size:.88rem;
 }
 .scene-card b{
   display:block;
   color:var(--lavender-deep);
   font-family:'Kaisei Decol','Shippori Mincho',serif;
-  font-size:1.05rem;
+  font-size:.98rem;
   font-weight:700;
-  margin-bottom:8px;
+  margin-bottom:3px;
 }
-.scene-card p{font-size:.84rem;color:var(--ink-soft)}
+.scene-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.65}
 
 .category-nav{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:2px 0 12px;margin-bottom:10px}
 .chip{
@@ -674,6 +709,15 @@ p{font-size:.94rem}
       <h2>6/20は<span class="deco">開始日 × 0のつく日</span></h2>
       <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">6/20 20:00〜6/26 01:59</span>今回は初日の6/20が0のつく日と重なるから、夏現場前に買うものがある子はかなり見ておきたいタイミングだよ。</p>
       <div class="card">
+        <div class="pointday-box">
+          <b>5と0のつく日って？</b>
+          <p>毎月5日・10日・15日・20日・25日・30日に開催される、楽天カード利用でポイントアップを狙える日だよ。買いまわりと重なる日は、現場準備をまとめるチャンス。</p>
+          <ul>
+            <li>エントリーは開催日ごとに必要</li>
+            <li>楽天カード利用で、通常ポイント込みの合計ポイント4倍が目安</li>
+            <li>上限ポイント・対象外サービス・条件があるので、購入前に公式ページで確認してね</li>
+          </ul>
+        </div>
         <div class="timeline">
           <div class="time-card is-hot"><b>1. 【激アツ注意報】6/20(土) 20:00</b><p>開始日＋0のつく日。開始2時間限定の半額クーポンは、マジで一瞬で枯れる（売り切れる）から、今のうちに買う候補はカートイン必須！</p></div>
           <div class="time-card"><b>2. 事前に買う候補を決めておく</b><p>20時になってから探すと焦るので、日傘・美容・日用品などは先にリスト化しておく。</p></div>
@@ -692,13 +736,13 @@ p{font-size:.94rem}
       <h2>夏現場、<span class="deco">こうやって整えよ</span></h2>
       <p class="lead speech">現場の日って、家を出る前から帰ってきた後まで必要なものが多い。だからこそ、前もってまとめておくとラク。</p>
       <div class="card">
-        <div class="scene-grid">
-          <div class="scene-card"><b>家を出る前</b><p>カラコン・日焼け止め・ヘアセット・汗対策。朝バタつかないように前日までに準備。</p></div>
-          <div class="scene-card"><b>移動中</b><p>モバイルバッテリー・冷感グッズ・飲み物・収納。移動で体力を削られないように。</p></div>
-          <div class="scene-card"><b>会場前</b><p>メイク直し・暑さ対策・チケット確認・うちわ周り。可愛い状態で推しに会う準備。</p></div>
-          <div class="scene-card"><b>帰宅後</b><p>クレンジング・ヘアケア・疲れケア・日用品補充。次の現場にもつながる整え時間。</p></div>
-        </div>
         <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜夏現場の1日マップ"></div></div>
+        <div class="scene-grid">
+          <div class="scene-card"><span class="scene-no">01</span><span><b>家を出る前</b><p>カラコン・日焼け止め・ヘアセット・汗対策。朝バタつかないように前日までに準備。</p></span></div>
+          <div class="scene-card"><span class="scene-no">02</span><span><b>移動中</b><p>モバイルバッテリー・冷感グッズ・飲み物・収納。移動で体力を削られないように。</p></span></div>
+          <div class="scene-card"><span class="scene-no">03</span><span><b>会場前</b><p>メイク直し・暑さ対策・チケット確認・うちわ周り。可愛い状態で推しに会う準備。</p></span></div>
+          <div class="scene-card"><span class="scene-no">04</span><span><b>帰宅後</b><p>クレンジング・ヘアケア・疲れケア・日用品補充。次の現場にもつながる整え時間。</p></span></div>
+        </div>
       </div>
     </section>
 
