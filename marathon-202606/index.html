@@ -26,7 +26,7 @@
   images/04-check-before-buy.svg 買う前チェック図
   images/05-daymap.svg           夏現場の1日マップ
   images/06-products.svg         商品カテゴリ見出し用
-  images/07-divider.jpg          区切り線（今回は背景が透過ではないため未使用）
+  images/07-divider.svg          区切り線
 
 【4】商品カード
   商品画像・価格・OFF率・リンクはあとで差し替える前提です。
@@ -253,6 +253,8 @@ section{margin:0 0 34px}
   box-shadow:var(--shadow-soft);
   opacity:1;
 }
+.divider .ph.has-img::before,
+.divider .ph.has-img::after{display:none}
 .divider .ph img{object-fit:contain}
 .eyebrow{
   display:inline-block;
@@ -590,7 +592,7 @@ p{font-size:.94rem}
 
   <div class="content">
     <section id="entry">
-      <div class="divider"><div class="ph contain"></div></div>
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.svg" data-label="区切り線"></div></div>
       <span class="eyebrow">最初にここ</span>
       <h2>まずは【これ👇】タップして<br><span class="deco">エントリー完了</span>させて！</h2>
       <p class="lead speech">絶対に忘れないうちに、ここから事前エントリーポチッ👆 あとからだと対象外になっちゃうよ😢</p>
@@ -631,7 +633,7 @@ p{font-size:.94rem}
     </section>
 
     <section id="benefits">
-      <div class="divider"><div class="ph contain"></div></div>
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.svg" data-label="区切り線"></div></div>
       <span class="eyebrow">楽天で買う理由</span>
       <h2>オタクにこそ<br><span class="deco">楽天で推し活準備</span>すべし！</h2>
       <p class="lead speech">楽天はポイントだけじゃなくて、クーポンも多い。いろんなお店で必要なものをまとめて買えるのが強いところ。</p>
@@ -685,7 +687,7 @@ p{font-size:.94rem}
     </section>
 
     <section id="schedule">
-      <div class="divider"><div class="ph contain"></div></div>
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.svg" data-label="区切り線"></div></div>
       <span class="eyebrow">今回はここが狙い目✨</span>
       <h2>6/20は<span class="deco">開始日 × 0のつく日</span></h2>
       <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">6/20 20:00〜6/26 01:59</span>今回は初日の6/20が0のつく日と重なるから、夏現場前に買うものがある子はかなり見ておきたいタイミングだよ。</p>
@@ -719,7 +721,7 @@ p{font-size:.94rem}
     </section>
 
     <section id="products">
-      <div class="divider"><div class="ph contain"></div></div>
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.svg" data-label="区切り線"></div></div>
       <span class="eyebrow">まゆこ的</span>
       <h2>まゆこオススメ<br><span class="deco">夏の現場に向けて準備すべし！</span></h2>
       <p class="lead speech">商品画像・価格・OFF率・クーポンは、マラソン直前に確認して差し替える想定。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
