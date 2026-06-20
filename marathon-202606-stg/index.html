@@ -9,11 +9,11 @@
   https://mayukos2.github.io/rakuten-guide/marathon-202606/
 
 【2】アフィリンクの差し替え
-  未設定の data-aff 付きリンクがある場合は差し替えます。
+  href="#" のままになっている data-aff 付きリンクを差し替えます。
   data-aff="entry-marathon"   お買い物マラソン　エントリー（https://a.r10.to/hgAVab）
-  data-aff="entry-0and5"      5と0のつく日（https://a.r10.to/hRyOO5）
-  data-aff="entry-3980"       3,980円以上買うなら確認（未設定）
-  data-aff="travel"           楽天トラベル（未設定）
+  data-aff="entry-0and5"      5と0のつく日
+  data-aff="entry-3980"       3,980円以上買うなら確認
+  data-aff="travel"           楽天トラベル
 
 【3】画像の差し替え
   images/ フォルダに下記ファイル名で入れると自動表示されます。
@@ -34,8 +34,7 @@
   images/12-diagnosis-hardcore.jpg  推し活準備ガチ活用タイプ
 
 【4】商品カード
-  本番ページでは商品カード部分を一旦外しています。
-  商品画像・価格・OFF率・リンクはstgで整えてから本番へ反映します。
+  商品画像・価格・OFF率・リンクはあとで差し替える前提です。
   料率は読者向けには出さず、OFF率・クーポン・価格目安だけを書く方針。
 ==================================================================
 -->
@@ -43,7 +42,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>楽天マラソンで夏現場準備｜推しに会う準備、まとめて整えよ♡</title>
+<title>【STG】楽天マラソンで夏現場準備｜推しに会う準備、まとめて整えよ♡</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="夏現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -641,7 +641,7 @@ p{font-size:.94rem}
 <main class="page">
   <header class="hero">
     <div class="hero-inner">
-      <div class="pr-top">PR｜楽天アフィリエイトを利用しています</div>
+      <div class="pr-top">STG｜改善作業用ページ / PR｜楽天アフィリエイトを利用しています</div>
       <div class="fv-banner">
         <img src="images/00-fv.jpg" alt="楽天お買い物マラソン 推し活準備ガイド">
         <h1 class="sr-only">楽天お買い物マラソン 推し活準備ガイド</h1>
@@ -675,6 +675,9 @@ p{font-size:.94rem}
           </a>
           <a class="entry-btn" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">
             <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>持ってる人は買う日によって<br>ポイントUP✨</small></span><span class="arr">👆</span>
+          </a>
+          <a class="entry-btn" href="#" data-aff="entry-3980">
+            <span class="ico">3</span><span><strong>3,980円以上買うならコレも！</strong><small>送料無料にもなるお店がたくさん！</small></span><span class="arr">👆</span>
           </a>
         </div>
         <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
@@ -736,6 +739,7 @@ p{font-size:.94rem}
         <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.svg" data-label="images/03-marathon-flow.svg｜マラソンの仕組み図"></div></div>
         <div class="button-row">
           <a class="btn small" href="https://a.r10.to/hgAVab" data-aff="entry-marathon">▶︎ 楽天マラソンへエントリー✊</a>
+          <a class="btn small secondary" href="#" data-aff="entry-3980">▶︎ 3,980円以上買うならこれも✊</a>
         </div>
         <div class="pr-mini">Rakuten pr</div>
         <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
@@ -810,18 +814,106 @@ p{font-size:.94rem}
       <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
       <span class="eyebrow">まゆこオススメ💜</span>
       <h2><span class="deco">夏の現場に向けて準備すべし！</span></h2>
-      <p class="lead speech">商品リンクはこのあと追加予定。まずは、現場前に何を準備するかだけチェックしてね。</p>
+      <p class="lead speech">商品画像・価格・OFF率・クーポンは、マラソン直前に確認して差し替える想定。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
       <div class="visual"><div class="ph contain" data-img="images/06-products.svg" data-label="images/06-products.svg｜商品カテゴリ見出し用"></div></div>
       <p class="category-lead">気になるカテゴリから見てね👇</p>
       <nav class="category-nav" aria-label="商品カテゴリ">
-        <span class="chip">暑さ&紫外線</span>
-        <span class="chip">美容</span>
-        <span class="chip">遠征</span>
-        <span class="chip">日用品</span>
-        <span class="chip">現場おすすめ</span>
+        <a class="chip" href="#cat-sun">暑さ&紫外線</a>
+        <a class="chip" href="#cat-beauty">美容</a>
+        <a class="chip" href="#cat-travel">遠征</a>
+        <a class="chip" href="#cat-daily">日用品</a>
+        <a class="chip" href="#cat-live">現場おすすめ</a>
       </nav>
+
       <div class="card">
-        <p class="lead">このあと、まゆこが実際に使っているもの・買う予定のものを商品カードで追加していくね。急ぎで買う前に、まずは上のエントリーだけ済ませておいてね。</p>
+        <div class="social-proof">王冠 SNSで話題のアイテムもここにまとめる予定！</div>
+        <div class="product-section" id="cat-live">
+          <h3>現場おすすめグッズ</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>ライブ中に充電切れるのだけは無理😭</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>モバイルバッテリーやペンラ周りなど、現場で困る前に備えたいものを入れる。</p>
+                <a class="p-link" href="#" data-aff="product-live-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-sun">
+          <h3>暑さ&紫外線対策</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>物販2時間で顔真っ赤は避けたい🥵</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>日傘・冷感グッズ・UV対策など、外待ちのしんどさを軽くするものを入れる。</p>
+                <a class="p-link" href="#" data-aff="product-sun-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-beauty">
+          <h3>美容</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>推しに会う日は、いつもより整えたい💄</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>カラコン・ヘアケア・メイク直しなど、現場前の自分磨きに使うものを入れる。</p>
+                <a class="p-link" href="#" data-aff="product-beauty-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-daily">
+          <h3>日用品</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>どうせ使う日用品、今まとめたい🧻</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>3ヶ月以内に使うものや、ストック切れしそうなものを入れる。</p>
+                <a class="p-link" href="#" data-aff="product-daily-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="cat-travel">
+          <h3>遠征</h3>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-label="商品画像"></div>
+              <div class="p-body">
+                <h4>遠征の荷物で肩ちぎれそう問題😭</h4>
+                <div class="tags"><span class="tag">価格目安</span><span class="tag pink">OFF率/クーポン</span></div>
+                <p>収納・軽量バッグ・移動中に助かるものなど、遠征をラクにするものを入れる。</p>
+                <a class="p-link" href="#" data-aff="product-travel-1">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+          <div class="button-row">
+            <a class="btn small secondary" href="#" data-aff="travel">楽天トラベルも見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="room">
+      <div class="card room-card">
+        <span class="eyebrow">一覧で見たい人へ</span>
+        <h2>その他もオススメ<span class="deco">いっぱい</span>✨</h2>
+        <p class="lead">ここで紹介した商品も含めて、まゆこオススメ商品は楽天ROOMにまとめてるよ！こっちもチェックしてね！</p>
+        <a class="btn" href="#" data-aff="room-collection">楽天ROOMを見る</a>
+        <div class="pr-mini">Rakuten pr</div>
       </div>
     </section>
 

@@ -23,7 +23,14 @@ https://github.com/mayukos2/rakuten-guide.git
 ```text
 https://mayukos2.github.io/rakuten-guide/
 https://mayukos2.github.io/rakuten-guide/marathon-202606/
+https://mayukos2.github.io/rakuten-guide/marathon-202606-stg/
 ```
+
+運用ルール:
+
+- `marathon-202606/` は本番ページ。フォロワーへ案内するURL。
+- `marathon-202606-stg/` は改善用のステージングページ。商品カード追加やエントリー導線の改良は先にここで行う。
+- stgで確認して問題なければ、本番 `marathon-202606/` に反映する。
 
 ## 2. このタスクで主に作業したファイル
 
@@ -49,6 +56,10 @@ rakuten-guide-live/
       10-diagnosis-start.jpg
       11-diagnosis-marathon.jpg
       12-diagnosis-hardcore.jpg
+  marathon-202606-stg/
+    index.html
+    images/
+      本番と同じ画像一式
 ```
 
 現在の主作業ページ:
@@ -221,7 +232,8 @@ images/07-divider.png
 
 - 39ショップリンクはまだ未反映。
 - 6月末マラソンの商品選定が未完了。
-- 商品カードはまだ仮の商品画像・価格・OFF率・クーポン表記。
+- 本番ページの商品カードは一旦非表示。stgページには改良用として商品カード枠を残している。
+- stgページの商品カードはまだ仮の商品画像・価格・OFF率・クーポン表記。
 - 商品URL投げ込みページから、LP掲載商品を選ぶ必要がある。
 - 採用商品は最終的にアフィリエイトリンクへ差し替える。
 - Downloadsに残っている古いHTML/zip/CSVを、移行前に整理する。
