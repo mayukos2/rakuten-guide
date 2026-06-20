@@ -192,6 +192,8 @@ img{display:block;max-width:100%}
   align-items:center;
   justify-content:center;
   gap:8px;
+  width:100%;
+  max-width:430px;
   min-height:54px;
   padding:13px 18px;
   border-radius:999px;
@@ -201,12 +203,16 @@ img{display:block;max-width:100%}
   font-family:var(--font-round);
   font-size:.96rem;
   font-weight:700;
+  line-height:1.45;
+  text-align:center;
   border:none;
   box-shadow:0 13px 28px rgba(143,103,197,.32);
   cursor:pointer;
 }
 .btn.secondary{background:rgba(255,255,255,.86);color:var(--lavender-deep);border:1px solid rgba(143,103,197,.24)}
 .btn.small{min-height:46px;font-family:var(--font-round);font-weight:700;font-size:.88rem}
+.button-row{grid-template-columns:1fr}
+.entry-actions{margin-top:16px}
 .pr-mini{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:5px}
 .speech{
   position:relative;
@@ -630,7 +636,7 @@ p{font-size:.94rem}
 
 @media (min-width:520px){
   .hero h1{font-size:2.65rem}
-  .hero-buttons,.button-row{grid-template-columns:1fr 1fr}
+  .hero-buttons{grid-template-columns:1fr 1fr}
   .entry-grid{grid-template-columns:1fr}
   .visual .ph{min-height:260px}
 }
@@ -649,10 +655,6 @@ p{font-size:.94rem}
       <div class="hero-copy">
         <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、ライブ当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>欲しいグッズを実質タダ</b><br>にしちゃおう✊✨!!</p>
       </div>
-      <div class="hero-buttons">
-        <a class="btn" href="#entry">エントリーを見る</a>
-        <a class="btn secondary" href="#products">アイテムを見る</a>
-      </div>
     </div>
   </header>
 
@@ -669,13 +671,9 @@ p{font-size:.94rem}
           <div class="quick-step"><span>2</span><p>5と0のつく日を確認</p></div>
           <div class="quick-step"><span>3</span><p>必要なものをカテゴリ別に見る</p></div>
         </div>
-        <div class="entry-grid">
-          <a class="entry-btn is-primary" href="https://a.r10.to/hgAVab" data-aff="entry-marathon">
-            <span class="ico">1</span><span><strong>イベントにまずエントリー</strong><small>コレ押さなきゃ始まらない🙂‍↕️</small></span><span class="arr">👆</span>
-          </a>
-          <a class="entry-btn" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">
-            <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>持ってる人は買う日によって<br>ポイントUP✨</small></span><span class="arr">👆</span>
-          </a>
+        <div class="button-row entry-actions">
+          <a class="btn small" href="https://a.r10.to/hgAVab" data-aff="entry-marathon">▶︎ 楽天マラソンへエントリー✊</a>
+          <a class="btn small secondary" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">▶︎ 5と0のつく日にエントリー✊</a>
         </div>
         <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
         <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
@@ -765,7 +763,7 @@ p{font-size:.94rem}
       <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
       <span class="eyebrow">今回はここが狙い目✨</span>
       <h2><span class="deco">6/20</span>がBigChance！</h2>
-      <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">6/20(土) 20:00〜6/26(金) 01:59</span>夏現場前に買うものがある子は、チェックしておきたいタイミング🙂‍↕️</p>
+      <p class="lead schedule-lead">今回の楽天お買い物マラソンは<span class="schedule-date">6/20(土) 20:00〜6/26(金) 01:59</span>夏現場前に買うものがある子は、チェックしておきたいタイミング🙂‍↕️</p>
       <div class="card">
         <div class="timeline">
           <div class="time-card is-hot"><b>1. ⚠️激アツ⚠️6/20(土) 20:00〜2時間</b><p>開始日＋0のつく日。開始2時間限定の半額クーポンは、マジで一瞬で滅😭でも開始日と0のつく日が重なるから、お得がいっぱい間違いなし🤩</p></div>
@@ -773,9 +771,9 @@ p{font-size:.94rem}
         </div>
         <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
-          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">▶︎5と0のつく日にエントリー✊</a>
-        <div class="pr-mini">Rakuten pr<br>※5と0のつく日以外は、リンクに飛べません。</div>
+          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">▶︎ 5と0のつく日にエントリー✊</a>
         </div>
+        <div class="pr-mini">Rakuten pr<br>※5と0のつく日以外は、リンクに飛べません。</div>
         <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
@@ -821,7 +819,7 @@ p{font-size:.94rem}
         <span class="chip">現場おすすめ</span>
       </nav>
       <div class="card">
-        <p class="lead">このあと、まゆこが実際に使っているもの・買う予定のものを商品カードで追加していくね。急ぎで買う前に、まずは上のエントリーだけ済ませておいてね。</p>
+        <p class="lead">このあとも、まゆこおすすめ商品を追加していくね。すでに買うものが決まってる人は、上のエントリーを済ませてからお買い物してね。まだ何買うか迷ってる人は、おすすめもすぐ載せるから、エントリーだけ済ませて待っててね。</p>
       </div>
     </section>
 
