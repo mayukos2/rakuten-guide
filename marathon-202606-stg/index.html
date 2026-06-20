@@ -36,6 +36,8 @@
 【4】商品カード
   商品画像・価格・OFF率・リンクはあとで差し替える前提です。
   料率は読者向けには出さず、OFF率・クーポン・表示価格だけを書く方針。
+  商品画像は楽天アフィリエイトのリンク作成画面で利用できる画像を使う。
+  二重価格がある場合は <span class="price-old">9,999円</span> → <span class="price-current">7,999円</span> の順で表示。
 ==================================================================
 -->
 <html lang="ja">
@@ -580,7 +582,39 @@ p{font-size:.94rem}
   border:1px solid rgba(143,103,197,.14);
 }
 .p-img img{object-fit:contain;background:#fff}
-.p-body h4{font-size:.9rem;line-height:1.5;margin-bottom:4px;color:var(--ink)}
+.product-title{
+  display:block;
+  font-size:.9rem;
+  line-height:1.45;
+  color:var(--ink);
+  font-weight:700;
+  margin-bottom:3px;
+}
+.p-body h4{font-size:.78rem;line-height:1.55;margin:6px 0 3px;color:var(--lavender-deep)}
+.product-price{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:6px;
+  margin:3px 0 5px;
+}
+.price-old{
+  color:#A99CB7;
+  font-size:.72rem;
+  text-decoration:line-through;
+  font-weight:700;
+}
+.price-current{
+  color:var(--pink-deep);
+  font-size:1.05rem;
+  font-weight:800;
+  line-height:1.2;
+}
+.price-note{
+  color:var(--ink-soft);
+  font-size:.64rem;
+  font-weight:700;
+}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
 .tag{
   border-radius:999px;
@@ -859,9 +893,11 @@ p{font-size:.94rem}
             <article class="product">
               <div class="ph p-img" data-img="images/products/kawapettii-mfu1s-air.jpg" data-label="商品画像"></div>
               <div class="p-body">
-                <h4>自動開閉の日傘で、外待ちの体力を守りたい🥵</h4>
-                <div class="tags"><span class="tag">表示価格 3,380円〜</span><span class="tag pink">クーポンは商品ページで確認</span></div>
+                <span class="product-title">形状記憶の自動開閉日傘</span>
+                <div class="product-price"><span class="price-current">3,380円〜</span><span class="price-note">表示価格</span></div>
+                <h4>外待ち・移動中の暑さで体力削られる問題🥵</h4>
                 <p>完全遮光で、たたむのもラクな形状記憶タイプ。夏の物販・移動前に見ておきたい。</p>
+                <div class="tags"><span class="tag pink">クーポンは商品ページで確認</span></div>
                 <a class="p-link" href="https://item.rakuten.co.jp/kawapettii/mfu1s-air/" data-aff="product-sun-1">▶商品を見る</a><span class="p-pr">リンク差し替え前</span>
               </div>
             </article>
