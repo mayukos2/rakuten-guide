@@ -582,6 +582,9 @@ p{font-size:.94rem}
   border:1px solid rgba(143,103,197,.14);
 }
 .p-img img{object-fit:contain;background:#fff}
+.p-img.needs-aff-check::after{
+  content:"アフィ画像確認中";
+}
 .product-title{
   display:block;
   font-size:.9rem;
@@ -990,6 +993,11 @@ p{font-size:.94rem}
 </main>
 <script>
 document.querySelectorAll('.ph[data-img]').forEach(function(box){
+  if (box.classList.contains('p-img') && box.getAttribute('data-img-approved') !== 'rakuten-affiliate') {
+    box.removeAttribute('data-img');
+    box.classList.add('needs-aff-check');
+    return;
+  }
   var src = box.getAttribute('data-img');
   var img = new Image();
   img.onload = function(){
