@@ -658,17 +658,6 @@ p{font-size:.94rem}
   color:var(--lavender-deep);
 }
 .p-pr{font-size:.64rem;color:var(--ink-soft);margin-left:6px}
-.social-proof{
-  margin:16px 0 12px;
-  padding:12px 14px;
-  border-radius:18px;
-  background:rgba(255,244,200,.74);
-  color:#967544;
-  font-weight:700;
-  font-size:.82rem;
-  text-align:center;
-}
-
 .room-card{
   text-align:center;
   background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(244,207,227,.36));
@@ -885,7 +874,6 @@ p{font-size:.94rem}
       </nav>
 
       <div class="card">
-        <div class="social-proof">王冠 SNSで話題のアイテムもここにまとめる予定！</div>
         <div class="product-section" id="pick-recommend">
           <h3>おすすめ商品</h3>
           <p class="product-section-lead">夏現場前に見ておきたい候補をまとめたよ。まず迷ったらここから見てね。</p>
@@ -1277,7 +1265,7 @@ document.querySelectorAll('.ph[data-img]').forEach(function(box){
 
 var productTabs = Array.prototype.slice.call(document.querySelectorAll('[data-product-tab]'));
 var productSections = Array.prototype.slice.call(document.querySelectorAll('#products .product-section'));
-function showProductTab(targetId, shouldScroll){
+function showProductTab(targetId){
   var exists = productSections.some(function(section){ return section.id === targetId; });
   if (!exists) targetId = 'pick-recommend';
   productSections.forEach(function(section){
@@ -1291,18 +1279,15 @@ function showProductTab(targetId, shouldScroll){
   if (location.hash !== '#' + targetId) {
     history.replaceState(null, '', '#' + targetId);
   }
-  if (shouldScroll) {
-    document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
-  }
 }
 productTabs.forEach(function(tab){
   tab.addEventListener('click', function(event){
     event.preventDefault();
-    showProductTab(tab.getAttribute('aria-controls'), true);
+    showProductTab(tab.getAttribute('aria-controls'));
   });
 });
 if (['#pick-recommend','#pick-recent','#pick-buying'].indexOf(location.hash) !== -1) {
-  showProductTab(location.hash.slice(1), false);
+  showProductTab(location.hash.slice(1));
 }
 
 var diagnosisResults = [
