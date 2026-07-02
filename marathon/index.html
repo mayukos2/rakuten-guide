@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<!--
+==================================================================
+  楽天お買い物マラソン × 夏現場準備ページ 編集メモ
+==================================================================
+
+【1】このページの公開先
+  GitHub Pagesでは下記URLになる想定です。
+  https://mayukos2.github.io/rakuten-guide/marathon/
+
+【2】アフィリンクの差し替え
+  href="#" のままになっている data-aff 付きリンクを差し替えます。
+  data-aff="entry-marathon"   お買い物マラソン　エントリー（https://a.r10.to/hgbyS9）
+  data-aff="entry-0and5"      5と0のつく日
+  data-aff="entry-3980"       3,980円以上買うなら確認
+  data-aff="travel"           楽天トラベル
+
+【3】画像の差し替え
+  images/ フォルダに下記ファイル名で入れると自動表示されます。
+  画像が無い間は仮枠が表示されます。
+
+  images/01-hero.svg             トップ背景
+  images/00-fv.jpg               ファーストビュー画像
+  images/02-benefits.svg         楽天で買うメリット図
+  images/03-marathon-flow.svg    お買い物マラソンの仕組み図
+  images/04-check-before-buy.svg 買う前チェック図
+  images/05-daymap.svg           夏現場の1日マップ
+  images/06-products.svg         商品カテゴリ見出し用
+  images/07-divider.png          区切り線
+  images/08-diagnosis-watch.jpg     まずは様子見タイプ
+  images/09-diagnosis-review.jpg    ちょこ買い見直しタイプ
+  images/10-diagnosis-start.jpg     現場準備はじめどきタイプ
+  images/11-diagnosis-marathon.jpg  今すぐマラソン活用タイプ
+  images/12-diagnosis-hardcore.jpg  推し活準備ガチ活用タイプ
+
+【4】商品カード
+  商品画像・価格・OFF率・リンクはあとで差し替える前提です。
+  料率は読者向けには出さず、表示価格を中心に書く方針。
+  商品画像は楽天アフィリエイトのリンク作成画面で利用できることを確認してから使う。
+  二重価格がある場合は <span class="price-old">9,999円</span> → <span class="price-current">7,999円</span> の順で表示。
+==================================================================
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>楽天マラソンで夏現場準備｜推しに会う準備、まとめて整えよ♡</title>
+<meta name="description" content="夏現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Kiwi+Maru:wght@400;500&family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lavender:#B79BE0;
+  --lavender-deep:#8F67C5;
+  --lavender-soft:#EEE6FA;
+  --lavender-mist:#F8F3FF;
+  --pink:#F4CFE3;
+  --pink-deep:#E06B9E;
+  --gold:#E7C978;
+  --gold-soft:#FFF4C8;
+  --paper:#FFFCFF;
+  --ink:#5F5178;
+  --ink-soft:#9689AB;
+  --white:rgba(255,255,255,.88);
+  --radius:24px;
+  --shadow:0 18px 44px rgba(143,103,197,.18);
+  --shadow-soft:0 10px 26px rgba(143,103,197,.14);
+  --font-round:'Tsukushi A Round Gothic','筑紫A丸ゴシック','TsukushiAMaruGothic','Zen Maru Gothic','Kiwi Maru',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-round);
+  color:var(--ink);
+  line-height:1.85;
+  background:
+    radial-gradient(100% 60% at 0% 0%, rgba(244,207,227,.72), transparent 48%),
+    radial-gradient(90% 55% at 100% 8%, rgba(183,155,224,.68), transparent 52%),
+    linear-gradient(180deg,#F1E8FB 0%,#FBF6FF 48%,#FFF 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.page{max-width:560px;margin:0 auto;position:relative;z-index:1}
+.fixed-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#F0E6FC,#FFF8FD)}
+.fixed-bg img{width:100%;height:100%;object-fit:cover;opacity:.82}
+.fixed-bg::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.22)}
+
+.ph{
+  width:100%;
+  min-height:150px;
+  border-radius:22px;
+  border:1px dashed rgba(143,103,197,.32);
+  background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(238,230,250,.9));
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:.78rem;
+  position:relative;
+  overflow:hidden;
+}
+.ph::after{content:attr(data-label);padding:16px}
+.ph.has-img{border:none;background:none;min-height:0}
+.ph.has-img::after{display:none}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.contain img{object-fit:contain;background:rgba(255,255,255,.68)}
+
+.hero{
+  min-height:88vh;
+  padding:38px 18px 42px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:20px;right:20px;bottom:20px;height:54px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);
+  filter:blur(20px);
+}
+.hero-inner{width:100%;position:relative;z-index:1}
+.pr-top{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.76);
+  color:var(--ink-soft);
+  font-size:.74rem;
+  font-weight:700;
+  box-shadow:var(--shadow-soft);
+  margin-bottom:18px;
+}
+.hero-kicker{
+  font-family:var(--font-round);
+  color:var(--pink-deep);
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.fv-banner{
+  position:relative;
+  margin:0 auto 18px;
+  padding:10px;
+  border-radius:28px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.fv-banner img{
+  width:100%;
+  height:auto;
+  border-radius:22px;
+  box-shadow:0 10px 26px rgba(143,103,197,.12);
+}
+.hero h1{
+  font-family:var(--font-round);
+  font-size:2.03rem;
+  line-height:1.38;
+  color:var(--ink);
+  font-weight:700;
+  letter-spacing:0;
+  text-shadow:0 4px 18px rgba(255,255,255,.92);
+  margin-bottom:13px;
+}
+.hero h1 .deco-big{color:var(--pink-deep);font-size:1.15em}
+.hero h1 span{display:block;font-size:1.02rem;color:var(--lavender-deep);font-family:var(--font-round);font-weight:500;margin-top:9px}
+.hero-copy{
+  max-width:390px;
+  margin:0 auto 22px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:24px;
+  padding:18px 17px;
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:blur(8px);
+}
+.hero-copy p{font-size:.96rem}
+.hero-copy b{color:var(--pink-deep)}
+.hero-buttons,.button-row{display:grid;gap:11px;margin-top:18px;justify-items:center}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:54px;
+  padding:13px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#C8ACEA,var(--lavender-deep));
+  color:#fff;
+  text-decoration:none;
+  font-family:var(--font-round);
+  font-size:.96rem;
+  font-weight:700;
+  border:none;
+  box-shadow:0 13px 28px rgba(143,103,197,.32);
+  cursor:pointer;
+}
+.btn.secondary{background:rgba(255,255,255,.86);color:var(--lavender-deep);border:1px solid rgba(143,103,197,.24)}
+.btn.small{min-height:46px;font-family:var(--font-round);font-weight:700;font-size:.88rem}
+.pr-mini{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:5px}
+.speech{
+  position:relative;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+}
+.speech::after{
+  display:none;
+}
+
+.content{padding:0 18px 72px}
+section{margin:0 0 34px}
+.divider{
+  margin:8px auto 20px;
+  width:min(92%,420px);
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.divider .ph{
+  height:58px;
+  min-height:58px;
+  background:transparent;
+  border:none;
+}
+.divider .ph::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:50%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--lavender),transparent);
+  transform:translateY(-50%);
+  opacity:.5;
+}
+.divider .ph::after{
+  content:"♡";
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  padding:0;
+  color:var(--lavender-deep);
+  background:rgba(255,255,255,.86);
+  box-shadow:var(--shadow-soft);
+  opacity:1;
+}
+.divider .ph.has-img::before,
+.divider .ph.has-img::after{display:none}
+.divider .ph img{object-fit:contain;background:transparent}
+.eyebrow{
+  display:inline-block;
+  position:relative;
+  background:rgba(255,255,255,.9);
+  color:var(--pink-deep);
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid rgba(143,103,197,.16);
+  font-weight:700;
+  font-size:.76rem;
+  box-shadow:var(--shadow-soft);
+  margin-bottom:15px;
+}
+.eyebrow::after{
+  content:"";
+  position:absolute;
+  left:22px;
+  bottom:-6px;
+  width:12px;
+  height:12px;
+  background:rgba(255,255,255,.9);
+  border-right:1px solid rgba(143,103,197,.16);
+  border-bottom:1px solid rgba(143,103,197,.16);
+  transform:rotate(45deg);
+}
+h2{
+  font-family:var(--font-round);
+  font-size:1.42rem;
+  line-height:1.58;
+  font-weight:700;
+  color:var(--lavender-deep);
+  margin-bottom:15px;
+}
+h2 .deco{color:var(--pink-deep)}
+p{font-size:.94rem}
+.lead{margin-bottom:15px}
+.card{
+  background:var(--white);
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:var(--radius);
+  padding:22px 20px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(10px);
+}
+.card + .card{margin-top:14px}
+.note{
+  color:var(--ink-soft);
+  font-size:.78rem;
+  margin-top:12px;
+}
+.em{color:var(--pink-deep);font-weight:700}
+
+.entry-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.entry-btn{
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  gap:10px;
+  align-items:center;
+  min-height:62px;
+  padding:13px 14px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.17);
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(143,103,197,.09);
+}
+.entry-btn .ico{
+  width:34px;height:34px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--lavender-soft),#fff);
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.entry-btn strong{display:block;font-size:.91rem;line-height:1.4}
+.entry-btn small{display:block;color:var(--ink-soft);font-size:.71rem;margin-top:1px}
+.entry-btn .arr{color:var(--lavender-deep);font-weight:700}
+.quick-steps{
+  display:grid;
+  gap:9px;
+  margin-bottom:14px;
+  padding:14px;
+  border-radius:20px;
+  background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(238,230,250,.72));
+  border:1px solid rgba(143,103,197,.16);
+}
+.quick-steps b{
+  color:var(--lavender-deep);
+  font-size:.9rem;
+}
+.quick-step{
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:9px;
+  align-items:center;
+  font-size:.82rem;
+  line-height:1.55;
+}
+.quick-step span:first-child{
+  width:30px;
+  height:30px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,var(--pink),var(--lavender-soft));
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.official-note{
+  color:var(--ink-soft);
+  font-size:.68rem;
+  text-align:center;
+  line-height:1.6;
+  margin-top:7px;
+}
+.entry-btn.is-primary{
+  background:linear-gradient(135deg,#fff,rgba(238,230,250,.96));
+  border-color:rgba(143,103,197,.28);
+}
+
+.quiz-card{
+  background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(248,243,255,.9));
+}
+.quiz-card > .btn{
+  width:100%;
+  margin-top:16px;
+  white-space:nowrap;
+}
+.checks{display:grid;gap:10px;margin-top:14px}
+.check{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:12px;
+  align-items:start;
+  padding:14px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.16);
+  cursor:pointer;
+}
+.check input{display:none}
+.box{
+  width:28px;height:28px;border-radius:10px;
+  border:2px solid var(--lavender-soft);
+  display:grid;place-items:center;
+  color:white;
+  font-weight:700;
+}
+.check input:checked + .box{background:var(--lavender);border-color:var(--lavender)}
+.check input:checked + .box::after{content:"♡";font-size:.82rem}
+.check b{font-size:.92rem}
+.check small{display:block;color:var(--ink-soft);font-size:.75rem;margin-top:2px}
+.result{
+  display:none;
+  margin-top:17px;
+  background:#fff;
+  border-radius:20px;
+  border:1.5px solid rgba(143,103,197,.28);
+  padding:17px;
+}
+.result.show{display:block}
+.result h3{
+  font-family:var(--font-round);
+  font-size:1.02rem;
+  color:var(--lavender-deep);
+  font-weight:700;
+  margin-bottom:10px;
+}
+.diagnosis-image{
+  overflow:hidden;
+  border-radius:18px;
+  background:var(--lavender-mist);
+  box-shadow:0 10px 24px rgba(143,103,197,.16);
+}
+.diagnosis-image img{
+  width:100%;
+  height:auto;
+}
+.result-note{
+  margin-top:12px;
+  color:var(--ink-soft);
+  font-size:.78rem;
+  text-align:center;
+}
+
+.point-list{display:grid;gap:11px}
+.point{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:start;
+}
+.point .num,.point .icon{
+  width:38px;height:38px;border-radius:15px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--pink),var(--lavender-soft));
+  color:var(--lavender-deep);
+  font-weight:700;
+}
+.point b{display:block;font-size:.94rem}
+.point span{display:block;color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.visual{margin-top:16px}
+.visual .ph{min-height:210px}
+
+.timeline{display:grid;gap:12px;margin-top:14px}
+.time-card{
+  background:#fff;
+  border-radius:19px;
+  padding:16px;
+  border:1px solid rgba(143,103,197,.15);
+}
+.time-card b{display:flex;gap:8px;align-items:center;color:var(--lavender-deep);font-size:.96rem}
+.time-card p{font-size:.82rem;color:var(--ink-soft);margin-top:5px}
+.time-card.is-hot{
+  border:1.5px solid rgba(224,107,158,.34);
+  background:linear-gradient(145deg,#fff,rgba(255,244,200,.42));
+}
+.schedule-lead{
+  font-size:1.02rem;
+  background:rgba(255,255,255,.78);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--shadow-soft);
+}
+.schedule-date{
+  display:block;
+  margin:10px 0 0;
+  font-family:var(--font-round);
+  font-size:1.34rem;
+  color:var(--pink-deep);
+  line-height:1.45;
+}
+.scene-grid{
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+.scene-card{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:10px;
+  align-items:start;
+  min-height:0;
+  border-radius:18px;
+  padding:11px 12px;
+  background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(248,243,255,.84));
+  border:1px solid rgba(143,103,197,.16);
+  box-shadow:var(--shadow-soft);
+  line-height:1.55;
+}
+.scene-no{
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,var(--lavender-soft),var(--pink));
+  color:var(--lavender-deep);
+  font-family:var(--font-round);
+  font-weight:700;
+  font-size:.88rem;
+}
+.scene-card b{
+  display:block;
+  color:var(--lavender-deep);
+  font-family:var(--font-round);
+  font-size:.98rem;
+  font-weight:700;
+  margin-bottom:3px;
+}
+.scene-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.65}
+
+.category-lead{
+  color:var(--lavender-deep);
+  text-align:center;
+  font-size:.84rem;
+  font-weight:700;
+  margin:8px 0 10px;
+}
+.category-nav{display:grid;grid-template-columns:1fr;gap:9px;padding:2px 0 12px;margin-bottom:10px}
+@media (min-width:560px){.category-nav{grid-template-columns:repeat(3,1fr)}}
+.chip{
+  text-align:center;
+  text-decoration:none;
+  border-radius:999px;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(143,103,197,.18);
+  padding:10px 13px;
+  color:var(--lavender-deep);
+  font-size:.82rem;
+  font-weight:700;
+  box-shadow:0 7px 16px rgba(143,103,197,.08);
+}
+.chip.is-active{
+  color:#fff;
+  background:linear-gradient(135deg,var(--lavender),var(--lavender-deep));
+  border-color:rgba(143,103,197,.28);
+}
+.product-section[hidden]{display:none}
+.product-section{margin-top:18px}
+.product-section h3{
+  font-family:var(--font-round);
+  color:var(--lavender-deep);
+  font-size:1.06rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.product-section-lead{
+  color:var(--ink-soft);
+  font-size:.76rem;
+  line-height:1.7;
+  margin:0 0 10px;
+}
+.products{display:grid;gap:12px}
+.product{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  gap:13px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid rgba(143,103,197,.14);
+  padding:12px;
+}
+.p-img{
+  height:106px;
+  min-height:106px;
+  border-radius:0;
+  background:#fff;
+  border:1px solid rgba(143,103,197,.14);
+}
+.p-img img{object-fit:contain;background:#fff}
+.p-img.needs-aff-check::after{
+  content:"アフィ画像確認中";
+}
+.product-title{
+  display:block;
+  font-size:.9rem;
+  line-height:1.45;
+  color:var(--ink);
+  font-weight:700;
+  margin-bottom:3px;
+}
+.p-body h4{font-size:.78rem;line-height:1.55;margin:6px 0 3px;color:var(--lavender-deep)}
+.product-price{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:6px;
+  margin:3px 0 5px;
+}
+.price-old{
+  color:#A99CB7;
+  font-size:.72rem;
+  text-decoration:line-through;
+  font-weight:700;
+}
+.price-current{
+  color:var(--pink-deep);
+  font-size:1.05rem;
+  font-weight:800;
+  line-height:1.2;
+}
+.price-note{
+  color:var(--ink-soft);
+  font-size:.64rem;
+  font-weight:700;
+}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.tag{
+  border-radius:999px;
+  padding:3px 8px;
+  background:var(--gold-soft);
+  color:#967544;
+  font-size:.67rem;
+  font-weight:700;
+}
+.tag.pink{background:#FBE3EF;color:var(--pink-deep)}
+.p-body p{font-size:.76rem;color:var(--ink-soft);line-height:1.65}
+.p-link{
+  display:inline-flex;
+  margin-top:8px;
+  padding:8px 12px;
+  border-radius:10px;
+  background:var(--lavender-deep);
+  color:white;
+  text-decoration:none;
+  font-size:.74rem;
+  font-weight:700;
+}
+.p-link.is-disabled{
+  background:rgba(143,103,197,.13);
+  color:var(--lavender-deep);
+}
+.p-pr{font-size:.64rem;color:var(--ink-soft);margin-left:6px}
+.room-card{
+  text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(244,207,227,.36));
+}
+.notice{
+  background:rgba(255,255,255,.7);
+  border-radius:20px;
+  padding:18px;
+  color:var(--ink-soft);
+  font-size:.78rem;
+}
+.ps-card{
+  background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(238,230,250,.64));
+  border:1px solid rgba(143,103,197,.18);
+}
+.ps-card h2{margin-bottom:10px}
+.ps-card p{font-size:.92rem}
+.notice ul{padding-left:1.2em}
+.notice li + li{margin-top:5px}
+
+@media (min-width:520px){
+  .hero h1{font-size:2.65rem}
+  .hero-buttons,.button-row{grid-template-columns:1fr 1fr}
+  .entry-grid{grid-template-columns:1fr}
+  .visual .ph{min-height:260px}
+}
+</style>
+</head>
+<body>
+<div class="fixed-bg"><img src="images/01-hero.svg" alt="" onerror="this.remove()"></div>
+<main class="page">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="pr-top">PR｜楽天アフィリエイトを利用しています</div>
+      <div class="fv-banner">
+        <img src="images/00-fv.jpg" alt="楽天お買い物マラソン 推し活準備ガイド">
+        <h1 class="sr-only">楽天お買い物マラソン 推し活準備ガイド</h1>
+      </div>
+      <div class="hero-copy">
+        <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、ライブ当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>欲しいグッズを実質タダ</b><br>にしちゃおう✊✨!!</p>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn" href="#entry">エントリーを見る</a>
+        <a class="btn secondary" href="#products">アイテムを見る</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <section id="entry">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
+      <span class="eyebrow">最初にこれ絶対‼️</span>
+      <h2>まずは【これ👇】タップして<br><span class="deco">エントリー完了</span>させて！</h2>
+      <p class="lead speech">お買い物は、エントリーしてから買ってね！<br>あとからだと対象外になっちゃうよ😢</p>
+      <div class="card">
+        <div class="quick-steps">
+          <b>超初心者さんは、やること3つだけ！</b>
+          <div class="quick-step"><span>1</span><p>まずマラソンにエントリー</p></div>
+          <div class="quick-step"><span>2</span><p>5と0のつく日を確認</p></div>
+          <div class="quick-step"><span>3</span><p>必要なものをカテゴリ別に見る</p></div>
+        </div>
+        <div class="entry-grid">
+          <a class="entry-btn is-primary" href="https://a.r10.to/hgbyS9" data-aff="entry-marathon">
+            <span class="ico">1</span><span><strong>イベントにまずエントリー</strong><small>コレ押さなきゃ始まらない🙂‍↕️</small></span><span class="arr">👆</span>
+          </a>
+          <a class="entry-btn" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">
+            <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>持ってる人は買う日によって<br>ポイントUP✨</small></span><span class="arr">👆</span>
+          </a>
+          <a class="entry-btn" href="https://a.r10.to/h5t0rQ" data-aff="entry-3980">
+            <span class="ico">3</span><span><strong>3,980円以上買うならコレも！</strong><small>送料無料にもなるお店がたくさん！</small></span><span class="arr">👆</span>
+          </a>
+        </div>
+        <div class="pr-mini">PR｜掲載リンクには楽天アフィリエイト広告を含みます</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
+      </div>
+    </section>
+
+    <section id="diagnosis">
+      <span class="eyebrow">診断してみよう💜</span>
+      <div class="card quiz-card">
+        <h2>今のあなたは<span class="deco">コレ</span>該当する？</h2>
+        <p class="lead speech">当てはまれば、当てはまるほど、楽天と相性いい！</p>
+        <div class="checks">
+          <label class="check"><input type="checkbox" data-target="live"><span class="box"></span><span><b>夏に現場がある✨!!</b><small>当日バタつかないように準備したい</small></span></label>          
+          <label class="check"><input type="checkbox" data-target="sun"><span class="box"></span><span><b>暑さ・紫外線対策グッズがほしい🥺</b><small>炎天下の物販・移動・外待ち対策</small></span></label>
+          <label class="check"><input type="checkbox" data-target="beauty"><span class="box"></span><span><b>いつもの美容品をそろそろ買う💄</b><small>現場前はかわいく、髪も肌も整えたいよね?!</small></span></label>
+          <label class="check"><input type="checkbox" data-target="daily"><span class="box"></span><span><b>日用品を買い足す必要あり🧻</b><small>どうせ使うものは、まとめて買うべし</small></span></label>          
+          <label class="check"><input type="checkbox" data-target="travel"><span class="box"></span><span><b>遠征予定あり🚅🚘✈️</b><small>荷物多くて肩ちぎれそう…を減らしたい</small></span></label>
+        </div>
+        <button class="btn" type="button" id="showResult">診断結果を見る♡</button>
+        <div class="result" id="resultBox">
+          <h3>あなたの診断結果はこちら</h3>
+          <div class="diagnosis-image">
+            <img id="diagnosisImage" src="" alt="">
+          </div>
+          <p class="result-note">このまま下に進んで、必要なところだけ見てね💜</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
+      <span class="eyebrow">まゆこが楽天を活用する理由</span>
+      <h2>オタクこそ<br><span class="deco">楽天で推し活準備</span>すべし！</h2>
+      <p class="lead speech">楽天はポイントだけじゃなくて、クーポンも多い。いろんなお店で必要なものをまとめて買えるのが強い🙂‍↕️</p>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="icon">1</span><span><b>貯まったポイントを推し活費へ</b><span>買い物で貯めたポイントは、楽天ペイを使えば、グッズ代、遠征費、日用品の支払いに回せるから、楽しみが増える😍</span></span></div>
+          <div class="point"><span class="icon">2</span><span><b>ポイントだけじゃなくクーポンも多い</b><span>同じもの買うなら、少しでも得な方がよくない？？マラソン・クーポン・5と0のつく日を重ねてお得を狙う😎✨</span></span></div>
+          <div class="point"><span class="icon">3</span><span><b>欲しいもの一気に見つかる</b><span>今はいろんなECサイトがあるけど、楽天が私的に一番だいたいなんでも売ってる🤣ここでまとめて買って、ポイントもがっつり💜!!笑</span></span></div>
+          <div class="point"><span class="icon">4</span><span><b>現場前の駆け込み買いを減らせる</b><span>急いで買うと損してることも多々…😭イベントに合わせて事前に、必要なものを揃えると無駄な出費を抑えられるよ！</span></span></div>
+          <div class="point"><span class="icon">5</span><span><b>遠征や他サイトも楽天経由が👍</b><span>楽天トラベルやリーベイツも一緒に見たことで、私の場合はグッズ代を余裕で浮かせた経験があるよ💖</span></span></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/02-benefits.svg" data-label="images/02-benefits.svg｜楽天で買うメリット図"></div></div>
+      </div>
+    </section>
+
+    <section id="marathon">
+      <span class="eyebrow">ほぼ毎月開催される✨</span>
+      <h2><span class="deco">楽天お買い物マラソン</span>って何？</h2>
+      <p class="lead speech">なにか買い物するなら、タイミングが大事！<br>タイミングを大事にして、買い物してきたからこそ、私は７年で６０万ポイント以上もゲットしてきた💰<br><br>その中の代表格が「楽天お買い物マラソン」✨<br>何がいいかって？<br>ちゃんと説明したから👇読んで💜</p>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="num">1</span><span><b>買う前にエントリーだけで‼️</b><span>めっちゃ簡単でしょ？それだけで、ポイントアップするなら、参加しない理由なくない🤔？</span></span></div>
+          <div class="point"><span class="num">2</span><span><b>複数のお店で買うとポイントUP⤴️</b><span>10店舗までは買うお店が多いほど、たくさんもらえる！1つでまとめるより、複数の方が👍</span></span></div>
+          <div class="point"><span class="num">3</span><span><b>1ショップ税込1,000円以上買ってね♡</b><span>1000円行ってないと、せっかく買ってもポイントアップしない😭だからまとめ買いして💖</span></span></div>
+          <div class="point"><span class="num">4</span><span><b>クーポンは買う前に確認👀</b><span>先着・枚数限定・金額条件アリだったりするけど、ポイント＋クーポンは見逃せない😍✨</span></span></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/03-marathon-flow.svg" data-label="images/03-marathon-flow.svg｜マラソンの仕組み図"></div></div>
+        <div class="button-row">
+          <a class="btn small" href="https://a.r10.to/hgbyS9" data-aff="entry-marathon">▶︎ 楽天マラソンへエントリー✊</a>
+          <a class="btn small secondary" href="https://a.r10.to/h5t0rQ" data-aff="entry-3980">▶︎ 3,980円以上買うならこれも✊</a>
+        </div>
+        <div class="pr-mini">Rakuten pr</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
+      </div>
+    </section>
+
+    <section id="pointday">
+      <span class="eyebrow">楽天カード持ってても！持ってなくても！</span>
+      <h2><span class="deco">5と0のつく日</span>も見逃せない！</h2>
+      <p class="lead speech">マラソンと一緒に見ておきたいのが、5と0のつく日。<br>楽天カード持ってる人は、エントリーするだけで、ポイントアップしちゃう🤩!!<br>このタイミング狙って買い物して！</p>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="num">1</span><span><b>毎月5/10/15/20/25/30日開催✨</b><span>この日にいつも開催される！忘れずにカレンダー入れといて✋</span></span></div>
+          <div class="point"><span class="num">2</span><span><b>エントリーは開催日ごとに必要‼️</b><span>「前に押したからOK」じゃない！<br>20日にエントリーしても、25日も買うなら事前にエントリー必須！忘れないで‼️</span></span></div>
+          <div class="point"><span class="num">3</span><span><b>楽天カード利用でポイントUP😍</b><span>通常1倍と、楽天カードで＋3倍になる！<br>上限や、対象外サービス等条件もあるから、詳細はエントリーページにをみてね！</span></span></div>
+          <div class="point"><span class="num">4</span><span><b>楽天カード持ってない人も狙い目👀</b><span>この日は夕方に急にお得クーポンが出たりするから、カード持ってなくても要チェック日！！</span></span></div>
+        </div>
+        <div class="button-row">
+          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">5と0のつく日を見る</a>
+        </div>
+        <div class="pr-mini">Rakuten pr</div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
+      <span class="eyebrow">今回はここが狙い目✨</span>
+      <h2><span class="deco">7/5</span>がBigChance！</h2>
+      <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">7/2(木) 10:00〜7/11(土) 01:59</span>夏現場前に買うものがある子は、チェックしておきたいタイミング🙂‍↕️</p>
+      <div class="card">
+        <div class="timeline">
+          <div class="time-card is-hot"><b>1. ⚠️激アツ⚠️7/5(日)</b><p>マラソン期間中の5のつく日。買うものがある子は、エントリーと条件を確認しておくのがおすすめ💜</p></div>
+          <div class="time-card"><b>2. 7/10(金)も0のつく日🙆‍♀️</b><p>5日に買いきれなかったものは、この日も見ておきたいタイミング。夕方以降のゲリラクーポンもお見逃しなく！</p></div>
+        </div>
+        <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
+        <div class="button-row">
+          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">▶︎5と0のつく日にエントリー✊</a>
+        <div class="pr-mini">Rakuten pr<br>※5と0のつく日以外は、リンクに飛べません。</div>
+        </div>
+        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
+      </div>
+    </section>
+
+    <section id="daymap">
+      <span class="eyebrow">もう用意してる？</span>
+      <h2><span class="deco">夏の現場</span>事前に準備しとこ✊</h2>
+      <p class="lead speech">ライブを楽しみにする日々も…<br>
+                             遠征する準備の日も…<br>
+                             当日移動する時も…<br>
+                             ライブ中も…<br>
+                             帰ってきた後も…<br><br>
+                             「あ！これない！！！！」<br>
+                             って急に思うことない？？<br>
+                             私はあるあるで…😭<br><br>
+                             だからマラソンのタイミングでいつも<br>
+                             「準備するものあったっけー？」<br>
+                             って思い出すことで、買い忘れや持ち忘れを<br>
+                             減らしてるよ☺️</p>
+      <div class="card">
+        <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜夏現場の1日マップ"></div></div>
+        <div class="scene-grid">
+          <div class="scene-card"><span class="scene-no">01</span><span><b>ライブ行くまで🏠</b><p>スキンケア、メイク道具、カラコン、参戦服は準備OK？？</p></span></div>
+          <div class="scene-card"><span class="scene-no">02</span><span><b>荷造り🧳・移動🚅✈️</b><p>パッキンアイテムちゃんと全部揃ってる？モバイルバッテリー・冷感グッズ壊れてない？</p></span></div>
+          <div class="scene-card"><span class="scene-no">03</span><span><b>ライブ会場🕺🎤</b><p>メイク直し・暑さ対策…可愛い状態で推しに会うための直前グッズはOK？</p></span></div>
+          <div class="scene-card"><span class="scene-no">04</span><span><b>帰宅後の余韻💭</b><p>クレンジング・ヘアケア・疲れケアまでして、次の現場にもつながる整えもバッチリね！</p></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
+      <span class="eyebrow">まゆこオススメ💜</span>
+      <h2><span class="deco">夏の現場に向けて準備すべし！</span></h2>
+      <p class="lead speech">商品は、表示価格・在庫・リンク先を確認できたものから追加していくね。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
+      <div class="visual"><div class="ph contain" data-img="images/06-products.svg" data-label="images/06-products.svg｜商品カテゴリ見出し用"></div></div>
+      <p class="category-lead">まゆこ目線で分けたよ👇</p>
+      <nav class="category-nav pick-nav" aria-label="商品タイプ">
+        <a class="chip is-active" href="#pick-recommend" data-product-tab aria-controls="pick-recommend" aria-selected="true">おすすめ商品</a>
+        <a class="chip" href="#pick-recent" data-product-tab aria-controls="pick-recent" aria-selected="false">最近買ったもの</a>
+        <a class="chip" href="#pick-buying" data-product-tab aria-controls="pick-buying" aria-selected="false">今回買うもの</a>
+      </nav>
+
+      <div class="card">
+        <div class="product-section" id="pick-recommend">
+          <h3>おすすめ商品</h3>
+          <p class="product-section-lead">夏現場前に見ておきたい候補をまとめたよ。まず迷ったらここから見てね。</p>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e802.c04732c4.4eb3e803.8e5a553b/?me_id=1416438&amp;item_id=10000233&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frorrystore%2Fcabinet%2Fbiiino%2Fitem%2Fmain-image%2F20260513120133_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">コンセント一体型モバイルバッテリー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">7,999円</span></div>
+                <h4>ライブ中に充電切れるのだけは無理😭</h4>
+                <p>コンセント一体型で、Apple Watch対応。充電器もモバ充もケーブルも減らしたい遠征・現場前に。</p>
+                <a class="p-link" href="https://a.r10.to/hPUTSI" data-aff="product-live-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea69a.96f5af85.551ea69b.113b7995/?me_id=1371367&amp;item_id=10000078&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnipponseal%2Fcabinet%2F10892290%2Fimgrc0107265827.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">銀テープミュージアム</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,430円</span></div>
+                <h4>銀テ、かわいく残したい派へ🎀</h4>
+                <p>ライブの思い出をきれいに保管したい人に。推し活の記録を大切にしたい時の候補。</p>
+                <a class="p-link" href="https://a.r10.to/h9SRle" data-aff="product-live-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e802.c04732c4.4eb3e803.8e5a553b/?me_id=1416438&amp;item_id=10000115&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frorrystore%2Fcabinet%2F09412976%2F09461393%2F11193997%2Fcompass1730771920.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">Apple Watch対応モバイルバッテリー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">4,580円</span></div>
+                <h4>今使ってる便利すぎるやつ🔋</h4>
+                <p>ケーブル内蔵で、Apple Watchも充電できるのが助かる。現場・遠征の充電不安対策に。</p>
+                <a class="p-link" href="https://a.r10.to/hPyU0Z" data-aff="product-live-4" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/54259e98.be4b6320.54259e99.40558cf3/?me_id=1424540&amp;item_id=10004393&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fshopyui%2Fcabinet%2Fyuisalesam%2Fer0611-1a-10.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">MagSafe外カメ自撮りミラー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">740円〜</span></div>
+                <h4>推し活の思い出、外カメで盛りたい📸</h4>
+                <p>vlogや写真を残す時に映えやすい。上半期買ってよかったお気に入り。</p>
+                <a class="p-link" href="https://a.r10.to/hP9pgV" data-aff="product-live-5" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/541e8776.f7f1e940.541e8777.d34a1875/?me_id=1379974&amp;item_id=10001090&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fdottodot%2Fcabinet%2F09056081%2Fi1295%2Fi1295v2_01.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">キラキラ猫リボンiPhoneケース</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,880円</span></div>
+                <h4>毎日ニヤニヤする可愛さ🐈‍⬛</h4>
+                <p>推し活感も韓国っぽさもあってかわいい。スマホを見るたび気分上げたい人に。</p>
+                <a class="p-link" href="https://a.r10.to/hkzwu8" data-aff="product-live-6" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/5516868c.f588c4fd.5516868d.113bcf54/?me_id=1426977&amp;item_id=10000105&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fkawapettii%2Fcabinet%2Fmfu1s-air%2F20260617-161259.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">形状記憶の自動開閉日傘</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">3,380円〜</span></div>
+                <h4>外待ち・移動中の暑さで体力削られる問題🥵</h4>
+                <p>完全遮光で、たたむのもラクな形状記憶タイプ。夏の物販・移動前に見ておきたい。</p>
+                <a class="p-link" href="https://a.r10.to/hkAVE6" data-aff="product-sun-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/2a0564fc.9519085f.2a0564fd.ad0e74cb/?me_id=1304143&amp;item_id=10003302&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fstyle-on-bag%2Fcabinet%2Fth%2Fjy-709_2606.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">日焼け対策に見えにくいアームカバー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,100円〜</span></div>
+                <h4>推し色コーデを崩さず紫外線対策したい☀️</h4>
+                <p>日焼け対策っぽさが強すぎないのがかわいい。外待ち・移動中のうっかり焼け対策に。</p>
+                <a class="p-link" href="https://a.r10.to/h8cSSc" data-aff="product-sun-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/30714a94.8786d4ab.30714a95.310a9525/?me_id=1319439&amp;item_id=10003314&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fcicib%2Fcabinet%2Ftop1-980.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">冷却プレート付きハンディファン</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,780円〜</span></div>
+                <h4>物販待機、暑すぎる問題🥵</h4>
+                <p>とにかく安く冷却系を試したい人向け。冷却プレート付きで、外待ちや移動中の暑さ対策に。</p>
+                <a class="p-link" href="https://a.r10.to/hRmzbB" data-aff="product-sun-3" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/30714a92.da6dd61f.30714a93.a605d44d/?me_id=1386567&amp;item_id=10001470&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fcicibella-sports%2Fcabinet%2Ftop4-984.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">去年から愛用のハンディファン</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,980円</span></div>
+                <h4>現場の外待ち、風があるだけで違う🌀</h4>
+                <p>去年から使ってるタイプ。手持ち・卓上で使いやすく、暑い日の移動や物販待機に。</p>
+                <a class="p-link" href="https://a.r10.to/hgQ3uO" data-aff="product-sun-4" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e42d.efc4b646.4eb3e42e.85488f07/?me_id=1347496&amp;item_id=10000431&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flilyanna%2Fcabinet%2Fbrand%2Ftpt%2Ftpt-2601-thum02.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">乱視用TOPARDSカラコン</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,420円</span></div>
+                <h4>ライブの日、目元が整わないの困る🥺</h4>
+                <p>乱視用でかわいい色があるのが助かる。私的には、現場前に切らしたくない美容アイテム。</p>
+                <a class="p-link" href="https://a.r10.to/hPUTLQ" data-aff="product-beauty-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea661.1abe6b40.551ea662.59a366f5/?me_id=1361393&amp;item_id=10000875&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flululun-shop%2Fcabinet%2Fother%2Fbanner%2F13103548%2Fimgrc0096040334.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">ルルルン ハイドラEX</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">880円〜</span></div>
+                <h4>おうち美容、ドラストで買う前に見て💜</h4>
+                <p>お家用の買い足し候補。ポイントも拾えるから、使うパックはマラソン中にまとめて見るのが好き。</p>
+                <a class="p-link" href="https://a.r10.to/hPGRdO" data-aff="product-beauty-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea667.d3488666.551ea668.4a3e6aa1/?me_id=1397298&amp;item_id=10000088&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fhonu-online%2Fcabinet%2Fbiiino%2Fitem%2Fmain-image%2F20220509170451_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">朝のヘアケアまとめ買い候補</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">5,580円</span></div>
+                <h4>朝の髪、時短で整えたい🌿</h4>
+                <p>朝のヘアケアで使いやすいものは、なくなる前にまとめ買い候補へ。他の種類も見られるのが助かる。</p>
+                <a class="p-link" href="https://a.r10.to/hRXYRR" data-aff="product-beauty-3" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/3a23310e.29d1c271.3a23310f.76c86871/?me_id=1275086&amp;item_id=10000170&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmode-csc%2Fcabinet%2Fitem2%2Fnb_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">軽量ナイロン2wayバッグ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">6,495円</span></div>
+                <h4>雨の日も遠征も、軽いバッグが正義👜</h4>
+                <p>私も愛用中。荷物が増える日でも持ちやすい、現場にも日常にも使いやすいバッグ。</p>
+                <a class="p-link" href="https://a.r10.to/hPiPnv" data-aff="product-daily-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea68d.baa6ae9c.551ea68e.bd42a417/?me_id=1370697&amp;item_id=10000032&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbridge-store%2Fcabinet%2Fglass2-thm%2Fth-iphone-an-10.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">さらさらガラスフィルム</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,380円</span></div>
+                <h4>フィルム割れたら早めに替えたい📱</h4>
+                <p>私は光沢なし派。現場でスマホをよく使うから、画面まわりも先に整えておきたい。</p>
+                <a class="p-link" href="https://a.r10.to/hPfT2w" data-aff="product-daily-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/3508a434.09538b77.3508a435.8abfa91b/?me_id=1307271&amp;item_id=10003265&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fauc-risecreation%2Fcabinet%2Fproduct%2F13165206%2Fy0516_01c.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">内ポケット付き圧縮トラベルポーチ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,040円〜</span></div>
+                <h4>遠征の荷物で肩ちぎれそう問題😭</h4>
+                <p>片面ずつ整理しやすく、内ポケット付き。服・メイク・小物を分けたい遠征民に。</p>
+                <a class="p-link" href="https://a.r10.to/hghsAa" data-aff="product-travel-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea661.1abe6b40.551ea662.59a366f5/?me_id=1361393&amp;item_id=10000908&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flululun-shop%2Fcabinet%2Fother%2Fbanner%2F13103548%2Fimgrc0096040668.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">ルルルン ハイドラお試しセット</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,420円〜</span></div>
+                <h4>遠征には持ち運びやすいサイズが助かる✈️</h4>
+                <p>いろんな種類を試せるセット。ホテルでも使いやすく、遠征美容の持ち物に入れやすい。</p>
+                <a class="p-link" href="https://a.r10.to/hg98kM" data-aff="product-travel-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea681.6a416e8f.551ea682.d19a0c67/?me_id=1300844&amp;item_id=10003590&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnesleaf%2Fcabinet%2Fthumb_season%2Fpb01_260603.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">耐熱ヘアアイロンポーチ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,580円〜</span></div>
+                <h4>熱いまま片付けたい朝、あるある😭</h4>
+                <p>紫も選べるのがかわいい。遠征先でヘアアイロンを冷ます時間がない時の準備に。</p>
+                <a class="p-link" href="https://a.r10.to/hkwomw" data-aff="product-travel-3" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea68b.6648af7e.551ea68c.0dd8bf6c/?me_id=1262276&amp;item_id=10114933&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fk-server%2Fcabinet%2Fimgdi107%2F4901301348111-3pk_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">めぐりズム 首もとあったかシート</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,999円</span></div>
+                <h4>遠征帰りの首肩、労わろ🥲</h4>
+                <p>箱なしでお得に買えるセット。移動疲れやホテルでのリラックス用に。</p>
+                <a class="p-link" href="https://a.r10.to/hPWwrM" data-aff="product-travel-4" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="pick-recent" hidden>
+          <h3>最近買ったもの</h3>
+          <p class="product-section-lead">まゆこが最近買った・使っているもの。リアルな使用感を優先して載せてるよ。</p>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e42d.efc4b646.4eb3e42e.85488f07/?me_id=1347496&amp;item_id=10000431&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flilyanna%2Fcabinet%2Fbrand%2Ftpt%2Ftpt-2601-thum02.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">乱視用TOPARDSカラコン</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,420円</span></div>
+                <h4>ライブの日、目元が整わないの困る🥺</h4>
+                <p>乱視用でかわいい色があるのが助かる。私的には、現場前に切らしたくない美容アイテム。</p>
+                <a class="p-link" href="https://a.r10.to/hPUTLQ" data-aff="product-beauty-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/3a23310e.29d1c271.3a23310f.76c86871/?me_id=1275086&amp;item_id=10000170&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmode-csc%2Fcabinet%2Fitem2%2Fnb_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">軽量ナイロン2wayバッグ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">6,495円</span></div>
+                <h4>雨の日も遠征も、軽いバッグが正義👜</h4>
+                <p>私も愛用中。荷物が増える日でも持ちやすい、現場にも日常にも使いやすいバッグ。</p>
+                <a class="p-link" href="https://a.r10.to/hPiPnv" data-aff="product-daily-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e802.c04732c4.4eb3e803.8e5a553b/?me_id=1416438&amp;item_id=10000115&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frorrystore%2Fcabinet%2F09412976%2F09461393%2F11193997%2Fcompass1730771920.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">Apple Watch対応モバイルバッテリー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">4,580円</span></div>
+                <h4>今使ってる便利すぎるやつ🔋</h4>
+                <p>ケーブル内蔵で、Apple Watchも充電できるのが助かる。現場・遠征の充電不安対策に。</p>
+                <a class="p-link" href="https://a.r10.to/hPyU0Z" data-aff="product-live-4" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/54259e98.be4b6320.54259e99.40558cf3/?me_id=1424540&amp;item_id=10004393&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fshopyui%2Fcabinet%2Fyuisalesam%2Fer0611-1a-10.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">MagSafe外カメ自撮りミラー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">740円〜</span></div>
+                <h4>推し活の思い出、外カメで盛りたい📸</h4>
+                <p>vlogや写真を残す時に映えやすい。上半期買ってよかったお気に入り。</p>
+                <a class="p-link" href="https://a.r10.to/hP9pgV" data-aff="product-live-5" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/541e8776.f7f1e940.541e8777.d34a1875/?me_id=1379974&amp;item_id=10001090&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fdottodot%2Fcabinet%2F09056081%2Fi1295%2Fi1295v2_01.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">キラキラ猫リボンiPhoneケース</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,880円</span></div>
+                <h4>毎日ニヤニヤする可愛さ🐈‍⬛</h4>
+                <p>推し活感も韓国っぽさもあってかわいい。スマホを見るたび気分上げたい人に。</p>
+                <a class="p-link" href="https://a.r10.to/hkzwu8" data-aff="product-live-6" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-section" id="pick-buying" hidden>
+          <h3>今回買うもの</h3>
+          <p class="product-section-lead">今回のマラソンでまゆこが買う予定・買い足したいもの。気になる子は一緒に見てね。</p>
+          <div class="products">
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e802.c04732c4.4eb3e803.8e5a553b/?me_id=1416438&amp;item_id=10000233&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frorrystore%2Fcabinet%2Fbiiino%2Fitem%2Fmain-image%2F20260513120133_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">コンセント一体型モバイルバッテリー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">7,999円</span></div>
+                <h4>ライブ中に充電切れるのだけは無理😭</h4>
+                <p>コンセント一体型で、Apple Watch対応。充電器もモバ充もケーブルも減らしたい遠征・現場前に。</p>
+                <a class="p-link" href="https://a.r10.to/hPUTSI" data-aff="product-live-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea69a.96f5af85.551ea69b.113b7995/?me_id=1371367&amp;item_id=10000078&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnipponseal%2Fcabinet%2F10892290%2Fimgrc0107265827.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">銀テープミュージアム</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,430円</span></div>
+                <h4>銀テ、かわいく残したい派へ🎀</h4>
+                <p>ライブの思い出をきれいに保管したい人に。推し活の記録を大切にしたい時の候補。</p>
+                <a class="p-link" href="https://a.r10.to/h9SRle" data-aff="product-live-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/2a0564fc.9519085f.2a0564fd.ad0e74cb/?me_id=1304143&amp;item_id=10003302&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fstyle-on-bag%2Fcabinet%2Fth%2Fjy-709_2606.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">日焼け対策に見えにくいアームカバー</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,100円〜</span></div>
+                <h4>推し色コーデを崩さず紫外線対策したい☀️</h4>
+                <p>日焼け対策っぽさが強すぎないのがかわいい。外待ち・移動中のうっかり焼け対策に。</p>
+                <a class="p-link" href="https://a.r10.to/h8cSSc" data-aff="product-sun-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea661.1abe6b40.551ea662.59a366f5/?me_id=1361393&amp;item_id=10000875&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flululun-shop%2Fcabinet%2Fother%2Fbanner%2F13103548%2Fimgrc0096040334.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">ルルルン ハイドラEX</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">880円〜</span></div>
+                <h4>おうち美容、ドラストで買う前に見て💜</h4>
+                <p>お家用の買い足し候補。ポイントも拾えるから、使うパックはマラソン中にまとめて見るのが好き。</p>
+                <a class="p-link" href="https://a.r10.to/hPGRdO" data-aff="product-beauty-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea68d.baa6ae9c.551ea68e.bd42a417/?me_id=1370697&amp;item_id=10000032&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbridge-store%2Fcabinet%2Fglass2-thm%2Fth-iphone-an-10.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">さらさらガラスフィルム</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,380円</span></div>
+                <h4>フィルム割れたら早めに替えたい📱</h4>
+                <p>私は光沢なし派。現場でスマホをよく使うから、画面まわりも先に整えておきたい。</p>
+                <a class="p-link" href="https://a.r10.to/hPfT2w" data-aff="product-daily-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/3508a434.09538b77.3508a435.8abfa91b/?me_id=1307271&amp;item_id=10003265&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fauc-risecreation%2Fcabinet%2Fproduct%2F13165206%2Fy0516_01c.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">内ポケット付き圧縮トラベルポーチ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,040円〜</span></div>
+                <h4>遠征の荷物で肩ちぎれそう問題😭</h4>
+                <p>片面ずつ整理しやすく、内ポケット付き。服・メイク・小物を分けたい遠征民に。</p>
+                <a class="p-link" href="https://a.r10.to/hghsAa" data-aff="product-travel-1" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea661.1abe6b40.551ea662.59a366f5/?me_id=1361393&amp;item_id=10000908&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flululun-shop%2Fcabinet%2Fother%2Fbanner%2F13103548%2Fimgrc0096040668.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">ルルルン ハイドラお試しセット</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">2,420円〜</span></div>
+                <h4>遠征には持ち運びやすいサイズが助かる✈️</h4>
+                <p>いろんな種類を試せるセット。ホテルでも使いやすく、遠征美容の持ち物に入れやすい。</p>
+                <a class="p-link" href="https://a.r10.to/hg98kM" data-aff="product-travel-2" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+            <article class="product">
+              <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/551ea681.6a416e8f.551ea682.d19a0c67/?me_id=1300844&amp;item_id=10003590&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnesleaf%2Fcabinet%2Fthumb_season%2Fpb01_260603.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
+              <div class="p-body">
+                <span class="product-title">耐熱ヘアアイロンポーチ</span>
+                <div class="product-price"><span class="price-note">表示価格</span><span class="price-current">1,580円〜</span></div>
+                <h4>熱いまま片付けたい朝、あるある😭</h4>
+                <p>紫も選べるのがかわいい。遠征先でヘアアイロンを冷ます時間がない時の準備に。</p>
+                <a class="p-link" href="https://a.r10.to/hkwomw" data-aff="product-travel-3" rel="nofollow sponsored noopener" target="_blank">▶商品を見る</a><span class="p-pr">Rakuten pr</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="button-row">
+          <a class="btn small secondary" href="https://a.r10.to/hReTfR" data-aff="travel">楽天トラベルも見る</a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="room">
+      <div class="card room-card">
+        <span class="eyebrow">一覧で見たい人へ</span>
+        <h2>その他もオススメ<span class="deco">いっぱい</span>✨</h2>
+        <p class="lead">ここで紹介した商品も含めて、まゆこオススメ商品は楽天ROOMにまとめてるよ！こっちもチェックしてね！</p>
+        <a class="btn" href="https://room.rakuten.co.jp/mayuko_oshi/items" data-aff="room-collection">楽天ROOMを見る</a>
+        <div class="pr-mini">Rakuten pr</div>
+      </div>
+    </section>
+
+    <section id="ps">
+      <div class="card ps-card">
+        <span class="eyebrow">P.S.</span>
+        <h2>最後に…</h2>
+        <p>ここまで見てくれて、ありがとう😊<br>私は楽天を利用するようになって、<br>7年で60万ポイント以上貯めたの💰<br><br>
+          これで遠征や、グッズも実質タダにしたり、<br>投資に回してNISAで利益出せたから、<br>今いろいろ学びに使えてる。<br><br>
+          だから推し活は資金が大量に必要。<br>でも賢く推し活資金を使うことて<br>まゆこフォロワーちゃんには、もっと人生も<br>楽しんで欲しい！<br>そう願って、このページを作りました。<br><br>
+          ちょっとでも、楽天の良さがわかって、<br>お得にポイントゲットして、<br>楽しい日々を過ごしてくれたら<br>とっても嬉しいな☺️<br><br>
+          ここまで読んでくれた人は、<br>ぜひDMで感想教えてね💜<br>一緒に最高の夏にしようね✊✨<br><br>まゆこより愛を込めて♡</p>
+      </div>
+    </section>
+
+    <section id="notice">
+      <div class="notice">
+        <ul>
+          <li>掲載リンクにはアフィリエイト広告を含みます。</li>
+          <li>価格・クーポン・在庫・ポイント条件は変更されることがあります。</li>
+          <li>エントリー必須のキャンペーンがあります。購入前に楽天公式ページで条件を確認してください。</li>
+          <li>クーポンは先着・枚数限定・金額条件がある場合があります。</li>
+          <li>ポイント倍率や対象条件は、必ず楽天公式ページで最新情報を確認してください。</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+document.querySelectorAll('.ph[data-img]').forEach(function(box){
+  if (box.classList.contains('p-img') && box.getAttribute('data-img-approved') !== 'rakuten-affiliate') {
+    box.removeAttribute('data-img');
+    box.classList.add('needs-aff-check');
+    return;
+  }
+  var src = box.getAttribute('data-img');
+  var img = new Image();
+  img.onload = function(){
+    box.classList.add('has-img');
+    box.innerHTML = '';
+    box.appendChild(img);
+  };
+  img.src = src;
+});
+
+var productTabs = Array.prototype.slice.call(document.querySelectorAll('[data-product-tab]'));
+var productSections = Array.prototype.slice.call(document.querySelectorAll('#products .product-section'));
+function showProductTab(targetId){
+  var exists = productSections.some(function(section){ return section.id === targetId; });
+  if (!exists) targetId = 'pick-recommend';
+  productSections.forEach(function(section){
+    section.hidden = section.id !== targetId;
+  });
+  productTabs.forEach(function(tab){
+    var isActive = tab.getAttribute('aria-controls') === targetId;
+    tab.classList.toggle('is-active', isActive);
+    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  if (location.hash !== '#' + targetId) {
+    history.replaceState(null, '', '#' + targetId);
+  }
+}
+productTabs.forEach(function(tab){
+  tab.addEventListener('click', function(event){
+    event.preventDefault();
+    showProductTab(tab.getAttribute('aria-controls'));
+  });
+});
+if (['#pick-recommend','#pick-recent','#pick-buying'].indexOf(location.hash) !== -1) {
+  showProductTab(location.hash.slice(1));
+}
+
+var diagnosisResults = [
+  { src: 'images/08-diagnosis-watch.jpg', alt: '診断結果 まずは様子見タイプ' },
+  { src: 'images/09-diagnosis-review.jpg', alt: '診断結果 ちょこ買い見直しタイプ' },
+  { src: 'images/10-diagnosis-start.jpg', alt: '診断結果 現場準備はじめどきタイプ' },
+  { src: 'images/11-diagnosis-marathon.jpg', alt: '診断結果 今すぐマラソン活用タイプ' },
+  { src: 'images/12-diagnosis-hardcore.jpg', alt: '診断結果 推し活準備ガチ活用タイプ' }
+];
+document.getElementById('showResult').addEventListener('click', function(){
+  var checked = Array.from(document.querySelectorAll('.check input:checked'));
+  var resultBox = document.getElementById('resultBox');
+  var img = document.getElementById('diagnosisImage');
+  if(!checked.length){
+    img.removeAttribute('src');
+    img.alt = '';
+    document.querySelector('#resultBox h3').textContent = '1つ以上チェックしてね';
+    document.querySelector('.result-note').textContent = '当てはまるものを選ぶと、あなたの診断結果が出るよ💜';
+    resultBox.classList.add('show');
+    return;
+  }
+  var result = diagnosisResults[Math.min(checked.length - 1, diagnosisResults.length - 1)];
+  document.querySelector('#resultBox h3').textContent = 'あなたの診断結果はこちら';
+  document.querySelector('.result-note').textContent = 'このまま下に進んで、必要なところだけ見てね💜';
+  img.src = result.src;
+  img.alt = result.alt;
+  resultBox.classList.add('show');
+});
+</script>
+</body>
+</html>
