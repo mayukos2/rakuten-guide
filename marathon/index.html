@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
 ==================================================================
-  楽天お買い物マラソン × 夏現場準備ページ 編集メモ
+  楽天お買い物マラソン × 秋現場準備ページ 編集メモ
 ==================================================================
 
 【1】このページの公開先
   GitHub Pagesでは下記URLになる想定です。
-  https://mayukos2.github.io/rakuten-guide/marathon-202606/
+  https://mayukos2.github.io/rakuten-guide/marathon/
 
 【2】アフィリンクの差し替え
   href="#" のままになっている data-aff 付きリンクを差し替えます。
@@ -24,7 +24,7 @@
   images/02-benefits.svg         楽天で買うメリット図
   images/03-marathon-flow.svg    お買い物マラソンの仕組み図
   images/04-check-before-buy.svg 買う前チェック図
-  images/05-daymap.svg           夏現場の1日マップ
+  images/05-daymap.svg           現場準備の1日マップ
   images/06-products.svg         商品カテゴリ見出し用
   images/07-divider.png          区切り線
   images/08-diagnosis-watch.jpg     まずは様子見タイプ
@@ -44,8 +44,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>楽天マラソンで夏現場準備｜推しに会う準備、まとめて整えよ♡</title>
-<meta name="description" content="夏現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
+<title>楽天マラソンで秋現場の準備｜推しに会う準備、まとめて整えよ♡</title>
+<meta name="description" content="秋現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
+<script src="ga4-config.js"></script>
+<script defer src="ga4.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Kiwi+Maru:wght@400;500&family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -187,6 +189,37 @@ img{display:block;max-width:100%}
 }
 .hero-copy p{font-size:.96rem}
 .hero-copy b{color:var(--pink-deep)}
+.edition-card{
+  max-width:390px;
+  margin:0 auto 14px;
+  padding:12px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.84);
+  box-shadow:var(--shadow-soft);
+  font-size:.82rem;
+}
+.edition-card b{display:block;color:var(--lavender-deep);font-size:.96rem}
+.jump-nav{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  max-width:390px;
+  margin:0 auto 18px;
+}
+.jump-nav a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(143,103,197,.2);
+  color:var(--lavender-deep);
+  text-decoration:none;
+  font-size:.78rem;
+  font-weight:700;
+}
 .hero-buttons,.button-row{display:grid;gap:11px;margin-top:18px;justify-items:center}
 .btn{
   display:flex;
@@ -695,8 +728,18 @@ p{font-size:.94rem}
         <img src="images/00-fv.jpg" alt="楽天お買い物マラソン 推し活準備ガイド">
         <h1 class="sr-only">楽天お買い物マラソン 推し活準備ガイド</h1>
       </div>
+      <div class="edition-card">
+        <b>2026年8月版｜最終更新 8/20</b>
+        このページは毎月のマラソン前に更新するよ。<br>ブックマークしておくと便利💜
+      </div>
+      <nav class="jump-nav" aria-label="ページ内メニュー">
+        <a href="#entry">エントリー</a>
+        <a href="#schedule">今月の狙い目</a>
+        <a href="#products">アイテムを見る</a>
+        <a href="#mistakes">やりがちな失敗</a>
+      </nav>
       <div class="hero-copy">
-        <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、ライブ当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>欲しいグッズを実質タダ</b><br>にしちゃおう✊✨!!</p>
+        <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>ポイントをうまく使えば、<br>欲しいグッズ代が実質浮くことも…?!</b></p>
       </div>
       <div class="hero-buttons">
         <a class="btn" href="#entry">エントリーを見る</a>
@@ -716,7 +759,7 @@ p{font-size:.94rem}
           <b>超初心者さんは、やること3つだけ！</b>
           <div class="quick-step"><span>1</span><p>まずマラソンにエントリー</p></div>
           <div class="quick-step"><span>2</span><p>5と0のつく日を確認</p></div>
-          <div class="quick-step"><span>3</span><p>必要なものをカテゴリ別に見る</p></div>
+          <div class="quick-step"><span>3</span><p>必要なアイテムを見る</p></div>
         </div>
         <div class="entry-grid">
           <a class="entry-btn is-primary" href="https://a.r10.to/hgAVab" data-aff="entry-marathon">
@@ -740,8 +783,8 @@ p{font-size:.94rem}
         <h2>今のあなたは<span class="deco">コレ</span>該当する？</h2>
         <p class="lead speech">当てはまれば、当てはまるほど、楽天と相性いい！</p>
         <div class="checks">
-          <label class="check"><input type="checkbox" data-target="live"><span class="box"></span><span><b>夏に現場がある✨!!</b><small>当日バタつかないように準備したい</small></span></label>          
-          <label class="check"><input type="checkbox" data-target="sun"><span class="box"></span><span><b>暑さ・紫外線対策グッズがほしい🥺</b><small>炎天下の物販・移動・外待ち対策</small></span></label>
+          <label class="check"><input type="checkbox" data-target="live"><span class="box"></span><span><b>これから現場がある✨!!</b><small>当日バタつかないように準備したい</small></span></label>
+          <label class="check"><input type="checkbox" data-target="sun"><span class="box"></span><span><b>残暑と紫外線がまだしんどい🥺</b><small>物販・移動・外待ちがまだ暑い</small></span></label>
           <label class="check"><input type="checkbox" data-target="beauty"><span class="box"></span><span><b>いつもの美容品をそろそろ買う💄</b><small>現場前はかわいく、髪も肌も整えたいよね?!</small></span></label>
           <label class="check"><input type="checkbox" data-target="daily"><span class="box"></span><span><b>日用品を買い足す必要あり🧻</b><small>どうせ使うものは、まとめて買うべし</small></span></label>          
           <label class="check"><input type="checkbox" data-target="travel"><span class="box"></span><span><b>遠征予定あり🚅🚘✈️</b><small>荷物多くて肩ちぎれそう…を減らしたい</small></span></label>
@@ -753,6 +796,7 @@ p{font-size:.94rem}
             <img id="diagnosisImage" src="" alt="">
           </div>
           <p class="result-note">このまま下に進んで、必要なところだけ見てね💜</p>
+          <a class="btn small" href="#products">▼ アイテムを見にいく</a>
         </div>
       </div>
     </section>
@@ -806,6 +850,7 @@ p{font-size:.94rem}
           <div class="point"><span class="num">3</span><span><b>楽天カード利用でポイントUP😍</b><span>通常1倍と、楽天カードで＋3倍になる！<br>上限や、対象外サービス等条件もあるから、詳細はエントリーページにをみてね！</span></span></div>
           <div class="point"><span class="num">4</span><span><b>楽天カード持ってない人も狙い目👀</b><span>この日は夕方に急にお得クーポンが出たりするから、カード持ってなくても要チェック日！！</span></span></div>
         </div>
+        <p class="lead"><b>今月は8/25・8/30。</b>とくに8/25はマラソン中に重なる予定だから見逃さないでね👀</p>
         <div class="button-row">
           <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">5と0のつく日を見る</a>
         </div>
@@ -817,25 +862,26 @@ p{font-size:.94rem}
     <section id="schedule">
       <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
       <span class="eyebrow">今回はここが狙い目✨</span>
-      <h2><span class="deco">6/20</span>がBigChance！</h2>
-      <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">6/20(土) 20:00〜6/26(金) 01:59</span>夏現場前に買うものがある子は、チェックしておきたいタイミング🙂‍↕️</p>
+      <h2><span class="deco">8/25</span>がBigChance！</h2>
+      <p class="lead schedule-lead">次の楽天お買い物マラソンは<span class="schedule-date">開催予定｜8/24(月) 20:00〜8/27(木) 09:59</span>残暑の現場も、秋の現場の準備も、ここでまとめて整えとこ🙂‍↕️</p>
       <div class="card">
         <div class="timeline">
-          <div class="time-card is-hot"><b>1. ⚠️激アツ⚠️6/20(土) 20:00〜2時間</b><p>開始日＋0のつく日。開始2時間限定の半額クーポンは、マジで一瞬で滅😭でも開始日と0のつく日が重なるから、きっとお得なものがいろいろ出るかも🤩</p></div>
-          <div class="time-card"><b>2. 6/25(木)も5のつく日🙆‍♀️</b><p>20日に買いきれなかったものは、この日がオススメ💜夕方以降のゲリラクーポンもお見逃しなく！</p></div>
+          <div class="time-card is-hot"><b>1. ⚠️激アツ⚠️ 8/24(月) 20:00〜2時間</b><p>開始2時間限定の半額クーポンは、マジで一瞬で滅😭でも開始直後はいいものが出やすいから、狙うならここ🤩</p></div>
+          <div class="time-card"><b>2. 8/25(火)は5のつく日🙆‍♀️</b><p><b>マラソンと5のつく日が重なる予定の日💜</b>24日に買いきれなかったものは、この日がオススメ。夕方以降のゲリラクーポンもお見逃しなく！</p></div>
+          <div class="time-card"><b>3. 9月上旬にスーパーセールが来る可能性もあるよ📅</b><p>大きい買い物は、次の大型セールまで待つ手もあるかも。焦って全部いま買わなくて大丈夫☺️</p></div>
         </div>
         <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
           <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5">▶︎5と0のつく日にエントリー✊</a>
-        <div class="pr-mini">Rakuten pr<br>※5と0のつく日以外は、リンクに飛べません。</div>
+        <div class="pr-mini">Rakuten pr<br>※開催日以外は、エントリーページが表示されない場合があります。</div>
         </div>
-        <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
+        <p class="official-note">8/24開始の日程は8/20時点で開催予定です。購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
     <section id="daymap">
       <span class="eyebrow">もう用意してる？</span>
-      <h2><span class="deco">夏の現場</span>事前に準備しとこ✊</h2>
+      <h2><span class="deco">現場の準備</span>、先にしとこ✊</h2>
       <p class="lead speech">ライブを楽しみにする日々も…<br>
                              遠征する準備の日も…<br>
                              当日移動する時も…<br>
@@ -849,7 +895,7 @@ p{font-size:.94rem}
                              って思い出すことで、買い忘れや持ち忘れを<br>
                              減らしてるよ☺️</p>
       <div class="card">
-        <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜夏現場の1日マップ"></div></div>
+        <div class="visual"><div class="ph contain" data-img="images/05-daymap.svg" data-label="images/05-daymap.svg｜現場準備の1日マップ"></div></div>
         <div class="scene-grid">
           <div class="scene-card"><span class="scene-no">01</span><span><b>ライブ行くまで🏠</b><p>スキンケア、メイク道具、カラコン、参戦服は準備OK？？</p></span></div>
           <div class="scene-card"><span class="scene-no">02</span><span><b>荷造り🧳・移動🚅✈️</b><p>パッキンアイテムちゃんと全部揃ってる？モバイルバッテリー・冷感グッズ壊れてない？</p></span></div>
@@ -862,7 +908,7 @@ p{font-size:.94rem}
     <section id="products">
       <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
       <span class="eyebrow">まゆこオススメ💜</span>
-      <h2><span class="deco">夏の現場に向けて準備すべし！</span></h2>
+      <h2><span class="deco">秋現場に向けて準備すべし！</span></h2>
       <p class="lead speech">商品は、表示価格・在庫・リンク先を確認できたものから追加していくね。ストーリーで流れていく情報を、ここに残せるようにしておくね。</p>
       <div class="visual"><div class="ph contain" data-img="images/06-products.svg" data-label="images/06-products.svg｜商品カテゴリ見出し用"></div></div>
       <p class="category-lead">まゆこ目線で分けたよ👇</p>
@@ -875,7 +921,7 @@ p{font-size:.94rem}
       <div class="card">
         <div class="product-section" id="pick-recommend">
           <h3>おすすめ商品</h3>
-          <p class="product-section-lead">夏現場前に見ておきたい候補をまとめたよ。まず迷ったらここから見てね。</p>
+          <p class="product-section-lead">現場前に見ておきたい候補をまとめたよ。まず迷ったらここから見てね。</p>
           <div class="products">
             <article class="product">
               <div class="ph p-img" data-img="https://hbb.afl.rakuten.co.jp/hgb/4eb3e802.c04732c4.4eb3e803.8e5a553b/?me_id=1416438&amp;item_id=10000233&amp;pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frorrystore%2Fcabinet%2Fbiiino%2Fitem%2Fmain-image%2F20260513120133_1.jpg%3F_ex%3D400x400&amp;s=400x400&amp;t=picttext" data-img-approved="rakuten-affiliate" data-label="商品画像"></div>
@@ -1220,15 +1266,29 @@ p{font-size:.94rem}
       </div>
     </section>
 
+    <section id="mistakes">
+      <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
+      <span class="eyebrow">知ってれば防げるやつ💦</span>
+      <h2>推し活民がやりがちな、<br><span class="deco">もったいない3つ</span></h2>
+      <div class="card">
+        <div class="point-list">
+          <div class="point"><span class="num">1</span><span><b>エントリーを忘れて、まるっと対象外😭</b><span>一番多いのがこれ。買う前に1回押すだけなんだけど、「あとでやろ」で忘れがち。しかも5と0のつく日は開催日ごとに別エントリーだから、20日に押しても、25日にまた押さないとダメなの🥺</span></span></div>
+          <div class="point"><span class="num">2</span><span><b>あと少しで1,000円に届いてない🥲</b><span>推し活グッズって、小物が多いから900円台になりがち。税込1,000円を超えてないと、そのお店はカウントされないの。いつも使う日用品や消耗品を足して、無理なく1,000円を超えるかチェックしてね。カートに入れた時点で1回見ておくと安心💜</span></span></div>
+          <div class="point"><span class="num">3</span><span><b>ポイントの上限を超えちゃう</b><span>直近の買い回りでもらえるポイントの上限は7,000ポイント。遠征グッズをまとめ買いすると、意外と届いちゃう。上限を超えたぶんは増えないから、大きい買い物は9月のスーパーセールに回すのもアリだよ☺️</span></span></div>
+        </div>
+        <p class="official-note">次回の上限や条件は変わる場合があります。購入前に楽天公式ページで確認してね。</p>
+      </div>
+    </section>
+
     <section id="ps">
       <div class="card ps-card">
         <span class="eyebrow">P.S.</span>
         <h2>最後に…</h2>
         <p>ここまで見てくれて、ありがとう😊<br>私は楽天を利用するようになって、<br>7年で60万ポイント以上貯めたの💰<br><br>
-          これで遠征や、グッズも実質タダにしたり、<br>投資に回してNISAで利益出せたから、<br>今いろいろ学びに使えてる。<br><br>
+          これで遠征やグッズ代を浮かせたり、<br>余った分を学びや次の楽しみに<br>回せるようになった。<br><br>
           だから推し活は資金が大量に必要。<br>でも賢く推し活資金を使うことて<br>まゆこフォロワーちゃんには、もっと人生も<br>楽しんで欲しい！<br>そう願って、このページを作りました。<br><br>
           ちょっとでも、楽天の良さがわかって、<br>お得にポイントゲットして、<br>楽しい日々を過ごしてくれたら<br>とっても嬉しいな☺️<br><br>
-          ここまで読んでくれた人は、<br>ぜひDMで感想教えてね💜<br>一緒に最高の夏にしようね✊✨<br><br>まゆこより愛を込めて♡</p>
+          ここまで読んでくれた人は、<br>ぜひDMで感想教えてね💜<br>一緒に秋の現場を楽しもうね✊✨<br><br>まゆこより愛を込めて♡</p>
       </div>
     </section>
 
@@ -1241,6 +1301,7 @@ p{font-size:.94rem}
           <li>クーポンは先着・枚数限定・金額条件がある場合があります。</li>
           <li>ポイント倍率や対象条件は、必ず楽天公式ページで最新情報を確認してください。</li>
         </ul>
+        <p class="official-note">このサイトではアクセス解析を利用しています。<br>個人を特定する情報は取得していません。</p>
       </div>
     </section>
   </div>
