@@ -31,6 +31,16 @@ assert.equal(
   null,
   '公開ページではプレビュー指定を無効にする'
 );
+assert.equal(
+  deal.getLocalPreviewDate({ hostname: 'localhost', search: '?preview-now=2026-08-24T20%3A01%3A00%2B09%3A00' }).toISOString(),
+  '2026-08-24T11:01:00.000Z'
+);
+assert.equal(
+  deal.getLocalPreviewDate({ hostname: 'mayukos2.github.io', search: '?preview-now=2026-08-24' }),
+  null
+);
+assert.equal(deal.getNextDeal(new Date('2026-08-21T15:01:00Z')).day, 25);
+assert.equal(deal.getNextDeal(new Date('2026-08-30T15:01:00Z')).day, 1);
 
 function fakeDocument() {
   var message = { textContent: '' };
@@ -39,6 +49,11 @@ function fakeDocument() {
     dataset: {},
     removeAttribute: function (name) {
       if (name === 'data-deal') delete this.dataset.deal;
+    },
+    getAttribute: function (name) {
+      if (name === 'data-marathon-start') return '2026-08-24T20:00:00+09:00';
+      if (name === 'data-marathon-end') return '2026-08-27T09:59:00+09:00';
+      return null;
     },
     querySelector: function () { return message; }
   };
@@ -58,6 +73,18 @@ assert.equal(first.message.textContent, '今日はワンダフルデーだから
 
 var ordinary = fakeDocument();
 deal.showTodayDeal(new Date('2026-08-21T15:01:00Z'), ordinary.document);
-assert.equal(ordinary.container.hidden, true);
+assert.equal(ordinary.container.hidden, false);
+assert.equal(
+  ordinary.message.textContent,
+  '今日はもしかしたらクーポンが出てるかも？でも次の5と0のつく日（8/25）まで待った方がお得！'
+);
+
+var marathon = fakeDocument();
+deal.showTodayDeal(new Date('2026-08-24T11:01:00Z'), marathon.document);
+assert.equal(marathon.container.hidden, false);
+assert.equal(
+  marathon.message.textContent,
+  '今はマラソン中！急ぎだったり、限定クーポンが出ているなら今買うのもあり。でも8/25の5と0のつく日まで待った方がよりお得かも！'
+);
 
 console.log('today-deal tests: OK');
