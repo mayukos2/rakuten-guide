@@ -48,6 +48,7 @@
 <meta name="description" content="秋現場前のちょこちょこ買いを楽天お買い物マラソンでまとめて、お得に推し活準備するためのガイド。">
 <script src="ga4-config.js"></script>
 <script defer src="ga4.js"></script>
+<script defer src="today-deal.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Kiwi+Maru:wght@400;500&family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -199,6 +200,19 @@ img{display:block;max-width:100%}
   font-size:.82rem;
 }
 .edition-card b{display:block;color:var(--lavender-deep);font-size:.96rem}
+.today-deal{
+  max-width:390px;
+  margin:0 auto 14px;
+  padding:14px 16px;
+  border:1px solid rgba(224,107,158,.26);
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,244,200,.94),rgba(244,207,227,.72));
+  box-shadow:var(--shadow-soft);
+  text-align:left;
+}
+.today-deal[hidden]{display:none}
+.today-deal strong{display:block;color:#9A4770;font-size:.94rem;line-height:1.55}
+.today-deal span{display:block;margin-top:4px;color:var(--ink);font-size:.72rem;line-height:1.55}
 .jump-nav{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -729,9 +743,13 @@ p{font-size:.94rem}
         <h1 class="sr-only">楽天お買い物マラソン 推し活準備ガイド</h1>
       </div>
       <div class="edition-card">
-        <b>2026年8月版｜最終更新 8/20</b>
+        <b>2026年8月版｜最終更新 8/22</b>
         このページは毎月のマラソン前に更新するよ。<br>ブックマークしておくと便利💜
       </div>
+      <aside id="today-deal" class="today-deal" aria-live="polite" hidden>
+        <strong data-today-deal-message></strong>
+        <span>※条件や詳細は楽天市場でチェックしてね！</span>
+      </aside>
       <nav class="jump-nav" aria-label="ページ内メニュー">
         <a href="#entry">エントリー</a>
         <a href="#schedule">今月の狙い目</a>
