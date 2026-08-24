@@ -435,6 +435,12 @@ p{font-size:.94rem}
 .entry-btn.is-unavailable .arr{display:none}
 .entry-btn.is-unavailable small{color:#666;font-weight:800}
 .entry-btn.is-unavailable.is-compact{grid-template-columns:1fr}
+#top-benefit-links .entry-btn{
+  width:100%;
+  grid-template-columns:minmax(0,1fr) auto;
+}
+#top-benefit-links .entry-btn > span:first-child{min-width:0}
+#top-benefit-links .entry-btn.is-unavailable{grid-template-columns:1fr}
 
 .quiz-card{
   background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(248,243,255,.9));
