@@ -13,7 +13,11 @@
    1. 版表記         「最終更新」で検索（1件）。"2026年9月版｜最終更新 9/3" を直す
    2. 開催期間データ   「data-marathon-start」「data-marathon-end」で検索（各1件）
                      ここが古いと今日のお得日バナー（today-deal）の出し分けがズレる
-   3. 開催期間の文    「開催予定｜」で検索（1件）
+   3. 開催期間の文    「schedule-date」で検索（1件）。9/4(金) 20:00〜9/11(金) 01:59 の部分
+                     ※2026/9/3に「開催予定｜」の文字は外した（スマホで2段に折り返したため）。
+                     「まだ確定ではない」は同セクション下の official-note が担保しているので消さないこと
+                     ⚠️ .schedule-date は white-space:nowrap。375px幅で1行に収まる字サイズにしてある
+                     （19.2px・余白約40px）。日付の桁が増えたら幅を測り直す
    4. 狙い目の日      「BigChance」で検索（1件・h2の日付）＋「<div class="time-card」で検索（3件）
                      3枚の日付・曜日・「〇時間」「〜の午前1:59まで」を全部直す
    5. 5と0のつく日    「今月は」で検索（1件）。今月の6日分と、セールと重なる日を直す
@@ -28,11 +32,17 @@
   10. エントリーリンク  a.r10.to/… をイベント用に取り直す
                      「entry-marathon」（2件・イベント本体）
                      「entry-0and5」（3件）「entry-3980」（2件）「data-aff="travel"」（1件）
+                     ⚠️ 5と0のつく日のエントリーは開催日ごとに開き直す。開いていない日は
+                     is-unavailable にして押せなくする（2026/9/3に3件とも実施・文言「次は9/5」）
+                     戻すときは「entry-0and5」で検索（本文6件＝生きた要素3＋控えのコメント3）。
+                     各所とも、コメントの中の <a> を、隣の is-unavailable の div/span と
+                     そっくり入れ替えるだけ。URLはコメント内に温存してある
                      ⚠️ リンクは1文字でも変わると別リンクになる。コピペで貼り替える
-  11. イベント名      「お買い物マラソン」で検索（3件）／「スーパーセール」で検索
-                     ⚠️ 前回の見落とし箇所：images/00-fv.jpg の alt と <h1 class="sr-only">
-                     ここが「楽天お買い物マラソン」のまま残っていた（2件）
-                     ※「買いまわりの仕組みはお買い物マラソンと同じ」の1件は説明文なので残してOK
+  11. イベント名      「お買い物マラソン」で検索（本文1件）／「スーパーセール」で検索
+                     ✅ 2026/9/3 対応済み：images/00-fv.jpg をスーパーセール版に差し替え、
+                     あわせて alt と <h1 class="sr-only"> も
+                     「楽天スーパーセール 推し活準備ガイド」に直した（2件・前回の見落とし箇所）
+                     ※本文に残る1件「買いまわりの仕組みはお買い物マラソンと同じ」は説明文なので残してOK
   12. セールの性格の文  「年に4回」で検索（3件）／「3月・6月・9月」で検索（1件）
                      スーパーセール→お買い物マラソンに変えるときは、この説明ごと書き換える
   13. 季節の言葉      「秋」で検索（5件）。title・meta description・h2・P.S.に入っている
@@ -41,8 +51,16 @@
                      images/03-marathon-flow.svg（仕組み図）、
                      「diagnosis-」で検索（8件・診断結果の画像とalt）
                      ⚠️ 画像の中に文字が描かれている。差し替えたら alt と h1（「sr-only」で検索・2件）も直す
-  15. today-deal.js  「マラソン中」というメッセージが直書きされている
-                     スーパーセール期間中も「今はマラソン中！」と出るので、名前を変えるならここも直す
+                     ⚠️ FV画像にはイベント固有の文言が焼き込んである
+                     （2026/9版は「楽天スーパーセール」「年に4回限定開催」「オタクこそ必見！」）。
+                     お買い物マラソンは年4回ではないので、イベントを変えるときは画像そのものを作り直す。
+                     文字を直すだけでは合わなくなる
+  15. today-deal.js  イベント名がメッセージに直書きされている（「今は◯◯中！」の文と data-deal のラベル）
+                     ✅ 2026/9/3 対応済み：「マラソン中」→「スーパーセール中」（today-deal.js の2か所）
+                     ⚠️ ここは毎回直す場所。イベント名を変えたら必ず一緒に直す
+                     あわせて today-deal.test.js も直す（期待値の文言・日付と、
+                     fakeDocument の data-marathon-start/end を本番の開催期間にそろえる）
+                     直したら `node marathon/today-deal.test.js` を実行して OK が出るのを確認する
   16. 最後の確認      前回の月で検索して0件を確認する（例：9月版を作ったら「8月」「8/」で0件）
                      さらに「時点」で検索（本文33件）して、日付が1種類だけになっているか見る
                      ※33件の内訳＝価格31件＋開催予定の注記1件＋「カートに入れた時点で」1件（日付なし）
@@ -255,6 +273,7 @@ img{display:block;max-width:100%}
   text-align:left;
 }
 .today-deal[hidden]{display:none}
+.today-deal-title{display:block;margin-bottom:5px;color:var(--pink-deep);font-family:var(--font-round);font-size:.88rem;font-weight:700;line-height:1.4}
 .today-deal strong{display:block;color:#9A4770;font-size:.94rem;line-height:1.55}
 .today-deal span{display:block;margin-top:4px;color:var(--ink);font-size:.72rem;line-height:1.55}
 .jump-nav{
@@ -298,6 +317,32 @@ img{display:block;max-width:100%}
   cursor:pointer;
 }
 .btn.secondary{background:rgba(255,255,255,.86);color:var(--lavender-deep);border:1px solid rgba(143,103,197,.24)}
+.hero-buttons.is-quad{
+  grid-template-columns:1fr 1fr;
+  grid-auto-rows:1fr;
+  gap:9px;
+  justify-items:stretch;
+  align-items:stretch;
+  max-width:390px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero-buttons.is-quad .btn{
+  width:100%;
+  min-height:58px;
+  padding:10px 8px;
+  font-size:.86rem;
+  line-height:1.32;
+  text-align:center;
+  white-space:normal;
+  word-break:auto-phrase;
+  overflow-wrap:anywhere;
+}
+.hero-buttons.is-quad .btn.is-hero{
+  font-size:.95rem;
+  border:2px solid var(--pink);
+  box-shadow:0 13px 30px rgba(143,103,197,.42);
+}
 .btn.small{min-height:46px;font-family:var(--font-round);font-weight:700;font-size:.88rem}
 .pr-mini{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:5px}
 .speech{
@@ -602,7 +647,9 @@ p{font-size:.94rem}
   display:block;
   margin:10px 0 0;
   font-family:var(--font-round);
-  font-size:1.34rem;
+  font-size:1.2rem;
+  letter-spacing:-.01em;
+  white-space:nowrap;
   color:var(--pink-deep);
   line-height:1.45;
 }
@@ -803,8 +850,8 @@ p{font-size:.94rem}
     <div class="hero-inner">
       <div class="pr-top">PR｜楽天アフィリエイトを利用しています</div>
       <div class="fv-banner">
-        <img src="images/00-fv.jpg" alt="楽天お買い物マラソン 推し活準備ガイド">
-        <h1 class="sr-only">楽天お買い物マラソン 推し活準備ガイド</h1>
+        <img src="images/00-fv.jpg" alt="楽天スーパーセール 推し活準備ガイド">
+        <h1 class="sr-only">楽天スーパーセール 推し活準備ガイド</h1>
       </div>
       <div class="edition-card">
         <b>2026年9月版｜最終更新 9/3</b>
@@ -813,6 +860,7 @@ p{font-size:.94rem}
       <aside id="today-deal" class="today-deal" aria-live="polite" hidden
         data-marathon-start="2026-09-04T20:00:00+09:00"
         data-marathon-end="2026-09-11T01:59:00+09:00">
+        <b class="today-deal-title">今日はお得Day🉐？</b>
         <strong data-today-deal-message></strong>
         <span>※条件や詳細は楽天市場でチェックしてね！</span>
       </aside>
@@ -825,9 +873,11 @@ p{font-size:.94rem}
       <div class="hero-copy">
         <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>ポイントをうまく使えば、<br>欲しいグッズ代が実質浮くことも…?!</b></p>
       </div>
-      <div class="hero-buttons">
-        <a class="btn" href="#entry">エントリーを見る</a>
-        <a class="btn secondary" href="#products">アイテムを見る</a>
+      <div class="hero-buttons is-quad">
+        <a class="btn is-hero" href="#entry">絶対これやって！</a>
+        <a class="btn secondary" href="#marathon">スパセって？</a>
+        <a class="btn secondary" href="#schedule">お得な日は？</a>
+        <a class="btn secondary" href="#products">まゆこおすすめアイテム</a>
       </div>
     </div>
   </header>
@@ -849,9 +899,14 @@ p{font-size:.94rem}
           <a class="entry-btn is-primary" href="https://a.r10.to/hPNU59" data-aff="entry-marathon">
             <span class="ico">1</span><span><strong>イベントにまずエントリー</strong><small>コレ押さなきゃ始まらない🙂‍↕️</small></span><span class="arr">👆</span>
           </a>
+          <!-- ⚠️ 5と0のつく日のエントリーは開催日ごとに開き直す。開く日（9/5・9/10…）にこの div を下の <a> に戻す
           <a class="entry-btn" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">
             <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>今日のエントリーはこちら</small></span><span class="arr">👆</span>
           </a>
+          -->
+          <div class="entry-btn is-unavailable" data-aff="entry-0and5" aria-disabled="true">
+            <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>次は9/5</small></span>
+          </div>
           <div class="entry-btn is-unavailable" data-aff="entry-3980" aria-disabled="true">
             <span class="ico">3</span><span><strong>3,980円以上買うならコレも！</strong><small>今日はないよ！</small></span>
           </div>
@@ -936,7 +991,8 @@ p{font-size:.94rem}
         </div>
         <p class="lead"><b>今月は9/5・9/10・9/15・9/20・9/25・9/30。</b>とくに<b>9/5と9/10はスーパーセール中に重なる予定</b>だから見逃さないでね👀</p>
         <div class="button-row">
-          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">5と0のつく日を見る</a>
+          <!-- ⚠️ 開催日（9/5・9/10…）に戻す: <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">5と0のつく日を見る</a> -->
+          <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span>
         </div>
         <div class="pr-mini">Rakuten pr</div>
         <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
@@ -947,7 +1003,7 @@ p{font-size:.94rem}
       <div class="divider"><div class="ph contain" data-img="images/07-divider.png" data-label="区切り線"></div></div>
       <span class="eyebrow">今回はここが狙い目✨</span>
       <h2><span class="deco">9/5</span>がBigChance！</h2>
-      <p class="lead schedule-lead">今回は<b>楽天スーパーセール</b>！<span class="schedule-date">開催予定｜9/4(金) 20:00〜9/11(金) 01:59</span>年に4回の大きいセールだよ。秋の現場の準備、ここでまとめて整えとこ🙂‍↕️</p>
+      <p class="lead schedule-lead">今回は<b>楽天スーパーセール</b>！<span class="schedule-date">9/4(金) 20:00〜9/11(金) 01:59</span>年に4回の大きいセールだよ。秋の現場の準備、ここでまとめて整えとこ🙂‍↕️</p>
       <div class="card">
         <div class="timeline">
           <div class="time-card is-hot"><b>1. ⚠️激アツ⚠️ 9/4(金) 20:00〜2時間</b><p>開始2時間限定の半額クーポンは、マジで一瞬で滅😭でも開始直後はいいものが出やすいから、狙うならここ🤩</p></div>
@@ -956,7 +1012,8 @@ p{font-size:.94rem}
         </div>
         <div class="visual"><div class="ph contain" data-img="images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
-          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">▶︎5と0のつく日にエントリー✊</a>
+          <!-- ⚠️ 開催日（9/5・9/10…）に戻す: <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">▶︎5と0のつく日にエントリー✊</a> -->
+          <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span>
         <div class="pr-mini">Rakuten pr<br>※開催日以外は、エントリーページが表示されない場合があります。</div>
         </div>
         <p class="official-note">9/4開始の日程は9/3時点で開催予定です。購入前に楽天公式ページで最新条件を確認してね。</p>

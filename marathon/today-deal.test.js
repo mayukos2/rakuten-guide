@@ -51,8 +51,8 @@ function fakeDocument() {
       if (name === 'data-deal') delete this.dataset.deal;
     },
     getAttribute: function (name) {
-      if (name === 'data-marathon-start') return '2026-08-24T20:00:00+09:00';
-      if (name === 'data-marathon-end') return '2026-08-27T09:59:00+09:00';
+      if (name === 'data-marathon-start') return '2026-09-04T20:00:00+09:00';
+      if (name === 'data-marathon-end') return '2026-09-11T01:59:00+09:00';
       return null;
     },
     querySelector: function () { return message; }
@@ -72,19 +72,19 @@ assert.equal(first.container.hidden, false);
 assert.equal(first.message.textContent, '今日はワンダフルデーだからお買い得日🉐');
 
 var ordinary = fakeDocument();
-deal.showTodayDeal(new Date('2026-08-21T15:01:00Z'), ordinary.document);
+deal.showTodayDeal(new Date('2026-09-01T15:01:00Z'), ordinary.document);
 assert.equal(ordinary.container.hidden, false);
 assert.equal(
   ordinary.message.textContent,
-  '今日はもしかしたらクーポンが出てるかも？でも次の5と0のつく日（8/25）まで待った方がお得！'
+  '今日はもしかしたらクーポンが出てるかも？でも次の5と0のつく日（9/5）まで待った方がお得！'
 );
 
-var marathon = fakeDocument();
-deal.showTodayDeal(new Date('2026-08-24T11:01:00Z'), marathon.document);
-assert.equal(marathon.container.hidden, false);
+var saleTime = fakeDocument();
+deal.showTodayDeal(new Date('2026-09-04T11:01:00Z'), saleTime.document);
+assert.equal(saleTime.container.hidden, false);
 assert.equal(
-  marathon.message.textContent,
-  '今はマラソン中！急ぎだったり、限定クーポンが出ているなら今買うのもあり。でも8/25の5と0のつく日まで待った方がよりお得かも！'
+  saleTime.message.textContent,
+  '今はスーパーセール中！急ぎだったり、限定クーポンが出ているなら今買うのもあり。でも9/5の5と0のつく日まで待った方がよりお得かも！'
 );
 
 console.log('today-deal tests: OK');

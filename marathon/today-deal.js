@@ -110,8 +110,8 @@
     if (isDuringMarathon(currentDate, container)) {
       setMessage(
         container,
-        '今はマラソン中！急ぎだったり、限定クーポンが出ているなら今買うのもあり。でも' + nextLabel + 'まで待った方がよりお得かも！',
-        'マラソン中'
+        '今はスーパーセール中！急ぎだったり、限定クーポンが出ているなら今買うのもあり。でも' + nextLabel + 'まで待った方がよりお得かも！',
+        'スーパーセール中'
       );
     } else {
       setMessage(
