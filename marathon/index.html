@@ -254,49 +254,32 @@ img{display:block;max-width:100%}
 .hero-copy b{color:var(--pink-deep)}
 .edition-card{
   max-width:390px;
-  margin:0 auto 14px;
-  padding:12px 16px;
-  border-radius:18px;
-  background:rgba(255,255,255,.84);
-  box-shadow:var(--shadow-soft);
-  font-size:.82rem;
+  margin:0 auto 10px;
+  padding:0 6px;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+  color:var(--ink);
+  font-size:.7rem;
+  line-height:1.5;
+  text-shadow:0 1px 8px rgba(255,255,255,.95);
 }
-.edition-card b{display:block;color:var(--lavender-deep);font-size:.96rem}
+.edition-card b{display:block;color:var(--ink);font-size:.72rem;font-weight:700;line-height:1.5}
 .today-deal{
   max-width:390px;
   margin:0 auto 14px;
   padding:14px 16px;
-  border:1px solid rgba(224,107,158,.26);
+  border:2px solid var(--pink-deep);
   border-radius:18px;
-  background:linear-gradient(135deg,rgba(255,244,200,.94),rgba(244,207,227,.72));
+  background:linear-gradient(135deg,var(--gold-soft) 0%,var(--gold-soft) 58%,var(--lavender-mist) 100%);
   box-shadow:var(--shadow-soft);
   text-align:left;
 }
 .today-deal[hidden]{display:none}
-.today-deal-title{display:block;margin-bottom:5px;color:var(--pink-deep);font-family:var(--font-round);font-size:.88rem;font-weight:700;line-height:1.4}
-.today-deal strong{display:block;color:#9A4770;font-size:.94rem;line-height:1.55}
-.today-deal span{display:block;margin-top:4px;color:var(--ink);font-size:.72rem;line-height:1.55}
-.jump-nav{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  max-width:390px;
-  margin:0 auto 18px;
-}
-.jump-nav a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:8px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,.86);
-  border:1px solid rgba(143,103,197,.2);
-  color:var(--lavender-deep);
-  text-decoration:none;
-  font-size:.78rem;
-  font-weight:700;
-}
+.today-deal-title{display:block;margin-bottom:7px;color:var(--lavender-deep);font-family:var(--font-round);font-size:1.18rem;font-weight:800;line-height:1.35}
+.today-deal strong{display:block;color:var(--ink);font-size:.94rem;font-weight:600;line-height:1.55}
+.today-deal span{display:block;margin-top:6px;color:var(--ink);font-size:.72rem;font-weight:400;line-height:1.55}
 .hero-buttons,.button-row{display:grid;gap:11px;margin-top:18px;justify-items:center}
 .btn{
   display:flex;
@@ -864,12 +847,6 @@ p{font-size:.94rem}
         <strong data-today-deal-message></strong>
         <span>※条件や詳細は楽天市場でチェックしてね！</span>
       </aside>
-      <nav class="jump-nav" aria-label="ページ内メニュー">
-        <a href="#entry">エントリー</a>
-        <a href="#schedule">今月の狙い目</a>
-        <a href="#products">アイテムを見る</a>
-        <a href="#mistakes">やりがちな失敗</a>
-      </nav>
       <div class="hero-copy">
         <p>現場前って、気づいたら日程近づいてて<br>「あ！これ買い忘れてた💦!!」<br>って急いで買い足しがち😭<br><br>でも前もってお得なタイミングで<br>準備しておいたら、当日の<br><b>グッズ代が浮くかも…?!</b><br><br>最後まで見て<br><b>ポイントをうまく使えば、<br>欲しいグッズ代が実質浮くことも…?!</b></p>
       </div>
