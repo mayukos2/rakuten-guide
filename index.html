@@ -16,6 +16,14 @@
    2. 開催期間の文    「schedule-date」で検索（2件＝CSS 1・本文1）。
                      本文の 9/4(金) 20:00〜9/11(金) 01:59 の部分を直す
                      ⚠️ .schedule-date は白い帯。日付の桁が増えたら375px幅で折り返さないか見る
+                     ⚠️ 毎回発生：セールが始まったら、同セクション下の official-note を
+                     「開催予定」の言い方から「開催中」の言い方に直す。
+                     検索語は「開催中の条件」（本文1件）。※official-note は本文に6〜7件あるので、
+                     この日程の1件だけを直すこと（他は価格や条件の注記で、触らない）
+                     ⚠️「購入前に楽天公式ページで最新条件を確認してね」は必ず残す（断定を避ける一文）
+                     ⚠️ トップと marathon/ で同じ文言にすること
+                     ✅ 2026/9/5 実施：「9/4開始の日程は9/3時点で開催予定です。」→
+                     「開催中の条件は変わることがあります。」（両ファイルとも）
    3. 狙い目の日      「BigChance」で検索（1件・h2の日付）＋「<div class="time-card」で検索（3件）
                      3枚の日付・曜日・「〇時間」「〜の午前1:59まで」を全部直す
    4. 5と0のつく日    「今月は」で検索（1件）。今月の6日分と、セールと重なる日を直す
@@ -34,6 +42,8 @@
                      「data-aff="travel"」（2件）
                      ⚠️ 5と0のつく日のエントリーは開催日ごとに開き直す。開いていない日は
                      is-unavailable にして押せなくする（2026/9/3に4件とも実施・文言「次は9/5」）
+                     ✅ 2026/9/5に4件とも「押せる」へ復帰。無効版の div/span はコメントで温存中
+                     （9/6以降に閉じるときは、そのコメントを戻して日付を「次は9/10」に直す）
                      戻すときは各所とも、コメントの中の <a> を、隣の is-unavailable の
                      div/span とそっくり入れ替えるだけ。URLはコメント内に温存してある
                      ⚠️ リンクは1文字でも変わると別リンクになる。コピペで貼り替える
@@ -56,8 +66,9 @@
                      入れるなら marathon/index.html の <aside id="today-deal"> と
                      today-deal.js / ga4.js の読み込みごと持ってくる
   14. 最後の確認      前回の月で検索して0件を確認する（例：9月版を作ったら「8月」「8/」「2026-08」で0件）
-                     さらに「時点」で検索（本文33件）して、日付が1種類だけになっているか見る
-                     ※33件の内訳＝価格31件＋開催予定の注記1件＋「カートに入れた時点で」1件（日付なし）
+                     さらに「時点」で検索（本文32件）して、日付が1種類だけになっているか見る
+                     ※32件の内訳＝価格31件＋「カートに入れた時点で」1件（日付なし）
+                     ※2026/9/5に official-note の「9/3時点」を外したため33件→32件になった
                      ⚠️ 最後に marathon/index.html と読み比べる。日付・イベント名・価格が
                         食い違っていないか（2026/9/3に食い違いが出た）
 
@@ -850,14 +861,14 @@ p{font-size:.94rem}
           <a class="entry-btn is-primary" href="https://a.r10.to/hPNU59" data-aff="entry-marathon">
             <span class="ico">1</span><span><strong>イベントにまずエントリー</strong><small>コレ押さなきゃ始まらない🙂‍↕️</small></span><span class="arr">👆</span>
           </a>
-          <!-- ⚠️ 5と0のつく日のエントリーは開催日ごとに開き直す。開く日（9/5・9/10…）にこの div を下の <a> に戻す
           <a class="entry-btn" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">
             <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>今日のエントリーはこちら</small></span><span class="arr">👆</span>
           </a>
-          -->
+          <!-- ⚠️ 開催日が終わったら（9/6・9/11…）この <a> を下の div に戻す。※「次は」の日付は次の開催日に直すこと
           <div class="entry-btn is-unavailable" data-aff="entry-0and5" aria-disabled="true">
             <span class="ico">2</span><span><strong>楽天カード使うならコレも！</strong><small>次は9/5</small></span>
           </div>
+          -->
           <div class="entry-btn is-unavailable" data-aff="entry-3980" aria-disabled="true">
             <span class="ico">3</span><span><strong>3,980円以上買うならコレも！</strong><small>今日はないよ！</small></span>
           </div>
@@ -942,8 +953,8 @@ p{font-size:.94rem}
         </div>
         <p class="lead"><b>今月は9/5・9/10・9/15・9/20・9/25・9/30。</b>とくに<b>9/5と9/10はスーパーセール中に重なる予定</b>だから見逃さないでね👀</p>
         <div class="button-row">
-          <!-- ⚠️ 開催日（9/5・9/10…）に戻す: <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">5と0のつく日を見る</a> -->
-          <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span>
+          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">5と0のつく日を見る</a>
+          <!-- ⚠️ 開催日が終わったらこの span に戻す（日付は次の開催日に直す）: <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span> -->
         </div>
         <div class="pr-mini">Rakuten pr</div>
         <p class="official-note">購入前に楽天公式ページで最新条件を確認してね。</p>
@@ -963,11 +974,11 @@ p{font-size:.94rem}
         </div>
         <div class="visual"><div class="ph contain" data-img="marathon/images/04-check-before-buy.svg" data-label="images/04-check-before-buy.svg｜買う前チェック図"></div></div>
         <div class="button-row">
-          <!-- ⚠️ 開催日（9/5・9/10…）に戻す: <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">▶︎5と0のつく日にエントリー✊</a> -->
-          <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span>
+          <a class="btn small" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener">▶︎5と0のつく日にエントリー✊</a>
+          <!-- ⚠️ 開催日が終わったらこの span に戻す（日付は次の開催日に直す）: <span class="btn small is-unavailable" data-aff="entry-0and5" aria-disabled="true">5と0のつく日のエントリー｜次は9/5</span> -->
         <div class="pr-mini">Rakuten pr<br>※開催日以外は、エントリーページが表示されない場合があります。</div>
         </div>
-        <p class="official-note">9/4開始の日程は9/3時点で開催予定です。購入前に楽天公式ページで最新条件を確認してね。</p>
+        <p class="official-note">開催中の条件は変わることがあります。購入前に楽天公式ページで最新条件を確認してね。</p>
       </div>
     </section>
 
@@ -1370,8 +1381,8 @@ p{font-size:.94rem}
           <a class="entry-btn" href="https://a.r10.to/hkd390" data-aff="entry-10000" target="_blank" rel="nofollow sponsored noopener"><span><strong>1万円以上買うなら確認</strong><small>対象キャンペーンをチェック</small></span><span class="arr">👆</span></a>
           <a class="entry-btn" href="https://a.r10.to/hkWKRx" data-aff="entry-newuser" target="_blank" rel="nofollow sponsored noopener"><span><strong>楽天市場が初めての人</strong><small>初購入向けの内容を見る</small></span><span class="arr">👆</span></a>
           <a class="entry-btn" href="https://a.r10.to/hRSKwv" data-aff="entry-u25" target="_blank" rel="nofollow sponsored noopener"><span><strong>25歳以下の人</strong><small>対象クーポンを確認する</small></span><span class="arr">👆</span></a>
-          <!-- ⚠️ 開催日（9/5・9/10…）に戻す: <a class="entry-btn is-compact" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener"><span><strong>5と0のつく日</strong><small>今日のエントリーはこちら</small></span><span class="arr">👆</span></a> -->
-          <div class="entry-btn is-unavailable is-compact" data-aff="entry-0and5" aria-disabled="true"><span><strong>5と0のつく日</strong><small>次は9/5</small></span></div>
+          <a class="entry-btn is-compact" href="https://a.r10.to/hRyOO5" data-aff="entry-0and5" target="_blank" rel="nofollow sponsored noopener"><span><strong>5と0のつく日</strong><small>今日のエントリーはこちら</small></span><span class="arr">👆</span></a>
+          <!-- ⚠️ 開催日が終わったらこの div に戻す（日付は次の開催日に直す）: <div class="entry-btn is-unavailable is-compact" data-aff="entry-0and5" aria-disabled="true"><span><strong>5と0のつく日</strong><small>次は9/5</small></span></div> -->
           <a class="entry-btn" href="https://a.r10.to/hgSshl" data-aff="travel" target="_blank" rel="nofollow sponsored noopener"><span><strong>楽天トラベル</strong><small>遠征の宿や移動を確認</small></span><span class="arr">👆</span></a>
           <a class="entry-btn" href="https://www.rebates.jp/referrer?referrerid=ZUUl%2BU6v7Ys%3D" data-aff="rebates" target="_blank" rel="nofollow sponsored noopener"><span><strong>楽天リーベイツ</strong><small>公式通販を経由して確認</small></span><span class="arr">👆</span></a>
         </div>
